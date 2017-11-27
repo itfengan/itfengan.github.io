@@ -87,7 +87,7 @@
 <meta name="description" content="做一个积极向上的人">
 <meta property="og:type" content="website">
 <meta property="og:title" content="风中追风">
-<meta property="og:url" content="http://yoursite.com/archives/2017/10/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="风中追风">
 <meta property="og:description" content="做一个积极向上的人">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
   };
 </script>
 
-  <title> 归档 | 风中追风 </title>
+  <title> 风中追风 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,7 +131,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -198,66 +200,111 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  
+  
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 11 篇日志。 继续努力。
-    </span>
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/23/Android7-0之应用间共享文件/" itemprop="url">
+                  Android7.0之应用间共享文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-23T16:58:17+08:00" content="2017-01-23">
+              2017-01-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2017/10/11/随滑动改变的的动态矩形背景/" itemprop="url">
-              
-                <span itemprop="name">随滑动改变的的动态矩形背景</span>
-              
+          <h2 id="Android7-0适配之应用间共享文件"><a href="#Android7-0适配之应用间共享文件" class="headerlink" title="Android7.0适配之应用间共享文件"></a>Android7.0适配之应用间共享文件</h2><h3 id="出现问题"><a href="#出现问题" class="headerlink" title="出现问题"></a>出现问题</h3><p>Android N(API 25),打开相册编辑页面crash,报出FileUriExposedException异常</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    android<span class="selector-class">.os</span><span class="selector-class">.FileUriExposedException</span>: file:<span class="comment">////storage/emulated/0/temp/1474956193735.jpg exposed beyond app through Intent.getData()</span></div><div class="line">at android<span class="selector-class">.os</span><span class="selector-class">.StrictMode</span><span class="selector-class">.onFileUriExposed</span>(StrictMode<span class="selector-class">.java</span>:<span class="number">1799</span>)</div><div class="line">at android<span class="selector-class">.net</span><span class="selector-class">.Uri</span><span class="selector-class">.checkFileUriExposed</span>(Uri<span class="selector-class">.java</span>:<span class="number">2346</span>)</div><div class="line">at android<span class="selector-class">.content</span><span class="selector-class">.Intent</span><span class="selector-class">.prepareToLeaveProcess</span>(Intent<span class="selector-class">.java</span>:<span class="number">8933</span>)</div><div class="line">at android<span class="selector-class">.content</span><span class="selector-class">.Intent</span><span class="selector-class">.prepareToLeaveProcess</span>(Intent<span class="selector-class">.java</span>:<span class="number">8894</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.Instrumentation</span><span class="selector-class">.execStartActivity</span>(Instrumentation<span class="selector-class">.java</span>:<span class="number">1517</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.startActivityForResult</span>(Activity<span class="selector-class">.java</span>:<span class="number">4223</span>)</div><div class="line">...</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.startActivityForResult</span>(Activity<span class="selector-class">.java</span>:<span class="number">4182</span>)</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/23/Android7-0之应用间共享文件/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-11T16:11:06+08:00"
-              content="2017-10-11" >
-          10-11
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
-
     
-
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
@@ -457,12 +504,6 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 
