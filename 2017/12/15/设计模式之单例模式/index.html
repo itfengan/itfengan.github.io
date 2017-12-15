@@ -92,17 +92,7 @@
 单例模式使用场景
 
 确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例
-
-如何使用单例
-
-
-私有构造函数，禁止外部使用构造函数创建对象
-通过一个静态方法或者枚举来提供返回单例实例
-确保单例类的对象在反序列化的时候不会重新构建对象
-确保在多线程下，也只有一个实例
-
-
-单例模">
+… …">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之单例模式">
 <meta property="og:url" content="http://yoursite.com/2017/12/15/设计模式之单例模式/index.html">
@@ -115,18 +105,8 @@
 单例模式使用场景
 
 确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例
-
-如何使用单例
-
-
-私有构造函数，禁止外部使用构造函数创建对象
-通过一个静态方法或者枚举来提供返回单例实例
-确保单例类的对象在反序列化的时候不会重新构建对象
-确保在多线程下，也只有一个实例
-
-
-单例模">
-<meta property="og:updated_time" content="2017-12-15T02:30:33.114Z">
+… …">
+<meta property="og:updated_time" content="2017-12-15T02:31:51.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之单例模式">
 <meta name="twitter:description" content="Android设计模式-单例模式
@@ -137,17 +117,7 @@
 单例模式使用场景
 
 确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例
-
-如何使用单例
-
-
-私有构造函数，禁止外部使用构造函数创建对象
-通过一个静态方法或者枚举来提供返回单例实例
-确保单例类的对象在反序列化的时候不会重新构建对象
-确保在多线程下，也只有一个实例
-
-
-单例模">
+… …">
 
 
 
@@ -323,6 +293,8 @@
 <li>单例模式使用场景</li>
 </ul>
 <p>确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例</p>
+<p>… …</p>
+<a id="more"></a>
 <ul>
 <li>如何使用单例</li>
 </ul>
@@ -335,7 +307,6 @@
 <ul>
 <li>单例模式分类</li>
 </ul>
-<a id="more"></a>
 <h3 id="1-饿汉式"><a href="#1-饿汉式" class="headerlink" title="1,饿汉式"></a>1,饿汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="2-懒汉式"><a href="#2-懒汉式" class="headerlink" title="2,懒汉式"></a>2,懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
