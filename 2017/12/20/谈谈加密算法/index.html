@@ -88,8 +88,7 @@
 
 前言
 
-在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法
-相关概念对称加密和非对称加密对称加密：对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密">
+在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谈谈加密算法">
 <meta property="og:url" content="http://yoursite.com/2017/12/20/谈谈加密算法/index.html">
@@ -98,17 +97,15 @@
 
 前言
 
-在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法
-相关概念对称加密和非对称加密对称加密：对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密">
-<meta property="og:updated_time" content="2017-12-20T06:51:56.202Z">
+在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法">
+<meta property="og:updated_time" content="2017-12-20T06:55:54.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈加密算法">
 <meta name="twitter:description" content="谈谈加密算法
 
 前言
 
-在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法
-相关概念对称加密和非对称加密对称加密：对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密">
+在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法">
 
 
 
@@ -281,6 +278,7 @@
 <p>前言</p>
 </blockquote>
 <p>在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法</p>
+<a id="more"></a>
 <h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h4 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h4><h5 id="对称加密："><a href="#对称加密：" class="headerlink" title="对称加密："></a>对称加密：</h5><p>对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。</p>
 <p>对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用1 bit来做这个密钥，那黑客们可以先试着用0来解密，不行的话就再用1解；但如果你的密钥有1 MB大，黑客们可能永远也无法破解，但加密和解密的过程要花费很长的时间。密钥的大小既要照顾到安全性，也要照顾到效率，是一个trade-off。</p>
 <p><strong>对称加密的一大缺点</strong>是密钥的管理与分配，换句话说，如何把密钥发送到需要解密你的消息的人的手里是一个问题。在<strong>发送密钥的过程中，密钥有很大的风险会被黑客们拦截</strong>。<strong>现实中通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人</strong>。</p>
@@ -360,6 +358,7 @@
 <li>其实呢Base64从严格意义上来说的话不是一种加密算法，而是一种编码算法</li>
 <li><a href="http://www.cnblogs.com/whoislcj/p/5887859.html" target="_blank" rel="external">更多</a></li>
 </ol>
+<p>所以，在客户端和服务端数据传送加密，最多使用的是非对称RSA和对称AES，参考<a href="http://blog.csdn.net/Chay_Chan/article/details/58605605" target="_blank" rel="external">这里</a></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34274472&auto=1&height=66"></iframe>
       
     </div>
