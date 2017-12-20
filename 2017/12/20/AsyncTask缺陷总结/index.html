@@ -96,7 +96,7 @@ Android开发中，AsyncTask可以替代Handler和Thread来处理后台操作和
 前言
 
 Android开发中，AsyncTask可以替代Handler和Thread来处理后台操作和通知Ui刷新，适用于处理异步数据，并将更新Ui的场景，AsyncTask适用于后台操作只有几秒的短时操作。但是AsyncTask本身存在很多糟糕的问题，如果使用中不注意，将会影响程序的健壮性。">
-<meta property="og:updated_time" content="2017-12-20T03:12:59.042Z">
+<meta property="og:updated_time" content="2017-12-20T05:40:37.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AsyncTask相关总结">
 <meta name="twitter:description" content="AsyncTask相关总结
@@ -298,7 +298,7 @@ Android开发中，AsyncTask可以替代Handler和Thread来处理后台操作和
 <li><strong>Handler异步实现的原理和适用的优缺点</strong></li>
 </ul>
 <p>在Handler 异步实现时,涉及到 Handler, Looper, Message,Thread四个对象，实现异步的流程是主线程启动Thread（子线程）àthread(子线程)运行并生成Message-àLooper获取Message并传递给HandleràHandler逐个获取Looper中的Message，并进行UI变更。</p>
-<p><strong>**使用的优点：</strong></p>
+<p><strong>使用的优点：</strong></p>
 <p>l  结构清晰，功能定义明确</p>
 <p>l  对于多个后台任务时，简单，清晰</p>
 <p><strong>使用的缺点：</strong></p>
@@ -339,7 +339,7 @@ Android开发中，AsyncTask可以替代Handler和Thread来处理后台操作和
 <p>如果AsyncTask未声明成静态，则会持有外部类Activity的引用，当Activity销毁之后，AsyncTask还在执行，它将在内存中依旧保持这个引用，会造成内存泄漏</p>
 </li>
 <li><p><strong>结果丢失</strong></p>
-<p>当屏幕旋转，Activity销毁重新创建（未配置android:configChanges=”orientation|screenSize”）之前运行的AsyncTask会持有之前Activity的引用，这时调用onPostExecute()再去更新界面将不再生效。</p>
+<p>当屏幕旋转Activity销毁重新创建（未配置android:configChanges=”orientation|screenSize”的情况）之前运行的AsyncTask会持有之前Activity的引用，这时调用onPostExecute()再去更新界面将不再生效。</p>
 </li>
 <li><p><strong>并行还是串行</strong></p>
 <p>当想要串行执行时，直接执行execute()方法，如果需要并行执行，则要执行executeOnExecutor(Executor)。</p>
