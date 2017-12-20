@@ -223,6 +223,183 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/20/谈谈加密算法/" itemprop="url">
+                  谈谈加密算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-20T13:48:31+08:00" content="2017-12-20">
+              2017-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>谈谈加密算法</strong></p>
+<blockquote>
+<p>前言</p>
+</blockquote>
+<p>在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法</p>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h4 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h4><h5 id="对称加密："><a href="#对称加密：" class="headerlink" title="对称加密："></a>对称加密：</h5><p>对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。</p>
+<p>对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用1 bit来做这个密钥，那黑客们可以先试着用0来解密，不行的话就再用1解；但如果你的密钥有1 MB大，黑客们可能永远也无法破解，但加密和解密的过程要花费很长的时间。密钥的大小既要照顾到安全性，也要照顾到效率，是一个trade-off。</p>
+<p><strong>对称加密的一大缺点</strong>是密钥的管理与分配，换句话说，如何把密钥发送到需要解密你的消息的人的手里是一个问题。在<strong>发送密钥的过程中，密钥有很大的风险会被黑客们拦截</strong>。<strong>现实中通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人</strong>。</p>
+<h5 id="非对称加密："><a href="#非对称加密：" class="headerlink" title="非对称加密："></a>非对称加密：</h5><p>非对称加密为数据的加密与解密提供了一个非常安全的方法，它使用了一对密钥，公钥（public key）和私钥（private key）。<strong>私钥只能由一方安全保管，不能外泄</strong>，而<strong>公钥则可以发给任何请求它的人</strong>。<strong>非对称加密</strong>使用这对<strong>密钥中的一个进行加密，而解密则需要另一个密钥</strong>。比如，你向银行请求公钥，<strong>银行将公钥发给你，你使用公钥对消息加密，那么只有私钥的持有人–银行才能对你的消息解密</strong>。与对称加密不同的是，银行不需要将私钥通过网络发送出去，因此安全性大大提高。</p>
+<p>目前<strong>最常用的非对称加密算法是RSA算法</strong>，是Rivest, Shamir, 和Adleman于1978年发明</p>
+<h5 id="对称加密和非对称加密-1"><a href="#对称加密和非对称加密-1" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h5><p>虽然非对称加密很安全，但是和对称加密比起来，它非常的慢，所以我们还是要用对称加密来传送消息，但对称加密使用的密钥用非对称加密，参考网上，看下面的一个例子：</p>
+<ol>
+<li>铁头需要在银行的网站上做一笔交易，他的游览器生成了一个随机数作为对称密钥</li>
+<li>铁头的游览器向银行请求非对称加密的公钥</li>
+<li>银行将公钥发送给铁头</li>
+<li>铁头用这个公钥将自己的对称密钥进行加密</li>
+<li>铁头将加密后的对称密钥发送给银行</li>
+<li>银行用非对称加密的私有密钥对这个对称密钥进行解密获取到铁头的对称密钥</li>
+<li>铁头与银行可以使用对称密钥来对沟通的内容进行加密与解密了。</li>
+</ol>
+<h5 id="对称和非对称加密总结"><a href="#对称和非对称加密总结" class="headerlink" title="对称和非对称加密总结"></a>对称和非对称加密总结</h5><ol>
+<li>对称加密加密与解密使用的是同样的密钥，所以速度快，但由于需要将密钥在网络传输，所以安全性不高。</li>
+<li>非对称加密使用了一对密钥，公钥与私钥，所以安全性高，但加密与解密速度慢。</li>
+<li>解决的办法是将<strong>对称加密的密钥使用非对称加密的公钥进行加密</strong>，然后发送出去，<strong>接收方使用私钥进行解密得到对称加密的密钥</strong>，然后双方可以使用对称加密来进行沟通。</li>
+</ol>
+<h4 id="非对称加密例子"><a href="#非对称加密例子" class="headerlink" title="非对称加密例子"></a>非对称加密例子</h4><ul>
+<li>RSA（参考<a href="http://www.cnblogs.com/whoislcj/p/5470095.html" target="_blank" rel="external">这里</a>）</li>
+</ul>
+<h4 id="对称加密例子"><a href="#对称加密例子" class="headerlink" title="对称加密例子"></a>对称加密例子</h4><ul>
+<li>AES（参考<a href="http://www.cnblogs.com/whoislcj/p/5473030.html" target="_blank" rel="external">这里</a>）</li>
+</ul>
+<ol>
+<li>项目中除了登陆，支付等接口采用rsa非对称加密，之外的采用aes对称加密</li>
+<li>高级加密标准（英语：Advanced Encryption Standard，缩写：AES）</li>
+<li>这个标准用来替代原先的DES</li>
+</ol>
+<ul>
+<li>DES（参考<a href="http://www.cnblogs.com/whoislcj/p/5580950.html" target="_blank" rel="external">这里</a>）</li>
+</ul>
+<ol>
+<li>DES加密算法出自IBM</li>
+<li>近些年使用越来越少</li>
+<li>DES使用56位密钥，以现代计算能力，24小时内即可被破解。</li>
+</ol>
+<ul>
+<li>AES和DES对比</li>
+</ul>
+<ol>
+<li>AES安全性、效率、灵活性要高于DES</li>
+<li>对称加密优先采用AES</li>
+</ol>
+<h4 id="其他加密"><a href="#其他加密" class="headerlink" title="其他加密"></a>其他加密</h4><ul>
+<li>MD5</li>
+</ul>
+<ol>
+<li><p>特点：单向加密算法，是不可逆的一种的加密方式</p>
+</li>
+<li><p>压缩性：任意长度的数据，算出的MD5值长度都是固定的。</p>
+</li>
+<li><p>容易计算：从原数据计算出MD5值很容易。</p>
+</li>
+<li><p>抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的MD5值都有很大区别。</p>
+</li>
+<li><p>强抗碰撞：已知原数据和其MD5值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。</p>
+</li>
+<li><p>加大MD5安全性</p>
+<ul>
+<li><h4 id="进行多次MD5加密"><a href="#进行多次MD5加密" class="headerlink" title="进行多次MD5加密"></a>进行多次MD5加密</h4></li>
+<li><h4 id="MD5加盐"><a href="#MD5加盐" class="headerlink" title="MD5加盐"></a>MD5加盐</h4><ul>
+<li><h4 id="用string明文的hashcode作为盐，然后进行MD5加密"><a href="#用string明文的hashcode作为盐，然后进行MD5加密" class="headerlink" title="用string明文的hashcode作为盐，然后进行MD5加密"></a>用string明文的hashcode作为盐，然后进行MD5加密</h4></li>
+<li><h4 id="随机生成一串字符串作为盐，然后进行MD5加密"><a href="#随机生成一串字符串作为盐，然后进行MD5加密" class="headerlink" title="随机生成一串字符串作为盐，然后进行MD5加密"></a>随机生成一串字符串作为盐，然后进行MD5加密</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Base64</li>
+</ul>
+<ol>
+<li>平时开发中遇见的各种数据加密方式，最终都会对加密后的二进制数据进行Base64编码，起到一种二次加密的效果</li>
+<li>其实呢Base64从严格意义上来说的话不是一种加密算法，而是一种编码算法</li>
+<li><a href="http://www.cnblogs.com/whoislcj/p/5887859.html" target="_blank" rel="external">更多</a></li>
+</ol>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34274472&auto=1&height=66"></iframe>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/20/AsyncTask缺陷总结/" itemprop="url">
                   AsyncTask相关总结
                 </a>
@@ -1095,99 +1272,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/08/祝你今天心情愉快/" itemprop="url">
-                  祝你今天心情愉快
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-08T11:32:51+08:00" content="2017-08-08">
-              2017-08-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28138588&auto=1&height=66"></iframe>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1233,7 +1317,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
