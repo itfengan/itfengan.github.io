@@ -518,6 +518,129 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/19/设计模式之原型模式/" itemprop="url">
+                  设计模式之原型模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T15:38:23+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效</p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><ul>
+<li>如果一个类的初始化需要很多资源，这个资源包括数据或者硬件资源等，通过原型拷贝已有的对象来避免这些消耗</li>
+<li>通过new产生的一个对象需要非常繁琐的数据准备或者权限，这时可以使用原型模式。</li>
+<li>一个对象需要提供给其他对象访问，而且各个调用者可能<strong>都</strong>需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用，即保护性拷贝。</li>
+</ul>
+<h5 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h5><p>首先我们得实现Cloneable接口，复写clone方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.it.fengan.designpattern.pattern;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by fengan on 2017/12/22.</div><div class="line"> * email:fengan1102@gmail.com</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> String des;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> money;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDes</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> des;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDes</span><span class="params">(String des)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.des = des;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getMoney</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> money;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.money = money;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Worker&#123;"</span> +</div><div class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", des='"</span> + des + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", money="</span> + money +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Worker <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">        Worker worker = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            worker = (Worker) <span class="keyword">super</span>.clone();</div><div class="line">            worker.money = <span class="keyword">this</span>.money;</div><div class="line">            worker.name = <span class="keyword">this</span>.name;</div><div class="line">            worker.des = <span class="keyword">this</span>.des;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> worker;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<ol>
+<li>clone这个方法不是Cloneable接口中的（Cloneable是一个空接口）</li>
+<li>clone是Object中的方法</li>
+<li>Cloneable是一个标识接口，它表明这个类的对象是可以拷贝的</li>
+<li>如果没有实现Cloneable接口却调用了clone()函数将抛出异常。</li>
+</ol>
+<h3 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h3><h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> User <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">       User user = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span>&#123;</div><div class="line">           user = (User)<span class="keyword">super</span>.clone();</div><div class="line">       &#125; <span class="keyword">catch</span> (CloneNotSupportedException e)&#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> user;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>那么在实现clone方法的时候，需要注意个问题，像上面那样，直接调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user = (User)<span class="keyword">super</span>.clone();</div></pre></td></tr></table></figure>
+<p>这样只是简单的拷贝了对象，实际上并不是将原始文档的所有字段都重新构造了一份，而是副本文档的字段引用原始文档的字段。</p>
+<p><img src="" alt="http://upload-images.jianshu.io/upload_images/2305881-8c761ffaa98daf62.png?imageMogr2/auto-orient/"></p>
+<p><strong>深拷贝</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> WordDocument <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            WordDocument doc = (WordDocument) <span class="keyword">super</span>.clone();</div><div class="line">            doc.mText = <span class="keyword">this</span>.mText;</div><div class="line">            doc.mImages = (ArrayList&lt;String&gt;) <span class="keyword">this</span>.mImages.clone();</div><div class="line">            <span class="keyword">return</span> doc;</div><div class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="Android中的应用"><a href="#Android中的应用" class="headerlink" title="Android中的应用"></a>Android中的应用</h5><p>Intenet源码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">*</div><div class="line"> * &lt;p&gt;These are the possible flags that can be used in the Intent via</div><div class="line"> * &#123;@link #setFlags&#125; and &#123;@link #addFlags&#125;.  See &#123;@link #setFlags&#125; for a list</div><div class="line"> * of all possible flags.</div><div class="line"> */</div><div class="line">public class Intent implements Parcelable, Cloneable &#123;</div><div class="line">    </div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public Object clone() &#123;</div><div class="line">        return new Intent(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Intent(Intent o) &#123;</div><div class="line">        this.mAction = o.mAction;</div><div class="line">        this.mData = o.mData;</div><div class="line">        this.mType = o.mType;</div><div class="line">        this.mPackage = o.mPackage;</div><div class="line">        this.mComponent = o.mComponent;</div><div class="line">        this.mFlags = o.mFlags;</div><div class="line">        this.mContentUserHint = o.mContentUserHint;</div><div class="line">        if (o.mCategories != null) &#123;</div><div class="line">            this.mCategories = new ArraySet&lt;String&gt;(o.mCategories);</div><div class="line">        &#125;</div><div class="line">        if (o.mExtras != null) &#123;</div><div class="line">            this.mExtras = new Bundle(o.mExtras);</div><div class="line">        &#125;</div><div class="line">        if (o.mSourceBounds != null) &#123;</div><div class="line">            this.mSourceBounds = new Rect(o.mSourceBounds);</div><div class="line">        &#125;</div><div class="line">        if (o.mSelector != null) &#123;</div><div class="line">            this.mSelector = new Intent(o.mSelector);</div><div class="line">        &#125;</div><div class="line">        if (o.mClipData != null) &#123;</div><div class="line">            this.mClipData = new ClipData(o.mClipData);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以见到，我们的Intent是深度拷贝，而且是直接new一个的深度拷贝。可见其设计初衷不是因为其不是为了解决构建复杂对象的资源消耗问题。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>原型模式本质上就是对象拷贝，与 C++ 中的拷贝构造函数有些类似，它们之间容易出现的问题也都是深拷贝、浅拷贝。使用原型模式可以<strong>解决构建复杂对象的资源消耗问题</strong>，能够在某些场景下<strong>提升创建对象的效率</strong>。还有一个重要的途径就是保护性拷贝，也就是某个对象对外可能是只读的，为了防止外部对这个只读对象修改，通常可以通过返回一个对象拷贝的形式实现只读的限制。</li>
+<li>优点：原型模式是在内存中二进制流的拷贝，要比直接 new 一个对象性能好很多，特别是要在一个循环体内产生大量的对象时，原型模式可以更好滴体现其优点。</li>
+<li>缺点：这既是它的优点也是缺点，直接在内存中拷贝，构造函数是不会执行的，在实际开发中应该注意这个潜在问题</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/19/设计模式之观察者模式/" itemprop="url">
                   设计模式之观察者模式
                 </a>
@@ -1091,105 +1214,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/保存图片到本地/" itemprop="url">
-                  保存图片到本地
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T10:14:21+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Android保存图片到本地"><a href="#Android保存图片到本地" class="headerlink" title="Android保存图片到本地"></a>Android保存图片到本地</h1><blockquote>
-<p>需求</p>
-</blockquote>
-<p>一个很常见的需求,查看大图的同时,点击可以将图片保存到本地<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/保存图片到本地/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1235,7 +1259,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
