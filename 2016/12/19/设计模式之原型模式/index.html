@@ -96,13 +96,15 @@
 使用场景
 如果一个类的初始化需要很多资源，这个资源包括数据或者硬件资源等，通过原型拷贝已有的对象来避免这些消耗
 通过new产生的一个对象需要非常繁琐的数据准备或者权限，这时可以使用原型模">
-<meta property="og:updated_time" content="2017-12-22T08:06:02.499Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg">
+<meta property="og:updated_time" content="2017-12-22T08:10:05.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之原型模式">
 <meta name="twitter:description" content="定义原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效
 使用场景
 如果一个类的初始化需要很多资源，这个资源包括数据或者硬件资源等，通过原型拷贝已有的对象来避免这些消耗
 通过new产生的一个对象需要非常繁琐的数据准备或者权限，这时可以使用原型模">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg">
 
 
 
@@ -290,7 +292,7 @@
 <p>那么在实现clone方法的时候，需要注意个问题，像上面那样，直接调用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user = (User)<span class="keyword">super</span>.clone();</div></pre></td></tr></table></figure>
 <p>这样只是简单的拷贝了对象，实际上并不是将原始文档的所有字段都重新构造了一份，而是副本文档的字段引用原始文档的字段。</p>
-<p><img src="" alt="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg" alt="浅拷贝"></p>
 <p><strong>深拷贝</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> WordDocument <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            WordDocument doc = (WordDocument) <span class="keyword">super</span>.clone();</div><div class="line">            doc.mText = <span class="keyword">this</span>.mText;</div><div class="line">            doc.mImages = (ArrayList&lt;String&gt;) <span class="keyword">this</span>.mImages.clone();</div><div class="line">            <span class="keyword">return</span> doc;</div><div class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h5 id="Android中的应用"><a href="#Android中的应用" class="headerlink" title="Android中的应用"></a>Android中的应用</h5><p>Intenet源码</p>
