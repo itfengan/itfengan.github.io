@@ -540,6 +540,11 @@
       
         
           <h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h4><p>线程基本概念，<a href="http://blog.csdn.net/cswhale/article/details/39053857">线程基本概念</a>和<a href="https://www.cnblogs.com/propheterLiu/p/6082666.html">Android启动线程的三种方式</a>(点击查看)</p>
+<h4 id="new-Thread（）的弊端"><a href="#new-Thread（）的弊端" class="headerlink" title="new Thread（）的弊端"></a>new Thread（）的弊端</h4><ul>
+<li>总是new Thread（）开启线程，线程执行完会被回收，导致频繁的<a href="https://www.jianshu.com/p/5db05db4f5ab">GC</a></li>
+<li>多线程缺乏统一管理，各线程之间互相竞争</li>
+<li>无法实现停止线程（如果一个item滑出页面，则要停止该item上图片的加载，但是如果使用这种方式来创建线程，则无法实现线程停止执行）</li>
+</ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/25/谈谈线程池/#more" rel="contents">
               阅读全文 &raquo;
