@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。
-未使用策略模式案例12345678910111213141516171819202122232425262728293031323334public class TravelStrategy &amp;#123;	enum Strategy&amp;#123;		W">
+<meta name="description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之策略模式">
 <meta property="og:url" content="http://yoursite.com/2016/12/16/设计模式之策略模式/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。
-未使用策略模式案例12345678910111213141516171819202122232425262728293031323334public class TravelStrategy &amp;#123;	enum Strategy&amp;#123;		W">
-<meta property="og:updated_time" content="2017-12-25T03:47:47.733Z">
+<meta property="og:description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。">
+<meta property="og:updated_time" content="2017-12-25T03:49:18.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之策略模式">
-<meta name="twitter:description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。
-未使用策略模式案例12345678910111213141516171819202122232425262728293031323334public class TravelStrategy &amp;#123;	enum Strategy&amp;#123;		W">
+<meta name="twitter:description" content="概念描述策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到具有公共接口的独立的类中，从而在不影响客户端的情况下可以切换相应的算法。">
 
 
 
@@ -303,7 +300,7 @@
       
 
       
-        <h4 id="概念描述"><a href="#概念描述" class="headerlink" title="概念描述"></a>概念描述</h4><p>策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到<strong>具有公共接口</strong>的<strong>独立的类</strong>中，从而在不影响客户端的情况下可以切换相应的算法。</p>
+        <h4 id="概念描述"><a href="#概念描述" class="headerlink" title="概念描述"></a>概念描述</h4><p>策略模式属于对象的行为模式，其用意是针对一组算法，将每一个算法封装到<strong>具有公共接口</strong>的<strong>独立的类</strong>中，从而在不影响客户端的情况下可以切换相应的算法。<br><a id="more"></a></p>
 <h4 id="未使用策略模式案例"><a href="#未使用策略模式案例" class="headerlink" title="未使用策略模式案例"></a>未使用策略模式案例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TravelStrategy</span> </span>&#123;</div><div class="line">	<span class="keyword">enum</span> Strategy&#123;</div><div class="line">		WALK,PLANE,SUBWAY</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">private</span> Strategy strategy;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TravelStrategy</span><span class="params">(Strategy strategy)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.strategy=strategy;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">travel</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(strategy==Strategy.WALK)&#123;</div><div class="line">			print(<span class="string">"walk"</span>);</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(strategy==Strategy.PLANE)&#123;</div><div class="line">			print(<span class="string">"plane"</span>);</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(strategy==Strategy.SUBWAY)&#123;</div><div class="line">			print(<span class="string">"subway"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str)</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"出行旅游的方式为："</span>+str);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		TravelStrategy walk=<span class="keyword">new</span> TravelStrategy(Strategy.WALK);</div><div class="line">		walk.travel();</div><div class="line">		</div><div class="line">		TravelStrategy plane=<span class="keyword">new</span> TravelStrategy(Strategy.PLANE);</div><div class="line">		plane.travel();</div><div class="line">		</div><div class="line">		TravelStrategy subway=<span class="keyword">new</span> TravelStrategy(Strategy.SUBWAY);</div><div class="line">		subway.travel();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>通过switch或者if语句，来判断选择哪一种策略算法，一旦策略增加或者减少修改，就不得不增加新的语句，这就违背了面向对象的原则之一，对修改封闭。</p>
 <h4 id="使用策略模式案例"><a href="#使用策略模式案例" class="headerlink" title="使用策略模式案例"></a>使用策略模式案例</h4><p><strong>定义策略接口（抽象策略）</strong></p>
