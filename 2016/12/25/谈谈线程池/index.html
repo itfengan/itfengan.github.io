@@ -100,7 +100,7 @@ new Thread（）的弊端
 无法实现停止线程（如果一个item滑出页面，则要停止该item上图片的加载，但是如果使用这种方式来创建线程，则无法实现线程停止执行）">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fmt3dofim9j311o0fqtc9.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fmt4c3mgklj31eq15kdqq.jpg">
-<meta property="og:updated_time" content="2017-12-25T10:25:50.621Z">
+<meta property="og:updated_time" content="2017-12-25T10:30:41.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈线程池">
 <meta name="twitter:description" content="前置知识线程基本概念，线程基本概念和Android启动线程的三种方式(点击查看)
@@ -475,14 +475,14 @@ new Thread（）的弊端
 <tr>
 <td><font color="red">FixThreadPool</font></td>
 <td>有</td>
-<td>无</td>
+<td>无（非核心线程）</td>
 <td>不会被回收</td>
 <td>只有固定数量的核心线程，线程都活动时，新任务等待</td>
 </tr>
 <tr>
 <td><font color="red">SingleThreadPool</font></td>
 <td>1</td>
-<td>无</td>
+<td>无（非核心线程）</td>
 <td>不会被回收</td>
 <td>所有任务都在统一线程执行，不需要处理线程同步问题</td>
 </tr>
