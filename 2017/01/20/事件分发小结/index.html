@@ -16,8 +16,8 @@
 
 <script>
     (function(){
-        if('123456'){
-            if (prompt('请输入文章密码') !== '123456'){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
                 history.back();
             }
@@ -112,16 +112,18 @@
 
 
 
-<meta name="description" content="懈怠意味着淘汰">
+<meta name="description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="谈谈启动流程">
-<meta property="og:url" content="http://yoursite.com/2017/12/29/谈谈启动流程/index.html">
+<meta property="og:title" content="事件分发小结">
+<meta property="og:url" content="http://yoursite.com/2017/01/20/事件分发小结/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="懈怠意味着淘汰">
-<meta property="og:updated_time" content="2017-12-29T03:27:07.742Z">
+<meta property="og:description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg">
+<meta property="og:updated_time" content="2018-02-06T08:33:16.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈启动流程">
-<meta name="twitter:description" content="懈怠意味着淘汰">
+<meta name="twitter:title" content="事件分发小结">
+<meta name="twitter:description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg">
 
 
 
@@ -139,7 +141,7 @@
   };
 </script>
 
-  <title> 谈谈启动流程 | 风中追风 </title>
+  <title> 事件分发小结 | 风中追风 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +271,7 @@
             
             
               
-                谈谈启动流程
+                事件分发小结
               
             
           </h1>
@@ -281,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-12-29T11:13:57+08:00" content="2017-12-29">
-              2017-12-29
+            <time itemprop="dateCreated" datetime="2017-01-20T11:38:23+08:00" content="2017-01-20">
+              2017-01-20
             </time>
           </span>
 
@@ -328,7 +330,22 @@
       
 
       
-        
+        <p>Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下</p>
+<a id="more"></a>
+<p>网上看到一张图，可以很详细的描述整个事件分发的过程</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg" alt="事件分发流程图"></p>
+<p><a href="https://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="external">原文的链接</a></p>
+<ul>
+<li>问题一：</li>
+</ul>
+<p>当ViewGroup重写的onInterceptTouchEvent，并且始终返回了true，那么子view就永远无法接受到了事件</p>
+<p>但是在实际开发中可能会有这种需求，在按下（ACTION_DOWN）的时候，需要子view进行时间反馈，但在滑动（ACTION_MOVE）或者抬起（ACTION_UP）的时候需要父布局进行拦截操作，这个时候可以使用<strong>requestDisallInterceptRouchEvent(boolean disallowIntercept)</strong>，该方法在<strong>子view中调用</strong>，<strong>getParent().requestDisallInterceptRouchEvent(true)</strong>请求父布局禁用拦截事件功能</p>
+<p><a href="http://blog.csdn.net/qq_34795285/article/details/61200211" target="_blank" rel="external">相关资料</a></p>
+<p>具体例子，在我做的项目中，在viewpager中的每一页fragment中都折线图，viewpager是可以左右切换的，每一页的fragment中的折线图也是可以手势缩放的，所以这就和viewpager滑动有冲突，利用requestDisallInterceptRouchEvent，我们可以自定义折线图控件继承项目中使用的（项目中使用的mpandroid），重写onTouchEvent，当水平滑动的时候，getParent().requestDisallInterceptRouchEvent(true)，请求父布局不拦截事件，交给子view处理。</p>
+<p>相关源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.nongfaziran.workiot.view;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.annotation.SuppressLint;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.PointF;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.view.MotionEvent;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.github.mikephil.charting.charts.LineChart;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by fengan on 2018/2/3.</div><div class="line"> * email:fengan1102@gmail.com</div><div class="line"> * 解决折线图在viewpager滑动冲突</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LineChartInViewPager</span> <span class="keyword">extends</span> <span class="title">LineChart</span> </span>&#123;</div><div class="line"></div><div class="line">    PointF downPoint = <span class="keyword">new</span> PointF();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyle);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"ClickableViewAccessibility"</span>)</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent evt)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (evt.getAction()) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                downPoint.x = evt.getX();</div><div class="line">                downPoint.y = evt.getY();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                <span class="keyword">if</span> (getScaleX() &gt; <span class="number">1</span> &amp;&amp; Math.abs(evt.getX() - downPoint.x) &gt; <span class="number">5</span>) &#123;</div><div class="line">                    getParent().requestDisallowInterceptTouchEvent(<span class="keyword">true</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(evt);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>未完待续</p>
+
       
     </div>
 
@@ -363,13 +380,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/20/谈谈加密算法/" rel="next" title="谈谈加密算法">
-                <i class="fa fa-chevron-left"></i> 谈谈加密算法
+              <a href="/2016/12/25/谈谈线程池/" rel="next" title="谈谈线程池">
+                <i class="fa fa-chevron-left"></i> 谈谈线程池
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/Android-阴影布局-继承FrameLayout/" rel="prev" title="Android　阴影布局(继承FrameLayout)">
+                Android　阴影布局(继承FrameLayout) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
