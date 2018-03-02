@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是ThreadLocalJDK1.2提供
+
+根据JDK文档中的解释：
+
+ThreadLocal的作用是提供线程内的局部变量，这种变量在多线程环境下访问时能够保证各个线程里变量的独立性。
+当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立改变该变量的副本，而不会影响其他线程所对应的副本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ThreadLocal的理解">
+<meta property="og:url" content="http://yoursite.com/2018/03/02/ThreadLocal的理解/index.html">
+<meta property="og:site_name" content="风中追风">
+<meta property="og:description" content="什么是ThreadLocalJDK1.2提供
+
+根据JDK文档中的解释：
+
+ThreadLocal的作用是提供线程内的局部变量，这种变量在多线程环境下访问时能够保证各个线程里变量的独立性。
+当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立改变该变量的副本，而不会影响其他线程所对应的副本。">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foyhets3pvj31kw15p4ac.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1foyhxjqs0qj31kw0zyn9s.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foylpjjmbuj31jg0w6k0i.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foylttuf5dj31i40ectj5.jpg">
+<meta property="og:updated_time" content="2018-03-02T11:17:30.853Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ThreadLocal的理解">
+<meta name="twitter:description" content="什么是ThreadLocalJDK1.2提供
+
+根据JDK文档中的解释：
+
+ThreadLocal的作用是提供线程内的局部变量，这种变量在多线程环境下访问时能够保证各个线程里变量的独立性。
+当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立改变该变量的副本，而不会影响其他线程所对应的副本。">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foyhets3pvj31kw15p4ac.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ThreadLocal的理解 | 风中追风 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">风中追风</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">个人邮箱 fengan1102@gmail.com</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ThreadLocal的理解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-02T14:02:18+08:00" content="2018-03-02">
+              2018-03-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index">
+                    <span itemprop="name">notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是ThreadLocal"><a href="#什么是ThreadLocal" class="headerlink" title="什么是ThreadLocal"></a>什么是ThreadLocal</h3><p>JDK1.2提供</p>
+<ul>
+<li>根据JDK文档中的解释：</li>
+</ul>
+<p>ThreadLocal的作用是提供线程内的局部变量，这种变量在多线程环境下访问时能够保证各个线程里变量的独立性。</p>
+<p>当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立改变该变量的副本，而不会影响其他线程所对应的副本。</p>
+<a id="more"></a>
+<h3 id="ThreadLocal的使用："><a href="#ThreadLocal的使用：" class="headerlink" title="ThreadLocal的使用："></a>ThreadLocal的使用：</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foyhets3pvj31kw15p4ac.jpg" alt=""></p>
+<p>可以看到我们用ThreadLocal存放了一个String字符串，在不同的线程set数值后，只在当前线程管用，所以说，如同上述所说的</p>
+<ul>
+<li>一个ThreadLocal可以被多个线程共享</li>
+<li>每个线程对同一个ThreadLocal的set get操作只针对当前线程管用</li>
+</ul>
+<h3 id="ThreadLocal的原理以及源码介绍"><a href="#ThreadLocal的原理以及源码介绍" class="headerlink" title="ThreadLocal的原理以及源码介绍"></a>ThreadLocal的原理以及源码介绍</h3><p>大概了解了ThreadLocal如何使用，那么请问，ThreadLocal如何保证不同线程的独立性的呢？</p>
+<h4 id="ThreadLocal几个内部方法"><a href="#ThreadLocal几个内部方法" class="headerlink" title="ThreadLocal几个内部方法"></a>ThreadLocal几个内部方法</h4><h5 id="protected-T-initialValue-（如果不想初始值返回null，需要重写initialValue方法）"><a href="#protected-T-initialValue-（如果不想初始值返回null，需要重写initialValue方法）" class="headerlink" title="protected T initialValue()（如果不想初始值返回null，需要重写initialValue方法）"></a><strong>protected T initialValue()</strong>（如果不想初始值返回null，需要重写initialValue方法）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> T <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1foyhxjqs0qj31kw0zyn9s.jpg" alt="如果不想初始值返回null，需要重写initialValue方法"></p>
+<h5 id="public-T-get-（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）"><a href="#public-T-get-（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）" class="headerlink" title="public T get()（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）"></a><strong>public T get()</strong>（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）</h5><p>/**</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> * Returns the value in the current thread's copy of this</div><div class="line"> * thread-local variable.  If the variable has no value for the</div><div class="line"> * current thread, it is first initialized to the value returned</div><div class="line"> * by an invocation of the &#123;@link #initialValue&#125; method.</div><div class="line"> *</div><div class="line"> * @return the current thread's value of this thread-local</div><div class="line"> */</div><div class="line">public T get() &#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    if (map != null) &#123;</div><div class="line">        ThreadLocalMap.Entry e = map.getEntry(this);</div><div class="line">        if (e != null)</div><div class="line">            return (T)e.value;</div><div class="line">    &#125;</div><div class="line">    return setInitialValue();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="public-void-set-T-value"><a href="#public-void-set-T-value" class="headerlink" title="public void set(T value)"></a><strong>public void set(T value)</strong></h5><p>/**</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> * Sets the current thread's copy of this thread-local variable</div><div class="line"> * to the specified value.  Most subclasses will have no need to</div><div class="line"> * override this method, relying solely on the &#123;@link #initialValue&#125;</div><div class="line"> * method to set the values of thread-locals.</div><div class="line"> *</div><div class="line"> * @param value the value to be stored in the current thread's copy of</div><div class="line"> *        this thread-local.</div><div class="line"> */</div><div class="line">public void set(T value) &#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    if (map != null)</div><div class="line">        map.set(this, value);</div><div class="line">    else</div><div class="line">        createMap(t, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>由get和set源码可以看出，数据的存取都是先获取ThreadLocalMap对象，从<strong>ThreadLocalMap</strong>存取</li>
+<li>ThreadLocalMap是一个map，它的key，就是threadLocal本身，值就是存放的变量副本</li>
+<li><strong>每个线程对应一个本地变量的map，每个可以存放多个线程本地变量（即不同的ThreadLocal）</strong></li>
+</ol>
+<h5 id="public-void-remove-（jdk1-5后出现）"><a href="#public-void-remove-（jdk1-5后出现）" class="headerlink" title="public void remove()（jdk1.5后出现）"></a><strong>public void remove()</strong>（jdk1.5后出现）</h5><p>/**</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">* Removes the current thread's value for this thread-local</div><div class="line">* variable.  If this thread-local variable is subsequently</div><div class="line">* &#123;@linkplain #get read&#125; by the current thread, its value will be</div><div class="line">* reinitialized by invoking its &#123;@link #initialValue&#125; method,</div><div class="line">* unless its value is &#123;@linkplain #set set&#125; by the current thread</div><div class="line">* in the interim.  This may result in multiple invocations of the</div><div class="line">* &lt;tt&gt;initialValue&lt;/tt&gt; method in the current thread.</div><div class="line">*</div><div class="line">* @since 1.5</div><div class="line">*/</div><div class="line">public void remove() &#123;</div><div class="line">    ThreadLocalMap m = getMap(Thread.currentThread());</div><div class="line">    if (m != null)</div><div class="line">        m.remove(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过remove源码可以看到，</p>
+<ol>
+<li>先通过ThreadLocal的getMap（Thread.currentThread()）方法拿到当前线程的ThreadLocalMap</li>
+<li>然后再在当前线程的ThreadLocalMap中get，set，remove</li>
+</ol>
+<p>关于remove需要知道的几点：</p>
+<ul>
+<li>为什么移除某个ThreadLocal的值：</li>
+</ul>
+<p>目的是减少内存缓存，remove之后如果再次访问此线程局部变量的值，将返回initiValue初始值</p>
+<p>线程结束后，该线程对应的所有局部变量将自动被垃圾回收，但是显示调用remove清楚线程局部变量不是必须操作，但是可以加快内存回收的速度</p>
+<h3 id="ThreadLocal和同步机制synchonzied的区别"><a href="#ThreadLocal和同步机制synchonzied的区别" class="headerlink" title="ThreadLocal和同步机制synchonzied的区别"></a>ThreadLocal和同步机制synchonzied的区别</h3><ul>
+<li>ThreadLocal：以空间换时间</li>
+<li>synchonzied：以时间换空间</li>
+</ul>
+<p>synchonzied同步机制：</p>
+<p>为多线程对相同资源的并发访问控制，保证了多线程之间的数据共享，<strong>同步会带来巨大的性能开销，所以同步操作应该是细粒度的（对象中的不同元素使用不同的锁，而不是整个对象一个锁）</strong>，以时间换空间的意思是：<strong>使用同步真正的风险是复杂性和可能破坏资源安全,而不是性能。</strong></p>
+<p>ThreadLocal线程局部变量机制：</p>
+<p>空间换取时间，不同线程访问同一ThreadLocal，数据的存取是当前线程的数据副本，也就是说不同线程在某一时间访问到的并不是同一对象，所以效率比较高，但是占用内存比较大，当线程结束之后，remove会加快内存的回收速度。</p>
+<p>Synchronized着重于线程间的数据共享，而ThreadLocal则着重于线程间的数据隔离。 </p>
+<h3 id="ThreadLocal的弊端（内存泄露）"><a href="#ThreadLocal的弊端（内存泄露）" class="headerlink" title="ThreadLocal的弊端（内存泄露）"></a>ThreadLocal的弊端（内存泄露）</h3><h4 id="内存泄露原因"><a href="#内存泄露原因" class="headerlink" title="内存泄露原因"></a>内存泄露原因</h4><p>ThreadLocalMap使用ThreadLocal的弱引用作为key，如果一个ThreadLocal没有外部的强引用，那么在系统GC的时候，这个ThreadLocal就会被回收掉</p>
+<p>ThreadLocal被回收掉之后，那么当前Thread的ThreadLocalMap中间就会出现key为null的Entry</p>
+<p>key为null的话就意味着，没有办法访问这些key对应的值，就会存在以下的这样一个强引用链</p>
+<p>value —Entry—TreadLocalMap–Thread</p>
+<h4 id="内存泄露解决"><a href="#内存泄露解决" class="headerlink" title="内存泄露解决"></a>内存泄露解决</h4><p><code>ThreadLocalMap</code>的设计中已经考虑到这种情况，也加上了一些防护措施：在<code>ThreadLocal</code>的<code>get()</code>,<code>set()</code>,<code>remove()</code>的时候都会清除线程<code>ThreadLocalMap</code>里所有<code>key</code>为<code>null</code>的<code>value</code>。</p>
+<h4 id="以下操作会导致内存泄露"><a href="#以下操作会导致内存泄露" class="headerlink" title="以下操作会导致内存泄露"></a>以下操作会导致内存泄露</h4><ol>
+<li><p>使用static的ThreadLocal，延长了<code>ThreadLocal</code>的生命周期，导致某个线程Thread结束后，但是Thread内部的ThreadLocalMap中存在这个静态的ThreadLocal，导致ThreadLocalMap没法被回收，导致该Thread没法被回收</p>
+</li>
+<li><p>分配使用了<code>ThreadLocal</code>又不再调用<code>get()</code>,<code>set()</code>,<code>remove()</code>方法，那么就会导致内存泄漏。因为如上所说</p>
+<p><code>get()</code>,<code>set()</code>,<code>remove()</code>会清理线程ThreadLocalMap里所有key为null的value</p>
+</li>
+</ol>
+<h3 id="Android中ThreadLocal的体现"><a href="#Android中ThreadLocal的体现" class="headerlink" title="Android中ThreadLocal的体现"></a>Android中ThreadLocal的体现</h3><h4 id="Handler消息机制"><a href="#Handler消息机制" class="headerlink" title="Handler消息机制"></a>Handler消息机制</h4><p>熟悉Handler机制的都知道</p>
+<p>在ActivityThread的main方法中Looper.prepareMainLooper();或者在自己创建的线程中Looper.pepare()的时候</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</div><div class="line">    &#125;</div><div class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>创建了一个Looper对象并使用sThreadLocal的set方法进行保存</p>
+<p>并且这个ThreadLocal在Looper类中是静态的，如下</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foylpjjmbuj31jg0w6k0i.jpg" alt=""></p>
+<p>那就是说，这个静态的ThreadLocal，可以供任何线程访问，但是任意线程中取出来的looper，都只是线程局部变量，都是在副本</p>
+<p>所以说，每个线程对应一个looper，</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foylttuf5dj31i40ectj5.jpg" alt=""></p>
+<p><strong>对于ThreadLocal的总结，暂时整理到这里，后续补充 ♨</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="冯安 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>这是我的微信,欢迎来约~</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/29/谈谈启动流程/" rel="next" title="谈谈启动流程">
+                <i class="fa fa-chevron-left"></i> 谈谈启动流程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1485261785708&di=8eeb8c8aad6c9d6367c157a4137dccd7&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F960a304e251f95ca547894f0c9177f3e660952e2.jpg"
+               alt="冯安" />
+          <p class="site-author-name" itemprop="name">冯安</p>
+          <p class="site-description motion-element" itemprop="description">懈怠意味着淘汰</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/itfengan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/fengan1102" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              基情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://windherd.github.io/" title="哔哩哔哩铁头张" target="_blank">哔哩哔哩铁头张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://androidwangfh.github.io/" title="富豪王" target="_blank">富豪王</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是ThreadLocal"><span class="nav-number">1.</span> <span class="nav-text">什么是ThreadLocal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal的使用："><span class="nav-number">2.</span> <span class="nav-text">ThreadLocal的使用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal的原理以及源码介绍"><span class="nav-number">3.</span> <span class="nav-text">ThreadLocal的原理以及源码介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal几个内部方法"><span class="nav-number">3.1.</span> <span class="nav-text">ThreadLocal几个内部方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#protected-T-initialValue-（如果不想初始值返回null，需要重写initialValue方法）"><span class="nav-number">3.1.1.</span> <span class="nav-text">protected T initialValue()（如果不想初始值返回null，需要重写initialValue方法）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#public-T-get-（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）"><span class="nav-number">3.1.2.</span> <span class="nav-text">public T get()（该方法返回当前线程变量副本。如果这是线程第一次调用该方法，则创建并初始化此副本。）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#public-void-set-T-value"><span class="nav-number">3.1.3.</span> <span class="nav-text">public void set(T value)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#public-void-remove-（jdk1-5后出现）"><span class="nav-number">3.1.4.</span> <span class="nav-text">public void remove()（jdk1.5后出现）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal和同步机制synchonzied的区别"><span class="nav-number">4.</span> <span class="nav-text">ThreadLocal和同步机制synchonzied的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal的弊端（内存泄露）"><span class="nav-number">5.</span> <span class="nav-text">ThreadLocal的弊端（内存泄露）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存泄露原因"><span class="nav-number">5.1.</span> <span class="nav-text">内存泄露原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存泄露解决"><span class="nav-number">5.2.</span> <span class="nav-text">内存泄露解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以下操作会导致内存泄露"><span class="nav-number">5.3.</span> <span class="nav-text">以下操作会导致内存泄露</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android中ThreadLocal的体现"><span class="nav-number">6.</span> <span class="nav-text">Android中ThreadLocal的体现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Handler消息机制"><span class="nav-number">6.1.</span> <span class="nav-text">Handler消息机制</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯安</span>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <!-- 背景 -->
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 宠物 -->
+
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
