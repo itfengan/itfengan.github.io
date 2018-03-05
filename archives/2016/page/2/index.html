@@ -18,7 +18,7 @@
 <meta name="description" content="懈怠意味着淘汰">
 <meta property="og:type" content="website">
 <meta property="og:title" content="风中追风">
-<meta property="og:url" content="http://yoursite.com/archives/2016/page/2/index.html">
+<meta property="og:url" content="http://www.fengan.info/archives/2016/page/2/index.html">
 <meta property="og:site_name" content="风中追风">
 <meta property="og:description" content="懈怠意味着淘汰">
 <meta name="twitter:card" content="summary">
@@ -71,12 +71,14 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -95,7 +97,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1485261785708&amp;di=8eeb8c8aad6c9d6367c157a4137dccd7&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F960a304e251f95ca547894f0c9177f3e660952e2.jpg" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">冯安</a></h1>
@@ -105,6 +107,13 @@
         <p class="header-subtitle">个人邮箱 fengan1102@gmail.com</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -169,9 +178,9 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="/fengan1102@gmail.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/itfengan" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
@@ -191,11 +200,9 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://windherd.github.io/">哔哩哔哩铁头张</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="https://androidwangfh.github.io/">富豪王</a>
                     
                     </div>
                 </section>
@@ -205,7 +212,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">专注于移动端开发</div>
                 </section>
                 
             </div>
@@ -222,7 +229,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+                <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1485261785708&amp;di=8eeb8c8aad6c9d6367c157a4137dccd7&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F960a304e251f95ca547894f0c9177f3e660952e2.jpg" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">冯安</a></h1>
@@ -247,9 +254,9 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="/fengan1102@gmail.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/itfengan" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
@@ -461,7 +468,7 @@
             
             
             
-            
+             categories: ".article-category a, a.tag-list-link", 
             
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
@@ -474,6 +481,23 @@
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

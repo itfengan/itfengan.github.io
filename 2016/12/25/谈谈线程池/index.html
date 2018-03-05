@@ -22,7 +22,7 @@ new Thread（）的弊端
 无法实现停止线程（如果一个item滑出页面，则要停止该item上图片的加载，但是如果使用这种方式来创建线程，则无法实现线程停止执行）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谈谈线程池">
-<meta property="og:url" content="http://yoursite.com/2016/12/25/谈谈线程池/index.html">
+<meta property="og:url" content="http://www.fengan.info/2016/12/25/谈谈线程池/index.html">
 <meta property="og:site_name" content="风中追风">
 <meta property="og:description" content="前置知识线程基本概念，线程基本概念和Android启动线程的三种方式(点击查看)
 new Thread（）的弊端
@@ -87,12 +87,14 @@ new Thread（）的弊端
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -111,7 +113,7 @@ new Thread（）的弊端
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1485261785708&amp;di=8eeb8c8aad6c9d6367c157a4137dccd7&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F960a304e251f95ca547894f0c9177f3e660952e2.jpg" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">冯安</a></h1>
@@ -121,6 +123,13 @@ new Thread（）的弊端
         <p class="header-subtitle">个人邮箱 fengan1102@gmail.com</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -185,9 +194,9 @@ new Thread（）的弊端
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="/fengan1102@gmail.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/itfengan" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
@@ -207,11 +216,9 @@ new Thread（）的弊端
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://windherd.github.io/">哔哩哔哩铁头张</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="https://androidwangfh.github.io/">富豪王</a>
                     
                     </div>
                 </section>
@@ -221,7 +228,7 @@ new Thread（）的弊端
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">专注于移动端开发</div>
                 </section>
                 
             </div>
@@ -238,7 +245,7 @@ new Thread（）的弊端
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+                <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1485261785708&amp;di=8eeb8c8aad6c9d6367c157a4137dccd7&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F960a304e251f95ca547894f0c9177f3e660952e2.jpg" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">冯安</a></h1>
@@ -263,9 +270,9 @@ new Thread（）的弊端
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="/fengan1102@gmail.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/itfengan" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
@@ -522,8 +529,8 @@ new Thread（）的弊端
         <p><span>发布时间:</span>2016-12-25, 15:52:32</p>
         <p><span>最后更新:</span>2017-12-25, 18:45:57</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/25/谈谈线程池/" title="谈谈线程池">http://yoursite.com/2016/12/25/谈谈线程池/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/12/25/谈谈线程池/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/25/谈谈线程池/" title="谈谈线程池">http://www.fengan.info/2016/12/25/谈谈线程池/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2016/12/25/谈谈线程池/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -603,6 +610,28 @@ new Thread（）的弊端
 
 
 
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://www.fengan.info/2016/12/25/谈谈线程池/';
+            this.page.identifier = '2016/12/25/谈谈线程池/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//null.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
 
 
     
@@ -704,7 +733,7 @@ new Thread（）的弊端
             
             
             
-            
+             categories: ".article-category a, a.tag-list-link", 
             
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
@@ -717,6 +746,23 @@ new Thread（）的弊端
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
