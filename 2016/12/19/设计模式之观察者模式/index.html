@@ -57,7 +57,16 @@
 
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
+<script>
+    (function(){
+        if('{{ page.password }}'){
+            if (prompt('请输入文章密码') !== '{{ page.password }}'){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 <title>设计模式之观察者模式 | 风中追风</title>
 
@@ -75,7 +84,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
+        search: false
     }
 </script>
 
@@ -111,13 +120,6 @@
         <p class="header-subtitle">个人邮箱 fengan1102@gmail.com</p>
         
 
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
