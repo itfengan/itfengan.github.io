@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwkdnlaooj30i80budid.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwjo9kq19j31kw15d15f.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwjn5w2rrj31a00ls122.jpg">
-<meta property="og:updated_time" content="2017-12-28T09:30:07.693Z">
+<meta property="og:updated_time" content="2018-03-06T07:28:56.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回顾集合体系">
 <meta name="twitter:description" content="前言
@@ -381,7 +381,29 @@
 <li>key值不能重复，value值可以重复；</li>
 </ul>
 <h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>底层是哈希表数据结构，允许使用 null 值和 null 键，该集合是不同步的。将hashtable替代，jdk1.2.效率高。</p>
-<h5 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h5><p>底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。</p>
+<p><strong><a href="http://tracylihui.github.io/2015/07/01/Java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A01%EF%BC%9AHashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" target="_blank" rel="external">HashMap原理：</a></strong></p>
+<ul>
+<li>HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。</li>
+</ul>
+<ul>
+<li>数组中的每一项又是一个Entry，其中包含了key和value，也就是键值对，另外还包含了一个next的Entry指针</li>
+</ul>
+<ul>
+<li>因为持有下一个Entry指针，所以构成链表</li>
+<li>往HashMap中put元素的时候，先根据key的hashCode重新计算hash值</li>
+<li>根据hash值得到这个元素在数组中的位置（即下标）</li>
+<li>如果数组该位置上已经存放有其他元素了，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放在链尾。</li>
+<li>如果数组该位置上没有元素，就直接将该元素放到此数组中的该位置上</li>
+<li>从HashMap中get元素时，首先计算key的hashCode，找到数组中对应位置的某一元素，然后通过key的equals方法在对应位置的链表中找到需要的元素。</li>
+</ul>
+<p><strong>一句话原理总结：</strong></p>
+<p>简单来说，HashMap在底层将key-value当作一个整体处理，这个整体就是一个Entry对象。HashMap底层采用一个Entry[]数组来保存所有的key-value，每个Entry包含了key-value，还包含了next的Entry指针，因此构成一个链表。当要存储一个Entry对象时，会根据hash算法决定在数组中的存储位置，再根据equals方法，决定其在该数组位置上的链表的存储位置；在需要取出一个Entry时，也会根据hash算法找到其在这个数组的存储位置，再根据equel方法，从该位置找到对应的Entry对象。</p>
+<p><strong>hashmap两种遍历方式</strong></p>
+<p>第一种：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Map map = <span class="keyword">new</span> HashMap();</div><div class="line">　　Iterator iter = map.entrySet().iterator();</div><div class="line">　　<span class="keyword">while</span> (iter.hasNext()) &#123;</div><div class="line">　　Map.Entry entry = (Map.Entry) iter.next();</div><div class="line">　　Object key = entry.getKey();</div><div class="line">　　Object val = entry.getValue();</div><div class="line">　　&#125;</div></pre></td></tr></table></figure>
+<p>第二种：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">　Map map = <span class="keyword">new</span> HashMap();</div><div class="line">　　Iterator iter = map.keySet().iterator();</div><div class="line">　　<span class="keyword">while</span> (iter.hasNext()) &#123;</div><div class="line">　　Object key = iter.next();</div><div class="line">　　Object val = map.get(key);</div><div class="line">　　&#125;</div></pre></td></tr></table></figure>
+<h5 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a><strong>TreeMap</strong></h5><p>底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。</p>
 <h4 id="集合输出（遍历）"><a href="#集合输出（遍历）" class="headerlink" title="集合输出（遍历）"></a>集合输出（遍历）</h4><ul>
 <li>Iterator： 迭代输出，使用最多的输出方式</li>
 <li>ListIterator：是Iterator的子接口，专门用于输出List中的内容。</li>
@@ -428,7 +450,7 @@
         <p><span>本文标题:</span><a href="/2015/12/26/回顾集合体系/">回顾集合体系</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2015-12-26, 11:11:19</p>
-        <p><span>最后更新:</span>2017-12-28, 17:30:07</p>
+        <p><span>最后更新:</span>2018-03-06, 15:28:56</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/12/26/回顾集合体系/" title="回顾集合体系">http://www.fengan.info/2015/12/26/回顾集合体系/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2015/12/26/回顾集合体系/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
