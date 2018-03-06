@@ -270,77 +270,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-保存图片到本地" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/21/保存图片到本地/" class="article-date">
-      <time datetime="2016-08-21T02:14:21.000Z" itemprop="datePublished">2016-08-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/21/保存图片到本地/">保存图片到本地</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Android保存图片到本地"><a href="#Android保存图片到本地" class="headerlink" title="Android保存图片到本地"></a>Android保存图片到本地</h1><blockquote>
-<p>需求</p>
-</blockquote>
-<p>一个很常见的需求,查看大图的同时,点击可以将图片保存到本地<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/code/">code</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/08/21/保存图片到本地/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Android7-0之应用间共享文件" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -392,6 +321,74 @@
       
         <p class="article-more-link">
           <a href="/2016/07/23/Android7-0之应用间共享文件/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-产生65535的原因和解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/06/产生65535的原因和解决办法/" class="article-date">
+      <time datetime="2016-03-06T02:08:20.000Z" itemprop="datePublished">2016-03-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>熟悉Android开发的都知道，在生成Dex过程中，方法数超过65535就会报错，本文只简述一下如何解决，更重要的是为什么会这样。简单来说，在<a href="https://source.android.com/devices/tech/dalvik/dalvik-bytecode">Dalvik指令集</a>中，调用方法的<code>invoke-kind</code>指令中，method reference index只给了16bits，最多能调用65535个方法，所以在生成dex文件的过程中，当方法数超过65535就会报错。其实除了method，filed和class的index也是16bits，所以也会存在65535的问题，只不过method的数量一般是最多的，所以最常见的也是方法数溢出的问题。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/notes/">notes</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/03/06/产生65535的原因和解决办法/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
