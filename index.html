@@ -684,6 +684,75 @@
 
 
   
+    <article id="post-浅析volatile关键字" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/07/浅析volatile关键字/" class="article-date">
+      <time datetime="2017-03-07T06:51:10.000Z" itemprop="datePublished">2017-03-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>插播个关键字volatile：</p>
+<ul>
+<li>修饰被不同线程訪问和改动的变量</li>
+<li>volatile不能保证操作的原子性（i++不是原子操作，1，先读取i原来的值；2，计算i+1后的数值并赋值给了i）</li>
+<li>普通情况下volatile不能取代sychronized</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/notes/">notes</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-retrofit和动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -879,77 +948,6 @@
       
         <p class="article-more-link">
           <a href="/2016/12/25/谈谈线程池/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-AsyncTask缺陷总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/20/AsyncTask缺陷总结/" class="article-date">
-      <time datetime="2016-12-20T02:42:03.000Z" itemprop="datePublished">2016-12-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="AsyncTask的弊端"><a href="#AsyncTask的弊端" class="headerlink" title="AsyncTask的弊端"></a>AsyncTask的弊端</h1><blockquote>
-<p>前言</p>
-</blockquote>
-<p>Android开发中，AsyncTask可以替代Handler和Thread来处理后台操作和通知Ui刷新，适用于处理异步数据，并将更新Ui的场景，AsyncTask适用于后台操作只有几秒的短时操作。但是AsyncTask本身存在很多糟糕的问题，如果使用中不注意，将会影响程序的健壮性。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/12/20/AsyncTask缺陷总结/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
