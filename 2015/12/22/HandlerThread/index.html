@@ -31,7 +31,7 @@ Handy class for starting a new thread that has a looper. The looper can then be 
 Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.
 
 意思就是HandlerThread能够新建拥有Loo">
-<meta property="og:updated_time" content="2017-12-22T09:43:32.411Z">
+<meta property="og:updated_time" content="2018-03-08T09:02:15.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HandlerThread">
 <meta name="twitter:description" content="HandlerThread
@@ -328,7 +328,9 @@ Handy class for starting a new thread that has a looper. The looper can then be 
 <blockquote>
 <p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
 </blockquote>
-<p>意思就是HandlerThread能够新建拥有Looper的线程(除了主线程,我们新建线程是需要手动调用Looper.prepare来初始化looper和messagequeue的),而这个looper能够来新建其他的Handler(新建的这个handler是属于子线程的,并且looper和messagequeue都是初始化好了的)<br><strong>如以下代码：</strong></p>
+<p>意思就是HandlerThread能够新建拥有Looper的线程(除了主线程,我们新建线程是需要手动调用Looper.prepare来初始化looper和messagequeue的),而这个looper能够来新建其他的Handler(新建的这个handler是属于子线程的,并且looper和messagequeue都是初始化好了的)</p>
+<a id="more"></a>
+<p><strong>如以下代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">mHandlerThread = <span class="keyword">new</span> HandlerThread(<span class="string">"check-message-coming"</span>);<span class="comment">//the name of the new thread</span></div><div class="line">        mHandlerThread.start();</div><div class="line"></div><div class="line">        mThreadHandler = <span class="keyword">new</span> Handler(mHandlerThread.getLooper())<span class="comment">//拥有子线程looper的handler</span></div><div class="line">        &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span></span></div><div class="line">            &#123;</div><div class="line">                update();<span class="comment">//模拟数据更新</span></div><div class="line"></div><div class="line">                <span class="keyword">if</span> (isUpdateInfo)</div><div class="line">                    mThreadHandler.sendEmptyMessage(MSG_UPDATE_INFO);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        </div><div class="line">	 <span class="meta">@Override</span></div><div class="line">	    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">	        <span class="keyword">super</span>.onDestroy();</div><div class="line"></div><div class="line">	        <span class="comment">//释放资源</span></div><div class="line">	        myHandlerThread.quit() ;</div><div class="line">	    &#125;</div><div class="line"><span class="comment">//其他线程可以拿mThreadHandler发消息了，来完成向该HandlerThread线程通讯</span></div></pre></td></tr></table></figure>
 <p>mThreadHandler构建的时候,传的是HandlerThread的looper对象,也就是说这个mThreadHandler是属于子线程的管理的,他的handlerMessage的回调中是可以做耗时操作的(切记,是不能做更新UI的操作的,如需要更新,需要用主线程的handler发消息来更新,或者使用runOnUiThread或者eventBus等其他方式来刷新ui)</p>
 <p><strong>退出循环</strong></p>
@@ -356,7 +358,7 @@ Handy class for starting a new thread that has a looper. The looper can then be 
         <p><span>本文标题:</span><a href="/2015/12/22/HandlerThread/">HandlerThread</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2015-12-22, 13:52:02</p>
-        <p><span>最后更新:</span>2017-12-22, 17:43:32</p>
+        <p><span>最后更新:</span>2018-03-08, 17:02:15</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/12/22/HandlerThread/" title="HandlerThread">http://www.fengan.info/2015/12/22/HandlerThread/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2015/12/22/HandlerThread/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
