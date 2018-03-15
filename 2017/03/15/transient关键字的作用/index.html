@@ -15,18 +15,24 @@
 
 
 
-<meta name="description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
+<meta name="description" content="前言
+transient的作用及使用方法，官方解释：
+1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事件分发小结">
-<meta property="og:url" content="http://www.fengan.info/2017/01/20/事件分发小结/index.html">
+<meta property="og:title" content="transient关键字的作用">
+<meta property="og:url" content="http://www.fengan.info/2017/03/15/transient关键字的作用/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg">
-<meta property="og:updated_time" content="2018-02-06T08:33:16.177Z">
+<meta property="og:description" content="前言
+transient的作用及使用方法，官方解释：
+1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
+<meta property="og:image" content="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png">
+<meta property="og:updated_time" content="2018-03-15T13:05:40.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事件分发小结">
-<meta name="twitter:description" content="Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg">
+<meta name="twitter:title" content="transient关键字的作用">
+<meta name="twitter:description" content="前言
+transient的作用及使用方法，官方解释：
+1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
+<meta name="twitter:image" content="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>事件分发小结 | 风中追风</title>
+<title>transient关键字的作用 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -266,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-事件分发小结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-transient关键字的作用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/20/事件分发小结/" class="article-date">
-      <time datetime="2017-01-20T03:38:23.000Z" itemprop="datePublished">2017-01-20</time>
+      <a href="/2017/03/15/transient关键字的作用/" class="article-date">
+      <time datetime="2017-03-15T12:51:11.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
 
@@ -285,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      事件分发小结
+      transient关键字的作用
     </h1>
   
 
@@ -310,21 +316,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Android开发中，事件分发是非常重要的，了解熟悉整个事件分发过程有助于更好的分析各种点击滑动失效问题,也是一个安卓开发必会的一部分，但是时间长了，对整个流程多少会有些模糊，所以在此记录一下</p>
+        <p><strong>前言</strong></p>
+<p>transient的作用及使用方法，官方解释：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Variables may be marked <span class="keyword">transient</span> to indicate that they are not part of the persistent state of an object.</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>网上看到一张图，可以很详细的描述整个事件分发的过程</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fo6s6mz1gzj30ot0gy42p.jpg" alt="事件分发流程图"></p>
-<p><a href="https://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="external">原文的链接</a></p>
-<ul>
-<li>问题一：</li>
-</ul>
-<p>当ViewGroup重写的onInterceptTouchEvent，并且始终返回了true，那么子view就永远无法接受到了事件</p>
-<p>但是在实际开发中可能会有这种需求，在按下（ACTION_DOWN）的时候，需要子view进行时间反馈，但在滑动（ACTION_MOVE）或者抬起（ACTION_UP）的时候需要父布局进行拦截操作，这个时候可以使用<strong>requestDisallInterceptRouchEvent(boolean disallowIntercept)</strong>，该方法在<strong>子view中调用</strong>，<strong>getParent().requestDisallInterceptRouchEvent(true)</strong>请求父布局禁用拦截事件功能</p>
-<p><a href="http://blog.csdn.net/qq_34795285/article/details/61200211" target="_blank" rel="external">相关资料</a></p>
-<p>具体例子，在我做的项目中，在viewpager中的每一页fragment中都折线图，viewpager是可以左右切换的，每一页的fragment中的折线图也是可以手势缩放的，所以这就和viewpager滑动有冲突，利用requestDisallInterceptRouchEvent，我们可以自定义折线图控件继承项目中使用的（项目中使用的mpandroid），重写onTouchEvent，当水平滑动的时候，getParent().requestDisallInterceptRouchEvent(true)，请求父布局不拦截事件，交给子view处理。</p>
-<p>相关源码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.nongfaziran.workiot.view;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.annotation.SuppressLint;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.PointF;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.view.MotionEvent;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.github.mikephil.charting.charts.LineChart;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by fengan on 2018/2/3.</div><div class="line"> * email:fengan1102@gmail.com</div><div class="line"> * 解决折线图在viewpager滑动冲突</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LineChartInViewPager</span> <span class="keyword">extends</span> <span class="title">LineChart</span> </span>&#123;</div><div class="line"></div><div class="line">    PointF downPoint = <span class="keyword">new</span> PointF();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineChartInViewPager</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyle);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"ClickableViewAccessibility"</span>)</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent evt)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (evt.getAction()) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                downPoint.x = evt.getX();</div><div class="line">                downPoint.y = evt.getY();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                <span class="keyword">if</span> (getScaleX() &gt; <span class="number">1</span> &amp;&amp; Math.abs(evt.getX() - downPoint.x) &gt; <span class="number">5</span>) &#123;</div><div class="line">                    getParent().requestDisallowInterceptTouchEvent(<span class="keyword">true</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(evt);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>未完待续</p>
+<p><strong>遇到问题</strong></p>
+<p>我们都知道一个对象只要实现了Serializable接口，这个对象就可以被序列化，那么在实际开发过程中，可能会遇到这样的问题，这个类的有些属性需要序列号，而其他属性不需要序列化，比如说：一个用户有一些敏感信息，比如密码或者银行卡号之类，为了安全起见，不希望在网络操作（主要涉及到序列化操作，本地序列化缓存也适用）中被传输，这些信息对应的变量就可以加上transient关键字。换句话说，这个字段的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
+<p><strong>解决问题</strong></p>
+<p>再次之前，有一个姿势点：</p>
+<p>父类序列化</p>
+<blockquote>
+<p><strong>一个情景</strong>：一个子类实现了Serializable接口，它的父类都没有实现Serializable接口，序列化该子类对象，然后反序列化后，输出父类定义的某变量的数值，该变量数值与序列化前不同</p>
+</blockquote>
+<p><strong>解决</strong>：<strong>要想将父类对象也序列化，就需要让父类也实现Serializable 接口</strong>。如果父类不实现的话的，就 <strong>需要有默认的无参的构造函数</strong>。在父类没有实现 Serializable 接口时，虚拟机是不会序列化父对象的，而一个 Java 对象的构造必须先有父对象，才有子对象，反序列化也不例外。所以反序列化时，为了构造父对象，只能调用父类的无参构造函数作为默认的父对象。因此当我们取父对象的变量值时，它的值是调用父类无参构造函数后的值。如果你考虑到这种序列化的情况，在父类无参构造函数中对变量进行初始化，否则的话，父类变量值都是默认声明的值，如 int 型的默认是 0，string 型的默认是 null。</p>
+<p>Transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。</p>
+<p><strong>特性使用案例</strong></p>
+<p>我们熟悉使用 Transient 关键字可以使得字段不被序列化，那么还有别的方法吗？根据父类对象序列化的规则，我们可以将不需要被序列化的字段抽取出来放到父类中，子类实现 Serializable 接口，父类不实现，根据父类序列化规则，父类的字段数据将不被序列化</p>
+<p><img src="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png" alt=""></p>
+<p>上图中可以看出，attr1、attr2、attr3、attr5 都不会被序列化，放在父类中的好处在于当有另外一个 Child 类时，attr1、attr2、attr3 依然不会被序列化，不用重复抒写 transient，代码简洁。</p>
+<p><strong>参考：</strong></p>
+<p><a href="http://blog.csdn.net/janronehoo/article/details/7306900" target="_blank" rel="external">java学习—序列化与Transient关键字</a></p>
+<p><a href="http://blog.csdn.net/hushaoxi/article/details/52385614" target="_blank" rel="external">Transient关键字使用场景</a></p>
 
       
     </div>
@@ -333,13 +345,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/20/事件分发小结/">事件分发小结</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2017-01-20, 11:38:23</p>
-        <p><span>最后更新:</span>2018-02-06, 16:33:16</p>
+        <p><span>发布时间:</span>2017-03-15, 20:51:11</p>
+        <p><span>最后更新:</span>2018-03-15, 21:05:40</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/20/事件分发小结/" title="事件分发小结">http://www.fengan.info/2017/01/20/事件分发小结/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2017/01/20/事件分发小结/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/transient关键字的作用/" title="transient关键字的作用">http://www.fengan.info/2017/03/15/transient关键字的作用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2017/03/15/transient关键字的作用/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -352,15 +364,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/07/retrofit和动态代理/">
-                    retrofit和动态代理
+                <a href="/2017/12/20/谈谈加密算法/">
+                    谈谈加密算法
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/25/谈谈线程池/">
-                    谈谈线程池
+                <a href="/2017/03/15/Android-阴影布局-继承FrameLayout/">
+                    Android　阴影布局(继承FrameLayout)
                 </a>
             </div>
         
@@ -408,7 +420,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"事件分发小结　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"transient关键字的作用　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -427,8 +439,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2017/01/20/事件分发小结/';
-            this.page.identifier = '2017/01/20/事件分发小结/';
+            this.page.url = 'http://www.fengan.info/2017/03/15/transient关键字的作用/';
+            this.page.identifier = '2017/03/15/transient关键字的作用/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -450,7 +462,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/07/retrofit和动态代理/" title="上一篇: retrofit和动态代理">
+            <a href="/2017/12/20/谈谈加密算法/" title="上一篇: 谈谈加密算法">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -458,7 +470,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/25/谈谈线程池/" title="下一篇: 谈谈线程池">
+            <a href="/2017/03/15/Android-阴影布局-继承FrameLayout/" title="下一篇: Android　阴影布局(继承FrameLayout)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
