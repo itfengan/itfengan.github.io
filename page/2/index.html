@@ -270,11 +270,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-浅析volatile关键字" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-线程安全的CopyOnWriteArrayList" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/07/浅析volatile关键字/" class="article-date">
-      <time datetime="2017-03-07T06:51:10.000Z" itemprop="datePublished">2017-03-07</time>
+      <a href="/2017/02/16/线程安全的CopyOnWriteArrayList/" class="article-date">
+      <time datetime="2017-02-15T16:28:47.000Z" itemprop="datePublished">2017-02-16</time>
 </a>
 
 
@@ -289,7 +289,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a>
+      <a class="article-title" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a>
     </h1>
   
 
@@ -299,10 +299,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <blockquote>
-<p>前言</p>
-</blockquote>
-<p>在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。</p>
+              <p><strong>前言</strong></p>
+<p>最近翻阅EventBus源码，在subscribe方法中，看到了CopyOnWriteArrayList这个类，一时竟不知其原理是什么，本文简要记录一下CopyOnWriteArrayList的相关介绍</p>
           
       
     </div>
@@ -322,7 +320,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/03/07/浅析volatile关键字/#more">阅读全文 >></a>
+          <a href="/2017/02/16/线程安全的CopyOnWriteArrayList/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
