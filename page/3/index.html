@@ -204,6 +204,8 @@
                     
                       <a class="main-nav-link switch-friends-link" href="https://androidwangfh.github.io/">富豪王</a>
                     
+                      <a class="main-nav-link switch-friends-link" href="https://www.ktvll.com/">php闯大爷</a>
+                    
                     </div>
                 </section>
                 
@@ -695,6 +697,75 @@
 
 
   
+    <article id="post-app启动流程简析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/app启动流程简析/" class="article-date">
+      <time datetime="2016-03-16T12:27:53.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/app启动流程简析/">app启动流程简析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><strong>前言</strong></p>
+<p>Android系统中，应用程序是由Activity组成的，因此，应用程序的启动过程实际上就说应用程序中默认Activity的启动过程，本文主要整理冷启动的情况。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/notes/">notes</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/03/16/app启动流程简析/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webview中点击网页图片跳转查看图片" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -888,79 +959,6 @@
       
         <p class="article-more-link">
           <a href="/2015/12/26/回顾集合体系/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-HandlerThread" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/22/HandlerThread/" class="article-date">
-      <time datetime="2015-12-22T05:52:02.000Z" itemprop="datePublished">2015-12-22</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/22/HandlerThread/">HandlerThread</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>HandlerThread</strong></p>
-<p> <strong>官方介绍</strong></p>
-<blockquote>
-<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
-</blockquote>
-<p>意思就是HandlerThread能够新建拥有Looper的线程(除了主线程,我们新建线程是需要手动调用Looper.prepare来初始化looper和messagequeue的),而这个looper能够来新建其他的Handler(新建的这个handler是属于子线程的,并且looper和messagequeue都是初始化好了的)</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/12/22/HandlerThread/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
