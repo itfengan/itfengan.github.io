@@ -15,24 +15,18 @@
 
 
 
-<meta name="description" content="前言
-transient的作用及使用方法，官方解释：
-1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
+<meta name="description" content="将远程服务器中的mysql绑定到阿里云DMS中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="transient关键字的作用">
-<meta property="og:url" content="http://www.fengan.info/2017/03/15/transient关键字的作用/index.html">
+<meta property="og:title" content="mysql关联阿里云dms">
+<meta property="og:url" content="http://www.fengan.info/2018/06/14/mysql关联阿里云dms/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="前言
-transient的作用及使用方法，官方解释：
-1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
-<meta property="og:image" content="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png">
-<meta property="og:updated_time" content="2018-03-15T13:05:40.506Z">
+<meta property="og:description" content="将远程服务器中的mysql绑定到阿里云DMS中">
+<meta property="og:image" content="https://img-blog.csdn.net/20180608174133433?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zlbmdhbml0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-06-14T04:10:43.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="transient关键字的作用">
-<meta name="twitter:description" content="前言
-transient的作用及使用方法，官方解释：
-1Variables may be marked transient to indicate that they are not part of the persistent state of an object.">
-<meta name="twitter:image" content="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png">
+<meta name="twitter:title" content="mysql关联阿里云dms">
+<meta name="twitter:description" content="将远程服务器中的mysql绑定到阿里云DMS中">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180608174133433?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zlbmdhbml0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -64,7 +58,7 @@ transient的作用及使用方法，官方解释：
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>transient关键字的作用 | 风中追风</title>
+<title>mysql关联阿里云dms | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +268,11 @@ transient的作用及使用方法，官方解释：
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-transient关键字的作用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-mysql关联阿里云dms" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/15/transient关键字的作用/" class="article-date">
-      <time datetime="2017-03-15T12:51:11.000Z" itemprop="datePublished">2017-03-15</time>
+      <a href="/2018/06/14/mysql关联阿里云dms/" class="article-date">
+      <time datetime="2018-06-14T04:09:47.000Z" itemprop="datePublished">2018-06-14</time>
 </a>
 
 
@@ -293,7 +287,7 @@ transient的作用及使用方法，官方解释：
         
   
     <h1 class="article-title" itemprop="name">
-      transient关键字的作用
+      mysql关联阿里云dms
     </h1>
   
 
@@ -302,13 +296,13 @@ transient的作用及使用方法，官方解释：
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
+    <a class="article-category-link" href="/categories/后台/">后台</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后台/">后台</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -318,27 +312,59 @@ transient的作用及使用方法，官方解释：
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>前言</strong></p>
-<p>transient的作用及使用方法，官方解释：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Variables may be marked <span class="keyword">transient</span> to indicate that they are not part of the persistent state of an object.</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><strong>遇到问题</strong></p>
-<p>我们都知道一个对象只要实现了Serializable接口，这个对象就可以被序列化，那么在实际开发过程中，可能会遇到这样的问题，这个类的有些属性需要序列号，而其他属性不需要序列化，比如说：一个用户有一些敏感信息，比如密码或者银行卡号之类，为了安全起见，不希望在网络操作（主要涉及到序列化操作，本地序列化缓存也适用）中被传输，这些信息对应的变量就可以加上transient关键字。换句话说，这个字段的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
-<p><strong>解决问题</strong></p>
-<p>再次之前，有一个姿势点：</p>
-<p>父类序列化</p>
-<blockquote>
-<p><strong>一个情景</strong>：一个子类实现了Serializable接口，它的父类都没有实现Serializable接口，序列化该子类对象，然后反序列化后，输出父类定义的某变量的数值，该变量数值与序列化前不同</p>
+        <blockquote>
+<p>将远程服务器中的mysql绑定到阿里云DMS中</p>
 </blockquote>
-<p><strong>解决</strong>：<strong>要想将父类对象也序列化，就需要让父类也实现Serializable 接口</strong>。如果父类不实现的话的，就 <strong>需要有默认的无参的构造函数</strong>。在父类没有实现 Serializable 接口时，虚拟机是不会序列化父对象的，而一个 Java 对象的构造必须先有父对象，才有子对象，反序列化也不例外。所以反序列化时，为了构造父对象，只能调用父类的无参构造函数作为默认的父对象。因此当我们取父对象的变量值时，它的值是调用父类无参构造函数后的值。如果你考虑到这种序列化的情况，在父类无参构造函数中对变量进行初始化，否则的话，父类变量值都是默认声明的值，如 int 型的默认是 0，string 型的默认是 null。</p>
-<p>Transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。</p>
-<p><strong>特性使用案例</strong></p>
-<p>我们熟悉使用 Transient 关键字可以使得字段不被序列化，那么还有别的方法吗？根据父类对象序列化的规则，我们可以将不需要被序列化的字段抽取出来放到父类中，子类实现 Serializable 接口，父类不实现，根据父类序列化规则，父类的字段数据将不被序列化</p>
-<p><img src="http://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/8u215.png" alt=""></p>
-<p>上图中可以看出，attr1、attr2、attr3、attr5 都不会被序列化，放在父类中的好处在于当有另外一个 Child 类时，attr1、attr2、attr3 依然不会被序列化，不用重复抒写 transient，代码简洁。</p>
-<p><strong>参考：</strong></p>
-<p><a href="http://blog.csdn.net/janronehoo/article/details/7306900" target="_blank" rel="external">java学习—序列化与Transient关键字</a></p>
-<p><a href="http://blog.csdn.net/hushaoxi/article/details/52385614" target="_blank" rel="external">Transient关键字使用场景</a></p>
+<a id="more"></a>
+<h4 id="阿里云DMS绑定mysql"><a href="#阿里云DMS绑定mysql" class="headerlink" title="阿里云DMS绑定mysql"></a>阿里云DMS绑定mysql</h4><p><img src="https://img-blog.csdn.net/20180608174133433?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zlbmdhbml0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h4 id="数据管理DMS登录云服务器的IP段（经典网络）："><a href="#数据管理DMS登录云服务器的IP段（经典网络）：" class="headerlink" title="数据管理DMS登录云服务器的IP段（经典网络）："></a><strong>数据管理DMS登录云服务器的IP段（经典网络）：</strong></h4><p><a href="https://help.aliyun.com/knowledge_detail/51251.html" target="_blank" rel="external">DMS的ip段</a></p>
+<p>120.55.177.0/24</p>
+<p>121.43.18.0/24</p>
+<p>101.37.74.0/24</p>
+<p>10.153.176.106/24</p>
+<p>10.137.42.136/24</p>
+<p>11.193.54.0/24</p>
+<p>数据管理DMS登录云服务器的IP段（VPC）：</p>
+<p>100.104.175.0/24</p>
+<p>100.104.72.0/24</p>
+<p>100.104.5.0/24</p>
+<p>100.104.205.0/24</p>
+<p><strong>添加白名单</strong><br>1，登录mysql：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h host -u username -<span class="selector-tag">p</span> password</div></pre></td></tr></table></figure>
+<p>2，切换至mysql库：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="title">mysql</span>;</div></pre></td></tr></table></figure>
+<p>3 查看当前允许登录IP及用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> Host,<span class="keyword">User</span> <span class="keyword">from</span> <span class="keyword">user</span>;</div></pre></td></tr></table></figure>
+<p>4 删除不必要而表中存在的IP和用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">User</span>=<span class="string">'username'</span> <span class="keyword">and</span> Host=<span class="string">'host'</span>;</div></pre></td></tr></table></figure>
+<p>(host值为“%”或空表示所有IP都可登录，一般来说此类行需要删掉)</p>
+<p>5 增加需要而表中没有的IP和用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</div></pre></td></tr></table></figure>
+<p>6 使更新的配置生效</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</div></pre></td></tr></table></figure>
+<h4 id="登录mysql失败问题"><a href="#登录mysql失败问题" class="headerlink" title="登录mysql失败问题"></a>登录mysql失败问题</h4><p><strong>错误 ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: YE</strong>S)</p>
+<ul>
+<li>vim /etc/my.cnf(注：windows下修改的是my.ini)</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="attr">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span></div><div class="line"></div><div class="line"><span class="comment"># 一般配置选项</span></div><div class="line"><span class="attr">basedir</span> = /usr/local/mysql</div><div class="line"><span class="attr">datadir</span> = /usr/local/mysql/data</div><div class="line"><span class="attr">port</span> = <span class="number">3306</span></div><div class="line"><span class="attr">socket</span> = /tmp/mysql.sock</div><div class="line"><span class="attr">character-set-server=utf8</span></div><div class="line"><span class="comment">#在此添加【主意是在[mysqld]内部】</span></div><div class="line">skip-grant-tables</div><div class="line"></div><div class="line"><span class="attr">back_log</span> = <span class="number">300</span></div><div class="line"><span class="attr">max_connections</span> = <span class="number">1000</span></div><div class="line"><span class="attr">max_connect_errors</span> = <span class="number">50</span></div><div class="line"><span class="attr">table_open_cache</span> = <span class="number">4096</span></div><div class="line"><span class="attr">max_allowed_packet</span> = <span class="number">32</span>M</div><div class="line"><span class="comment">#binlog_cache_size = 4M</span></div></pre></td></tr></table></figure>
+<p>:wq 保存</p>
+<ul>
+<li>接下来我们需要重启MySQL：</li>
+</ul>
+<p><a href="https://www.cnblogs.com/adolfmc/p/5497974.html" target="_blank" rel="external">各个平台重启mysql的方式</a></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service mysqld restart</span></div></pre></td></tr></table></figure>
+<ul>
+<li>重启之后输入#mysql即可进入mysql。</li>
+</ul>
+<ul>
+<li>接下来就是用sql来修改root的密码</li>
+</ul>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; use mysql<span class="comment">;</span></div><div class="line">mysql&gt; update user set password=password(<span class="string">"你的新密码"</span>) where user=<span class="string">"root"</span><span class="comment">;</span></div><div class="line">mysql&gt; flush privileges<span class="comment">;</span></div><div class="line">mysql&gt; quit</div><div class="line"></div><div class="line">到这里root账户就已经重置成新的密码了。</div></pre></td></tr></table></figure>
+<ul>
+<li>5.编辑my.cnf,去掉刚才添加的内容，然后重启MySQL。</li>
+</ul>
+<h6 id="查看当前mysql用户表"><a href="#查看当前mysql用户表" class="headerlink" title="查看当前mysql用户表"></a>查看当前mysql用户表</h6><p>host为% 代表任意域名下都可以访问</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="section">mysql&gt; select Host,User from user;</span></div><div class="line">+-----------------+-----------+</div><div class="line"><span class="section">| Host            | User      |</span></div><div class="line">+-----------------+-----------+</div><div class="line">| %               | dms       |</div><div class="line">| 120.55.177.0/24 | dms       |</div><div class="line">| localhost       | mysql.sys |</div><div class="line"><span class="section">| localhost       | root      |</span></div><div class="line">+-----------------+-----------+</div><div class="line">4 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -347,13 +373,13 @@ transient的作用及使用方法，官方解释：
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2017-03-15, 20:51:11</p>
-        <p><span>最后更新:</span>2018-03-15, 21:05:40</p>
+        <p><span>发布时间:</span>2018-06-14, 12:09:47</p>
+        <p><span>最后更新:</span>2018-06-14, 12:10:43</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/15/transient关键字的作用/" title="transient关键字的作用">http://www.fengan.info/2017/03/15/transient关键字的作用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2017/03/15/transient关键字的作用/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/14/mysql关联阿里云dms/" title="mysql关联阿里云dms">http://www.fengan.info/2018/06/14/mysql关联阿里云dms/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/06/14/mysql关联阿里云dms/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -365,16 +391,10 @@ transient的作用及使用方法，官方解释：
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/12/20/谈谈加密算法/">
-                    谈谈加密算法
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/15/Android-阴影布局-继承FrameLayout/">
-                    Android　阴影布局(继承FrameLayout)
+                <a href="/2018/03/05/浅析Dalvik和ART的区别/">
+                    浅析Dalvik和ART的区别
                 </a>
             </div>
         
@@ -386,7 +406,7 @@ transient的作用及使用方法，官方解释：
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#阿里云DMS绑定mysql"><span class="toc-number">1.</span> <span class="toc-text">阿里云DMS绑定mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据管理DMS登录云服务器的IP段（经典网络）："><span class="toc-number">2.</span> <span class="toc-text">数据管理DMS登录云服务器的IP段（经典网络）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#登录mysql失败问题"><span class="toc-number">3.</span> <span class="toc-text">登录mysql失败问题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#查看当前mysql用户表"><span class="toc-number">3.0.1.</span> <span class="toc-text">查看当前mysql用户表</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -422,7 +442,7 @@ transient的作用及使用方法，官方解释：
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"transient关键字的作用　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"mysql关联阿里云dms　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -441,8 +461,8 @@ transient的作用及使用方法，官方解释：
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2017/03/15/transient关键字的作用/';
-            this.page.identifier = '2017/03/15/transient关键字的作用/';
+            this.page.url = 'http://www.fengan.info/2018/06/14/mysql关联阿里云dms/';
+            this.page.identifier = '2018/06/14/mysql关联阿里云dms/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -464,15 +484,13 @@ transient的作用及使用方法，官方解释：
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/12/20/谈谈加密算法/" title="上一篇: 谈谈加密算法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/15/Android-阴影布局-继承FrameLayout/" title="下一篇: Android　阴影布局(继承FrameLayout)">
+            <a href="/2018/03/05/浅析Dalvik和ART的区别/" title="下一篇: 浅析Dalvik和ART的区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
