@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[shadowsocks服务端部署]]></title>
     <url>%2F2018%2F07%2F18%2Fshadowsocks%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%83%A8%E7%BD%B2%2F</url>
-    <content type="text"><![CDATA[基于Ubuntu 16.04的Shadowsocks服务端安装 安装步骤1，首先检查下Python 版本，要有 2.6 or 2.7.12python --versionPython 2.7.4 2，安装python包管理器1apt-get install python-pip 3，安装shadowsocks1pip install shadowsocks 4，修改配置文件1vim /etc/shadowsocks/config.json 1234567891011121314&#123; "server":"0.0.0.0", "server_port":8388, "local_address": "127.0.0.1", "local_port":1080, "password":"yourpsw", "timeout":300, "method":"bf-cfb", "fast_open": true, "workers": 10&#125;注意：server 0，0，0，0（其他可能出问题）method bf-cfb（其他可能出问题） 5，开启1sudo ssserver -c /etc/shadowsocks/config.json 6，设置为开机启动 vim /etc/rc.local 然后在exit 0之前加入1sudo ssserver -c /etc/shadowsocks/config.json 重启 1● reboot 重启后查看进程 1ps aux | grep shadowsocks 参考：]]></content>
+    <content type="text"><![CDATA[基于Ubuntu 16.04的Shadowsocks服务端安装 安装步骤1，首先检查下Python 版本，要有 2.6 or 2.7.12python --versionPython 2.7.4 2，安装python包管理器1apt-get install python-pip 3，安装shadowsocks1pip install shadowsocks 4，修改配置文件1vim /etc/shadowsocks/config.json 1234567891011121314&#123; "server":"0.0.0.0", "server_port":8388, "local_address": "127.0.0.1", "local_port":1080, "password":"yourpsw", "timeout":300, "method":"bf-cfb", "fast_open": true, "workers": 10&#125;注意：server 0，0，0，0（其他可能出问题）method bf-cfb（其他可能出问题） 5，开启1sudo ssserver -c /etc/shadowsocks/config.json 6，设置为开机启动 vim /etc/rc.local 然后在exit 0之前加入1sudo ssserver -c /etc/shadowsocks/config.json 重启 1● reboot 重启后查看进程 1ps aux | grep shadowsocks 参考：参考1 参考2 参考3]]></content>
       <categories>
         <category>dev</category>
       </categories>
