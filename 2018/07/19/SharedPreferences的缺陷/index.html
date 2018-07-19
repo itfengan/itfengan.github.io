@@ -15,23 +15,16 @@
 
 
 
-<meta name="description" content="ReactNative 学习一">
+<meta name="description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ReactNative学习一">
-<meta property="og:url" content="http://www.fengan.info/2017/12/25/ReactNative start/index.html">
+<meta property="og:title" content="SharedPreferences的缺陷">
+<meta property="og:url" content="http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="ReactNative 学习一">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3673902-0affa2b6b71fc650.jpeg?imageMogr2/auto-orient/">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1foabtgnbqjj30bc0k20ua.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1foabyhxltmj30xe0m6n04.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foac7mc3cuj30re0zowmx.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foacbagifbj31dc0b8wk6.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1foacebj37wj30n014oqco.jpg">
-<meta property="og:updated_time" content="2018-07-19T02:14:05.738Z">
+<meta property="og:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
+<meta property="og:updated_time" content="2018-07-19T07:51:50.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ReactNative学习一">
-<meta name="twitter:description" content="ReactNative 学习一">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3673902-0affa2b6b71fc650.jpeg?imageMogr2/auto-orient/">
+<meta name="twitter:title" content="SharedPreferences的缺陷">
+<meta name="twitter:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -61,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>ReactNative学习一 | 风中追风</title>
+<title>SharedPreferences的缺陷 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +264,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-ReactNative start" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SharedPreferences的缺陷" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/25/ReactNative start/" class="article-date">
-      <time datetime="2017-12-25T07:52:32.000Z" itemprop="datePublished">2017-12-25</time>
+      <a href="/2018/07/19/SharedPreferences的缺陷/" class="article-date">
+      <time datetime="2018-07-19T05:44:44.000Z" itemprop="datePublished">2018-07-19</time>
 </a>
 
 
@@ -290,7 +283,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ReactNative学习一
+      SharedPreferences的缺陷
     </h1>
   
 
@@ -315,103 +308,60 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>ReactNative 学习一</p>
+        <p>SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项</p>
 <a id="more"></a>
-<h2 id="1，为什么学习ReactNative"><a href="#1，为什么学习ReactNative" class="headerlink" title="1，为什么学习ReactNative"></a>1，为什么学习ReactNative</h2><h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
-<li>因为现在许多主流的应用都有React Native的影子，它对比原生开发更为灵活，对比H5体验更为高效，而且跨平台的支持特性。</li>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>SharedPreferences</code>是Android SDK提供的工具，可以存储应用的一些配置信息，这些信息会以键值对的形式保存在<code>/sdcard/data/data/packageName/shared_prefs/</code>路径下的一个<code>xml</code>文件中。它提供了多种数据类型的存储，包括：<code>int</code>、<code>long</code>、<code>boolean</code>、<code>float</code>、<code>String</code>以及<code>Set&lt;String&gt;</code>。</p>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
+<li><code>context.getSharedPreference(name, mode);</code></li>
+<li><code>PreferenceManager.getDefaultSharedPreferences(context);</code></li>
 </ul>
+<p>这两种方式其实具体实现是一样的，只不过一个是开发者自己定义名字，另一个是使用包名+”_preference”作为存储文件名。</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>若我们大量使用<code>PreferenceManager.getDefaultSharedPreferences(context);</code>，将各种配置项全部存储到一个sp中，就可能会导致一个问题：<strong>该文件过大，读取配置项过慢</strong></p>
+<p>所以推荐，根据情况，将不同的配置文件保存在不同的sp中，而不是全部使用默认的sp，导致同一个sp文件过大</p>
+<ol>
+<li>第一次从sp中获取值的时候，有可能阻塞主线程，使界面卡顿、掉帧。</li>
+<li>解析sp的时候会产生大量的临时对象，导致频繁GC，引起界面卡顿。</li>
+<li>这些key和value会永远存在于内存之中，占用大量内存。</li>
+</ol>
+<h4 id="其他注意"><a href="#其他注意" class="headerlink" title="其他注意"></a>其他注意</h4><ul>
+<li>被加载进来的这些大对象，会永远存在于内存之中，不会被释放。</li>
+</ul>
+<p>ContextImpl这个类，在getSharedPreference的时候会把所有的sp放到一个静态变量里面缓存起来：</p>
+<p><strong>static</strong>的sSharedPrefsCache，它保存了你所有使用的sp</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GuardedBy</span>(<span class="string">"ContextImpl.class"</span>)</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> ArrayMap&lt;String, ArrayMap&lt;File, SharedPreferencesImpl&gt;&gt;sSharedPrefsCache;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> ArrayMap&lt;File, SharedPreferencesImpl&gt; <span class="title">getSharedPreferencesCacheLocked</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (sSharedPrefsCache == <span class="keyword">null</span>) &#123;</div><div class="line">        sSharedPrefsCache = <span class="keyword">new</span> ArrayMap&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> String packageName = getPackageName();</div><div class="line">    ArrayMap&lt;File, SharedPreferencesImpl&gt; packagePrefs = sSharedPrefsCache.get(packageName);</div><div class="line">    <span class="keyword">if</span> (packagePrefs == <span class="keyword">null</span>) &#123;</div><div class="line">        packagePrefs = <span class="keyword">new</span> ArrayMap&lt;&gt;();</div><div class="line">        sSharedPrefsCache.put(packageName, packagePrefs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> packagePrefs;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>相对ionic这类PhoneGap，它效率更高，和原生之间的交互更方便。</li>
+<li>存储JSON等特殊符号很多的value</li>
 </ul>
+<p>在sp里面存json或者HTML；这么做不是不可以，但是，如果这个json相对较大，那么也会引起sp读取速度的急剧下降。</p>
+<p>JSON或者HTML格式存放在sp里面的时候，需要转义，这样会带来很多 &amp; 这种特殊符号，sp在解析碰到这个特殊符号的时候会进行特殊的处理，引发额外的字符串拼接以及函数调用开销。而JSON本来就是可以用来做配置文件的，你干嘛又把它放在sp里面呢？</p>
 <ul>
-<li>多个版本迭代后的今天，它已经拥有了丰富第三方插件支持。</li>
+<li>多次edit多次apply</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sp = getSharedPreferences(<span class="string">"test"</span>, MODE_PRIVATE);</div><div class="line">sp.edit().putString(<span class="string">"test1"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test2"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test3"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test4"</span>, <span class="string">"sss"</span>).apply();</div></pre></td></tr></table></figure>
+<p>每次edit都会创建一个Editor对象，额外占用内存；当然多创建几个对象也影响不了多少；但是，多次apply也会卡界面你造吗？</p>
+<p>有童鞋会说，apply不是在别的线程些磁盘的吗，怎么可能卡界面？我带你仔细看一下源码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> MemoryCommitResult mcr = commitToMemory();</div><div class="line">    <span class="keyword">final</span> Runnable awaitCommit = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    mcr.writtenToDiskLatch.await();</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException ignored) &#123;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    QueuedWork.add(awaitCommit);</div><div class="line"></div><div class="line">    Runnable postWriteRunnable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                awaitCommit.run();</div><div class="line">                QueuedWork.remove(awaitCommit);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    SharedPreferencesImpl.<span class="keyword">this</span>.enqueueDiskWrite(mcr, postWriteRunnable);</div><div class="line">    notifyListeners(mcr);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意两点，第一，把一个带有await的runnable添加进了QueueWork类的一个队列；第二，把这个写入任务通过enqueueDiskWrite丢给了一个<strong>只有单个线程</strong>的线程池执行。</p>
+<p>到这里一切都OK，在子线程里面写入不会卡UI。但是，你去ActivityThread类的handleStopActivity里看一看：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleStopActivity</span><span class="params">(IBinder token, <span class="keyword">boolean</span> show, <span class="keyword">int</span> configChanges, <span class="keyword">int</span> seq)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 省略无关。。</span></div><div class="line">    <span class="comment">// Make sure any pending writes are now committed.（确保所有延迟写入完成）</span></div><div class="line">    <span class="keyword">if</span> (!r.isPreHoneycomb()) &#123;</div><div class="line">        QueuedWork.waitToFinish();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 省略无关。。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果在Activity Stop的时候，已经写入完毕了，那么万事大吉，不会有任何等待，这个函数会立马返回。但是，如果你使用了太多次的apply，那么意味着写入队列会有很多写入任务，而那里就只有一个线程在写。当App规模很大的时候，这种情况简直就太常见了</p>
+<p>虽然apply是在子线程执行的，但是请不要无节制地apply；commit我就不多说了吧？直接在当前线程写入，如果你在主线程干这个</p>
 <ul>
-<li>React Native解决不了的，可以通过各位熟悉的原生来解决。</li>
+<li>SP多进程不可靠</li>
 </ul>
-<ul>
-<li>更方便的热更新。</li>
-</ul>
-<h3 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h3><ul>
-<li>尽管是跨平台，但是不同平台Api的特性与显示并不一定一致。</li>
-<li>相对增大了app的体积。</li>
-<li>调试’相对‘麻烦。</li>
-<li>Android上的兼容性问题。</li>
-</ul>
-<h3 id="总的来说"><a href="#总的来说" class="headerlink" title="总的来说"></a>总的来说</h3><p>React Native适合作为项目中的补充，而不是作为核心去开发APP。</p>
-<h2 id="2，搭建开发环境"><a href="#2，搭建开发环境" class="headerlink" title="2，搭建开发环境"></a>2，搭建开发环境</h2><ul>
-<li><p>Webstrom（号称web开发神器，目前对前端的了解有限，因为和android stuido师出同门，所以不商量直接选用他，当然stom也试了试，但是快捷键不如Webstrom熟悉）</p>
-</li>
-<li><p>HomeBrew（Mac系统的包管理器，用于安装NodeJS和一些其他必需的工具软件</p>
-</li>
-<li><p>Node（基于 Chrome V8 引擎的 JavaScript 运行环境）</p>
-</li>
-<li><p>Androd Studio（安卓老本家没啥说的）</p>
-</li>
-<li><p>ReactNative的命令行工具（react-native-cli，React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务</p>
-<p><a href="https://reactnative.cn/docs/0.31/getting-started.html#content" target="_blank" rel="external">详细搭建步骤查看ReactNative中文网</a></p>
-</li>
-</ul>
-<p>一步一步安装完毕后，没错，你已经起飞了；</p>
-<h2 id="3，创建一个项目"><a href="#3，创建一个项目" class="headerlink" title="3，创建一个项目"></a>3，创建一个项目</h2><ul>
-<li><p>终端cd到你想初始化项目的文件夹</p>
-</li>
-<li><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-<span class="keyword">native</span> init FirstRNApp</div></pre></td></tr></table></figure>
-</li>
-<li><p>然后会发现创建了一个FirstRNApp文件夹，这就是创建的第一个项目</p>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3673902-0affa2b6b71fc650.jpeg?imageMogr2/auto-orient/" alt=""></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1foabtgnbqjj30bc0k20ua.jpg" alt="项目目录"></p>
-<h2 id="几个关键的文件"><a href="#几个关键的文件" class="headerlink" title="几个关键的文件"></a>几个关键的文件</h2><ul>
-<li><strong>android</strong>文件夹，就是一个可以用android studio打开的android项目。</li>
-<li><strong>ios</strong>文件夹，是一个可以用xcode打开的ios项目。</li>
-<li><strong>index.android.js</strong>，这是android的React Native入口文件。</li>
-<li><strong>index.ios.js</strong>，这是ios的React Native入口文件。</li>
-<li><strong>package.json</strong>，类似android studio的build.gradle，你依赖的库都写在里面。</li>
-<li><strong>node_module</strong>文件夹，你依赖的库下载下来都存放在里面，属于git的忽略文件，你要找的依赖库源码也在里面，包括React和React Native。</li>
-<li><strong>jscode</strong>文件夹，是自己创建的文件夹，用来存放自己写的js文件。</li>
-</ul>
-<h3 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h3><p><strong>package.json</strong></p>
-<p>类似于android studio中的build.gradle添加远程依赖，不同的是，package.json大多数时候不需要我们手动添加，我们只需要在根目录通过命令行，<code>npm install xxxxxx --save</code> 就可以依赖一个库了。</p>
-<p><strong>install</strong>之后，库的依赖信息，自动被写到package.json里面，对应的库也会被下载到node_module文件夹中，类似android studio依赖后把aar同步到本地。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1foabyhxltmj30xe0m6n04.jpg" alt="package.json"></p>
-<hr>
-<p><strong>node_module</strong></p>
-<p><strong>node_module</strong>是一个忽略文件，提交的时候不需要提交到git上，类似android studio远程依赖下来的aar，也不会提交到git上。其他人在使用React Native项目时，只需要npm install，工程就会根据package.json，去同步下载各个依赖库到node_module。</p>
-<p><strong>注</strong>：有时候还需要运行<code>react-native link</code> 或 <code>react-native link xxx</code>，这是因为有些第三方库是通过原生代码加React Native实现的，通过这个命令，可以自动把相关的配置代码，自动添加到android和ios工程中。</p>
-<hr>
-<h2 id="运行这个项目"><a href="#运行这个项目" class="headerlink" title="运行这个项目"></a>运行这个项目</h2><p>作为安卓端有两种方式，ios也同样有两种</p>
-<ul>
-<li><p>cd到项目根目录</p>
-</li>
-<li><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-<span class="keyword">native</span> run-android【react-<span class="keyword">native</span> run-ios】</div></pre></td></tr></table></figure>
-</li>
-<li><p>或者用android stuido直接打开项目中的android文件夹（上面有说过，这是一个可以独立打开的安卓项目）</p>
-</li>
-</ul>
-<h3 id="遇到的小坑"><a href="#遇到的小坑" class="headerlink" title="遇到的小坑"></a>遇到的小坑</h3><h4 id="1，无法从资产的index-android-bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器"><a href="#1，无法从资产的index-android-bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器" class="headerlink" title="1，无法从资产的index.android.bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器"></a>1，<strong>无法从资产的index.android.bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器</strong></h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foac7mc3cuj30re0zowmx.jpg" alt="bundle无法加载报错"></p>
-<p><strong>搜索了一波，这个错误很常见，解决的办法也很常见，如下</strong></p>
-<ul>
-<li>打开自己的项目文件夹,在Android/app/src/main目录下创建一个空的assets文件夹</li>
-<li>cd到项目根目录，执行</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-<span class="keyword">native</span> bundle --platform android --dev <span class="keyword">false</span> --entry-<span class="keyword">file</span> index.android.js --bundle-output android<span class="regexp">/app/</span>src<span class="regexp">/main/</span>assets<span class="regexp">/index.android.bundle --assets-dest android/</span>app<span class="regexp">/src/m</span>ain<span class="regexp">/res</span></div></pre></td></tr></table></figure>
-<ul>
-<li>事实证明并没有解决我的问题</li>
-<li>解决我的问题的是下面这行</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-<span class="keyword">native</span> bundle --platform android --dev <span class="keyword">false</span> --entry-<span class="keyword">file</span> index.js --bundle-output android<span class="regexp">/app/</span>src<span class="regexp">/main/</span>assets<span class="regexp">/index.android.bundle --assets-dest android/</span>app<span class="regexp">/src/m</span>ain<span class="regexp">/res</span></div></pre></td></tr></table></figure>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foacbagifbj31dc0b8wk6.jpg" alt="两者的区别"></p>
-<p><strong>我们可以回头看上面创建完项目的截图，老版的是分别有index.android.js和index.ios.js</strong></p>
-<p><strong>而我创建的却没有这两个文件，只有一个index.js,修改完之后，我们创建的assets目录下会生成bundle的两个文件</strong></p>
-<h2 id="运行成功（android端）"><a href="#运行成功（android端）" class="headerlink" title="运行成功（android端）"></a>运行成功（android端）</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1foacebj37wj30n014oqco.jpg" alt="运行成功截图"></p>
-<p>相关资料</p>
-<p>[恋猫月亮博客]<a href="https://www.jianshu.com/p/97692b1c451d" target="_blank" rel="external">https://www.jianshu.com/p/97692b1c451d</a>)</p>
-<p><a href="https://reactnative.cn/docs/0.31/getting-started.html#content" target="_blank" rel="external">中文网</a></p>
-<p><a href="http://blog.csdn.net/DavisCZ/article/details/79072062" target="_blank" rel="external">报错</a></p>
-<p>本文仅作个人学习总结，如有出入不够严谨的地方，请联系更改。</p>
-<p><strong>ReactNative才刚刚起步学习，麻烦和坑后续还会经常碰到。但是，既然选择了学习，就要坚持下来！</strong></p>
+<p>sp有一个貌似可以提供「跨进程」功能的FLAG——MODE_MULTI_PROCESS</p>
+<p>文档也说了，这玩意在某些Android版本上不可靠，并且未来也不会提供任何支持，要是用跨进程数据传输需要使用类似ContentProvider的东西。而且，SharedPreference的文档也特别说明：</p>
+<p><code>Note: This class does not support use across multiple processes.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> SharedPreferences <span class="title">getSharedPreferences</span><span class="params">(File file, <span class="keyword">int</span> mode)</span> </span>&#123;</div><div class="line">    checkMode(mode);</div><div class="line">    SharedPreferencesImpl sp;</div><div class="line">    <span class="keyword">synchronized</span> (ContextImpl.class) &#123;</div><div class="line">        <span class="keyword">final</span> ArrayMap&lt;File, SharedPreferencesImpl&gt; cache = getSharedPreferencesCacheLocked();</div><div class="line">        sp = cache.get(file);</div><div class="line">        <span class="keyword">if</span> (sp == <span class="keyword">null</span>) &#123;</div><div class="line">            sp = <span class="keyword">new</span> SharedPreferencesImpl(file, mode);</div><div class="line">            cache.put(file, sp);</div><div class="line">            <span class="keyword">return</span> sp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ((mode &amp; Context.MODE_MULTI_PROCESS) != <span class="number">0</span> ||</div><div class="line">        getApplicationInfo().targetSdkVersion &lt; android.os.Build.VERSION_CODES.HONEYCOMB) &#123;</div><div class="line">        <span class="comment">// If somebody else (some other process) changed the prefs</span></div><div class="line">        <span class="comment">// file behind our back, we reload it.  This has been the</span></div><div class="line">        <span class="comment">// historical (if undocumented) behavior.</span></div><div class="line">        sp.startReloadIfChangedUnexpectedly();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个flag保证了啥？保证了<strong>在API 11以前</strong>的系统上，如果sp已经被读取进内存，再次获取这个sp的时候，如果有这个flag，会重新读一遍文件，仅此而已</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>不要存放大的key和value！会引起界面卡、频繁GC、占用内存等等</li>
+<li>毫不相关的配置项就不要丢在一起了！文件越大读取越慢，防止全部放进defalut的sp！</li>
+<li>读取频繁的key和不易变动的key尽量不要放在一起，影响速度。（如果整个文件很小，那么忽略吧，为了这点性能添加维护成本得不偿失）</li>
+<li>不要乱edit和apply，尽量批量修改一次提交！</li>
+<li>尽量不要存放JSON和HTML，这种场景请直接使用json（文件存取）！</li>
+<li>跨进程通信不可靠</li>
+</ol>
 
       
     </div>
@@ -420,13 +370,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/12/25/ReactNative start/">ReactNative学习一</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/19/SharedPreferences的缺陷/">SharedPreferences的缺陷</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2017-12-25, 15:52:32</p>
-        <p><span>最后更新:</span>2018-07-19, 10:14:05</p>
+        <p><span>发布时间:</span>2018-07-19, 13:44:44</p>
+        <p><span>最后更新:</span>2018-07-19, 15:51:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/12/25/ReactNative start/" title="ReactNative学习一">http://www.fengan.info/2017/12/25/ReactNative start/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2017/12/25/ReactNative start/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/19/SharedPreferences的缺陷/" title="SharedPreferences的缺陷">http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -438,16 +388,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/12/29/谈谈启动流程/">
-                    谈谈启动流程
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/12/20/谈谈加密算法/">
-                    谈谈加密算法
+                <a href="/2018/07/18/shadowsocks服务端部署/">
+                    shadowsocks服务端部署
                 </a>
             </div>
         
@@ -459,7 +403,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1，为什么学习ReactNative"><span class="toc-number">1.</span> <span class="toc-text">1，为什么学习ReactNative</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#好处"><span class="toc-number">1.1.</span> <span class="toc-text">好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坏处"><span class="toc-number">1.2.</span> <span class="toc-text">坏处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总的来说"><span class="toc-number">1.3.</span> <span class="toc-text">总的来说</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2，搭建开发环境"><span class="toc-number">2.</span> <span class="toc-text">2，搭建开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3，创建一个项目"><span class="toc-number">3.</span> <span class="toc-text">3，创建一个项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个关键的文件"><span class="toc-number">4.</span> <span class="toc-text">几个关键的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需要注意的点"><span class="toc-number">4.1.</span> <span class="toc-text">需要注意的点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行这个项目"><span class="toc-number">5.</span> <span class="toc-text">运行这个项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的小坑"><span class="toc-number">5.1.</span> <span class="toc-text">遇到的小坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，无法从资产的index-android-bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器"><span class="toc-number">5.1.1.</span> <span class="toc-text">1，无法从资产的index.android.bundle中加载脚本。确保你的包被正确打包或者你正在运行一个packager服务器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行成功（android端）"><span class="toc-number">6.</span> <span class="toc-text">运行成功（android端）</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方式"><span class="toc-number">1.1.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他注意"><span class="toc-number">1.3.</span> <span class="toc-text">其他注意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -495,7 +439,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"ReactNative学习一　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SharedPreferences的缺陷　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -514,8 +458,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2017/12/25/ReactNative start/';
-            this.page.identifier = '2017/12/25/ReactNative start/';
+            this.page.url = 'http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/';
+            this.page.identifier = '2018/07/19/SharedPreferences的缺陷/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -537,15 +481,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/12/29/谈谈启动流程/" title="上一篇: 谈谈启动流程">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/12/20/谈谈加密算法/" title="下一篇: 谈谈加密算法">
+            <a href="/2018/07/18/shadowsocks服务端部署/" title="下一篇: shadowsocks服务端部署">
                 <i class="fa fa-angle-right"></i>
             </a>
         
