@@ -100,9 +100,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Sources for ‘Android API xx Platform’ not found]]></title>
+    <title><![CDATA[AS中看不到源码问题解决]]></title>
     <url>%2F2017%2F03%2F13%2FSources-for-%E2%80%98Android-API-xx-Platform%E2%80%99-not-found%2F</url>
-    <content type="text"><![CDATA[前言 在Android Studio翻源码多时候，明明下载了对应的SDK，却点进去都是.class看不到源码，本文记录一下解决办法 首先确保下载了对应的SDK 找到以下路径，并打开文件 ~/Library/Preferences/AndroidStudioXXX/options/jdk.table.xml 修改前 修改后 重启AS]]></content>
+    <content type="text"><![CDATA[在Android Studio翻源码多时候，明明下载了对应的SDK，却点进去都是.class看不到源码，本文记录一下解决办法 首先确保下载了对应的SDK 找到以下路径，并打开文件 ~/Library/Preferences/AndroidStudioXXX/options/jdk.table.xml 修改前 修改后 重启AS]]></content>
       <categories>
         <category>Android</category>
       </categories>
