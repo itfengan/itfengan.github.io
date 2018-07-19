@@ -15,25 +15,19 @@
 
 
 
-<meta name="description" content="前言
-
-在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
+<meta name="description" content="在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅析volatile关键字">
 <meta property="og:url" content="http://www.fengan.info/2017/03/07/浅析volatile关键字/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="前言
-
-在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
+<meta property="og:description" content="在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fp4by9i6z9j31gc0n2qf8.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fp4c550vj9j311g174wnw.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fp4eo3argaj30te14ab0o.jpg">
-<meta property="og:updated_time" content="2018-03-07T13:28:01.813Z">
+<meta property="og:updated_time" content="2018-07-19T01:50:29.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析volatile关键字">
-<meta name="twitter:description" content="前言
-
-在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
+<meta name="twitter:description" content="在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fp4by9i6z9j31gc0n2qf8.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -56,7 +50,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/orange/pace-theme-mac-osx.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -197,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后台/">后台</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li></ul>
                     </div>
                 </section>
                 
@@ -220,7 +214,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于移动端开发</div>
+                    <div id="js-aboutme">帅气的我，腼腆的我</div>
                 </section>
                 
             </div>
@@ -304,7 +298,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -320,10 +314,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>前言</p>
-</blockquote>
-<p>在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。</p>
+        <p>在看java并发的书的时候，看到了关于java的单例模式使用了volatile关键字，但是对volatile关键字的真正含义一直很模糊，本文就尝试浅析总结一下volatile的作用和具体用法。</p>
 <a id="more"></a>
 <h3 id="单例模式中的volatile关键字"><a href="#单例模式中的volatile关键字" class="headerlink" title="单例模式中的volatile关键字"></a>单例模式中的volatile关键字</h3><p><a href="http://blog.csdn.net/u011248395/article/details/71087379" target="_blank" rel="external">查看原文</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInstance</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> TestInstance instance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TestInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="comment">//1</span></div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;                  <span class="comment">//2</span></div><div class="line">            <span class="keyword">synchronized</span> (TestInstance.class) &#123;<span class="comment">//3</span></div><div class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123; <span class="comment">//4</span></div><div class="line">                    instance = <span class="keyword">new</span> TestInstance();<span class="comment">//5</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;<span class="comment">//6</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -390,9 +381,9 @@
 <li>volatile只保证了可见性，不能保证原子性，不可保证同步，多个线程同时访问不会发生阻塞</li>
 </ul>
 <ul>
-<li><h3 id="volatile关键字的正确使用（一句话概括volatile）"><a href="#volatile关键字的正确使用（一句话概括volatile）" class="headerlink" title="volatile关键字的正确使用（一句话概括volatile）"></a>volatile关键字的正确使用（一句话概括volatile）</h3></li>
+<li>​</li>
 </ul>
-<p>一个线程修改某个变量后，其他线程需要知道这个变量修改后的最新的值，此时就需要使用volatile，保证多线程访问的是主内存的值，而不是访问各自线程的工作内存的副本值（其实仍然访问的是副本值，只不过副本值有修改后立即刷新到主内存中）也就是说保证了线程的可见性，但是不能像syncchronized保证原子性，volatile没有利用锁的机制，多线程访问时不会发生阻塞，也就是说volatile修饰的变量可以保证在一个线程中修改的时候，其他线程可以继续访问，一旦该变量修改完毕，其他线程再获取的一定是修改后的最新的值</p>
+<h3 id="volatile关键字的正确使用（一句话概括volatile）"><a href="#volatile关键字的正确使用（一句话概括volatile）" class="headerlink" title="volatile关键字的正确使用（一句话概括volatile）"></a>volatile关键字的正确使用（一句话概括volatile）</h3><p>一个线程修改某个变量后，其他线程需要知道这个变量修改后的最新的值，此时就需要使用volatile，保证多线程访问的是主内存的值，而不是访问各自线程的工作内存的副本值（其实仍然访问的是副本值，只不过副本值有修改后立即刷新到主内存中）也就是说保证了线程的可见性，但是不能像syncchronized保证原子性，volatile没有利用锁的机制，多线程访问时不会发生阻塞，也就是说volatile修饰的变量可以保证在一个线程中修改的时候，其他线程可以继续访问，一旦该变量修改完毕，其他线程再获取的一定是修改后的最新的值</p>
 <h3 id="synchronized同步的死锁是怎么产生的"><a href="#synchronized同步的死锁是怎么产生的" class="headerlink" title="synchronized同步的死锁是怎么产生的"></a>synchronized同步的死锁是怎么产生的</h3><p>多线程死锁案例：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fp4eo3argaj30te14ab0o.jpg" alt="多线程死锁案例"></p>
 <p>什么是死锁：</p>
@@ -409,7 +400,7 @@
         <p><span>本文标题:</span><a href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2017-03-07, 14:51:10</p>
-        <p><span>最后更新:</span>2018-03-07, 21:28:01</p>
+        <p><span>最后更新:</span>2018-07-19, 09:50:29</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/07/浅析volatile关键字/" title="浅析volatile关键字">http://www.fengan.info/2017/03/07/浅析volatile关键字/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2017/03/07/浅析volatile关键字/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -537,7 +528,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/ReactNative start/">ReactNative start</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/Android签名/">Android签名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Android-阴影布局-继承FrameLayout/">Android　阴影布局(继承FrameLayout)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Sources-for-‘Android-API-xx-Platform’-not-found/">Sources for ‘Android API xx Platform’ not found</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Webview使用总结/">Webview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/retrofit和动态代理/">retrofit和动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/事件分发小结/">事件分发小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/谈谈线程池/">谈谈线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之建造者模式/">设计模式之建造者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/11/随滑动改变的的动态矩形背景/">随滑动改变的的动态矩形背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/23/Android7-0之广播变动/">Android7.0之广播变动</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/Gson封装/">Gson封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/view被软键盘挡住和点击外部软键盘消失/">view被软键盘挡住和点击外部软键盘消失</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/保存图片到本地/">保存图片到本地</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Android7-0之应用间共享文件/">Android7.0之应用间共享文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/app启动流程简析/">app启动流程简析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/回顾集合体系/">回顾集合体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/HandlerThread/">HandlerThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/edittext输入限制/">edittext输入限制</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/图片上传-角度不正确/">图片上传,角度不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/祝你今天心情愉快/">祝你今天心情愉快</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/ReactNative start/">ReactNative学习一</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/Android签名/">Android签名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Sources-for-‘Android-API-xx-Platform’-not-found/">Sources for ‘Android API xx Platform’ not found</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Webview使用总结/">Webview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/retrofit和动态代理/">retrofit和动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/事件分发小结/">事件分发小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/谈谈线程池/">谈谈线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之建造者模式/">设计模式之建造者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/11/随滑动改变的的动态矩形背景/">随滑动改变的的动态矩形背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/Gson封装/">Gson封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/view被软键盘挡住和点击外部软键盘消失/">view被软键盘挡住和点击外部软键盘消失</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/保存图片到本地/">保存图片到本地</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Android7-0之应用间共享文件/">Android7.0之应用间共享文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/app启动流程简析/">app启动流程简析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/回顾集合体系/">回顾集合体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/HandlerThread/">HandlerThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/edittext输入限制/">edittext输入限制</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/图片上传-角度不正确/">图片上传,角度不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/祝你今天心情愉快/">祝你今天心情愉快</a></li></ul>
 
 
 

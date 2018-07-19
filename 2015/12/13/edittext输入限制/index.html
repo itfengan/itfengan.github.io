@@ -15,28 +15,16 @@
 
 
 
-<meta name="description" content="EditText智能限制小数点前后分别保留几位
-可以分别限制小数点前面几位，和小数点后几位
-首位输入0时，第二位只能输入小数点
-首位输入小数点，默认显示0.
-嘻嘻!">
+<meta name="description" content="EditText智能限制小数点前后分别保留几位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="edittext输入限制">
 <meta property="og:url" content="http://www.fengan.info/2015/12/13/edittext输入限制/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="EditText智能限制小数点前后分别保留几位
-可以分别限制小数点前面几位，和小数点后几位
-首位输入0时，第二位只能输入小数点
-首位输入小数点，默认显示0.
-嘻嘻!">
-<meta property="og:updated_time" content="2017-12-25T04:25:02.227Z">
+<meta property="og:description" content="EditText智能限制小数点前后分别保留几位">
+<meta property="og:updated_time" content="2018-07-19T02:08:58.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="edittext输入限制">
-<meta name="twitter:description" content="EditText智能限制小数点前后分别保留几位
-可以分别限制小数点前面几位，和小数点后几位
-首位输入0时，第二位只能输入小数点
-首位输入小数点，默认显示0.
-嘻嘻!">
+<meta name="twitter:description" content="EditText智能限制小数点前后分别保留几位">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +46,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/orange/pace-theme-mac-osx.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -199,7 +187,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后台/">后台</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li></ul>
                     </div>
                 </section>
                 
@@ -222,7 +210,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于移动端开发</div>
+                    <div id="js-aboutme">帅气的我，腼腆的我</div>
                 </section>
                 
             </div>
@@ -306,7 +294,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/code/">code</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -322,16 +310,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="EditText智能限制小数点前后分别保留几位"><a href="#EditText智能限制小数点前后分别保留几位" class="headerlink" title="EditText智能限制小数点前后分别保留几位"></a>EditText智能限制小数点前后分别保留几位</h1><ul>
+        <p>EditText智能限制小数点前后分别保留几位</p>
+<a id="more"></a>
+<p>需求</p>
+<ul>
 <li>可以分别限制小数点前面几位，和小数点后几位</li>
 <li>首位输入0时，第二位只能输入小数点</li>
 <li>首位输入小数点，默认显示0.</li>
 <li>嘻嘻!</li>
 </ul>
-<a id="more"></a>
-<p>‘’’</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> frontPoint    小数点前几位数</div><div class="line"> * <span class="doctag">@param</span> behindPoint   小数点后几位数</div><div class="line"> * <span class="doctag">@param</span> editTexts</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setEditTextLimit</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> frontPoint, <span class="keyword">final</span> <span class="keyword">int</span> behindPoint, <span class="keyword">final</span> EditText... editTexts)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (editTexts != <span class="keyword">null</span> &amp;&amp; editTexts.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">final</span> EditText editText : editTexts) &#123;</div><div class="line">            editText.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before,</span></span></div><div class="line">                                          <span class="keyword">int</span> count) &#123;</div><div class="line">                    <span class="keyword">if</span> (s.length() == frontPoint + <span class="number">1</span> &amp;&amp; !s.toString().contains(<span class="string">"."</span>)) &#123;</div><div class="line">                        editText.setText(s.toString().substring(<span class="number">0</span>, frontPoint));</div><div class="line">                        editText.setSelection(frontPoint);</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (editText.getText().toString().indexOf(<span class="string">"."</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">if</span> (editText.getText().toString().indexOf(<span class="string">"."</span>, editText.getText().toString().indexOf(<span class="string">"."</span>) + <span class="number">1</span>) &gt; <span class="number">0</span>) &#123;</div><div class="line">                            editText.setText(editText.getText().toString().substring(<span class="number">0</span>, editText.getText().toString().length() - <span class="number">1</span>));</div><div class="line">                            editText.setSelection(editText.getText().toString().length());</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (s.toString().contains(<span class="string">"."</span>)) &#123;</div><div class="line">                        <span class="keyword">if</span> (s.length() - <span class="number">1</span> - s.toString().indexOf(<span class="string">"."</span>) &gt; behindPoint) &#123;</div><div class="line">                            s = s.toString().subSequence(<span class="number">0</span>,</div><div class="line">                                    s.toString().indexOf(<span class="string">"."</span>) + behindPoint+<span class="number">1</span>);</div><div class="line">                            editText.setText(s);</div><div class="line">                            editText.setSelection(s.length());</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    <span class="comment">//直接输入一个点,显示0.</span></div><div class="line">                    <span class="keyword">if</span> (s.toString().trim().substring(<span class="number">0</span>).equals(<span class="string">"."</span>)) &#123;</div><div class="line">                        s = <span class="string">"0"</span> + s;</div><div class="line">                        editText.setText(s);</div><div class="line">                        editText.setSelection(<span class="number">2</span>);</div><div class="line">                    &#125;</div><div class="line">                    <span class="comment">//当输入一个0,后面只能输入小数点</span></div><div class="line">                    <span class="keyword">if</span> (s.toString().startsWith(<span class="string">"0"</span>)</div><div class="line">                            &amp;&amp; s.toString().trim().length() &gt; <span class="number">1</span>) &#123;</div><div class="line">                        <span class="keyword">if</span> (!s.toString().substring(<span class="number">1</span>, <span class="number">2</span>).equals(<span class="string">"."</span>)) &#123;</div><div class="line">                            editText.setText(s.subSequence(<span class="number">0</span>, <span class="number">1</span>));</div><div class="line">                            editText.setSelection(<span class="number">1</span>);</div><div class="line">                            <span class="keyword">return</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count,</span></span></div><div class="line">                                              <span class="keyword">int</span> after) &#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>‘’’</p>
 <p>xml别忘了</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:inputType="numberDecimal"</div></pre></td></tr></table></figure>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=417859220&auto=1&height=66"></iframe>
@@ -345,7 +333,7 @@
         <p><span>本文标题:</span><a href="/2015/12/13/edittext输入限制/">edittext输入限制</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2015-12-13, 17:42:12</p>
-        <p><span>最后更新:</span>2017-12-25, 12:25:02</p>
+        <p><span>最后更新:</span>2018-07-19, 10:08:58</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/12/13/edittext输入限制/" title="edittext输入限制">http://www.fengan.info/2015/12/13/edittext输入限制/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2015/12/13/edittext输入限制/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -381,7 +369,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#EditText智能限制小数点前后分别保留几位"><span class="toc-number">1.</span> <span class="toc-text">EditText智能限制小数点前后分别保留几位</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -473,7 +461,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/ReactNative start/">ReactNative start</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/Android签名/">Android签名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Android-阴影布局-继承FrameLayout/">Android　阴影布局(继承FrameLayout)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Sources-for-‘Android-API-xx-Platform’-not-found/">Sources for ‘Android API xx Platform’ not found</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Webview使用总结/">Webview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/retrofit和动态代理/">retrofit和动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/事件分发小结/">事件分发小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/谈谈线程池/">谈谈线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之建造者模式/">设计模式之建造者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/11/随滑动改变的的动态矩形背景/">随滑动改变的的动态矩形背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/23/Android7-0之广播变动/">Android7.0之广播变动</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/Gson封装/">Gson封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/view被软键盘挡住和点击外部软键盘消失/">view被软键盘挡住和点击外部软键盘消失</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/保存图片到本地/">保存图片到本地</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Android7-0之应用间共享文件/">Android7.0之应用间共享文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/app启动流程简析/">app启动流程简析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/回顾集合体系/">回顾集合体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/HandlerThread/">HandlerThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/edittext输入限制/">edittext输入限制</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/图片上传-角度不正确/">图片上传,角度不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/祝你今天心情愉快/">祝你今天心情愉快</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/ReactNative start/">ReactNative学习一</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/Android签名/">Android签名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Sources-for-‘Android-API-xx-Platform’-not-found/">Sources for ‘Android API xx Platform’ not found</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Webview使用总结/">Webview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/retrofit和动态代理/">retrofit和动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/事件分发小结/">事件分发小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/谈谈线程池/">谈谈线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之建造者模式/">设计模式之建造者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/11/随滑动改变的的动态矩形背景/">随滑动改变的的动态矩形背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/Gson封装/">Gson封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/view被软键盘挡住和点击外部软键盘消失/">view被软键盘挡住和点击外部软键盘消失</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/保存图片到本地/">保存图片到本地</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Android7-0之应用间共享文件/">Android7.0之应用间共享文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/app启动流程简析/">app启动流程简析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/回顾集合体系/">回顾集合体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/HandlerThread/">HandlerThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/edittext输入限制/">edittext输入限制</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/图片上传-角度不正确/">图片上传,角度不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/祝你今天心情愉快/">祝你今天心情愉快</a></li></ul>
 
 
 

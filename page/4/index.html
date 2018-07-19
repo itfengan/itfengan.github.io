@@ -48,7 +48,7 @@
 
 
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/orange/pace-theme-mac-osx.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -191,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后台/">后台</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a></li></ul>
                     </div>
                 </section>
                 
@@ -214,7 +214,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于移动端开发</div>
+                    <div id="js-aboutme">帅气的我，腼腆的我</div>
                 </section>
                 
             </div>
@@ -272,143 +272,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-webview中点击网页图片跳转查看图片" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/08/webview中点击网页图片跳转查看图片/" class="article-date">
-      <time datetime="2016-03-08T08:11:40.000Z" itemprop="datePublished">2016-03-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>前言</strong></p>
-<p>app中很多图文页面，类似新闻详情页，都是一个H5网页，当我们点击网页中的图片，希望跳转到一个多图游览的页面，并且支持手势缩放和保存的一些功能。今天主要整理一下点击网页中图片，跳转到指定图片的查看页面即可，手势缩放可以使用photoview。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/code/">code</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/03/08/webview中点击网页图片跳转查看图片/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-产生65535的原因和解决办法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/06/产生65535的原因和解决办法/" class="article-date">
-      <time datetime="2016-03-06T02:08:20.000Z" itemprop="datePublished">2016-03-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>熟悉Android开发的都知道，在生成Dex过程中，方法数超过65535就会报错，本文只简述一下如何解决，更重要的是为什么会这样。简单来说，在<a href="https://source.android.com/devices/tech/dalvik/dalvik-bytecode">Dalvik指令集</a>中，调用方法的<code>invoke-kind</code>指令中，method reference index只给了16bits，最多能调用65535个方法，所以在生成dex文件的过程中，当方法数超过65535就会报错。其实除了method，filed和class的index也是16bits，所以也会存在65535的问题，只不过method的数量一般是最多的，所以最常见的也是方法数溢出的问题。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/03/06/产生65535的原因和解决办法/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-回顾集合体系" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -438,13 +301,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><ul>
-<li>面向对象语言对事物的体现都是以对象的形式，所以为了方便对多个对象进行操作，就需要对对象进行存储</li>
-<li>数组虽然可以存储对象，但是长度上固定的</li>
-<li>集合的长度是可变的</li>
-<li>数组中<strong>可以</strong>存储基本数据类型</li>
-<li>集合中<strong>只能</strong>存储对象</li>
-</ul>
+              <p>集合体系整理</p>
           
       
     </div>
@@ -453,7 +310,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -513,11 +370,7 @@
       
           
               <p><strong>HandlerThread</strong></p>
-<p> <strong>官方介绍</strong></p>
-<blockquote>
-<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
-</blockquote>
-<p>意思就是HandlerThread能够新建拥有Looper的线程(除了主线程,我们新建线程是需要手动调用Looper.prepare来初始化looper和messagequeue的),而这个looper能够来新建其他的Handler(新建的这个handler是属于子线程的,并且looper和messagequeue都是初始化好了的)</p>
+<p>HandlerThread知识点整理</p>
           
       
     </div>
@@ -526,7 +379,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -585,12 +438,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="EditText智能限制小数点前后分别保留几位"><a href="#EditText智能限制小数点前后分别保留几位" class="headerlink" title="EditText智能限制小数点前后分别保留几位"></a>EditText智能限制小数点前后分别保留几位</h1><ul>
-<li>可以分别限制小数点前面几位，和小数点后几位</li>
-<li>首位输入0时，第二位只能输入小数点</li>
-<li>首位输入小数点，默认显示0.</li>
-<li>嘻嘻!</li>
-</ul>
+              <p>EditText智能限制小数点前后分别保留几位</p>
           
       
     </div>
@@ -599,7 +447,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/code/">code</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -658,7 +506,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="图片上传-部分机型角度不正确问题解决"><a href="#图片上传-部分机型角度不正确问题解决" class="headerlink" title="图片上传,部分机型角度不正确问题解决"></a>图片上传,部分机型角度不正确问题解决</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在app大多都有上传图片功能,比如上传图片,发表动态可能还会上传多张图片,那在我做图片上传的时候,出现了部分机型上传图片后,图片的角度是正确的,我的两个测试机小米和华为是没问题的,但是三星的上传后,图片是默认旋转了90°,那这里要讲的就是怎么解决这个问题,在此记录一下,以保证后面再出现类似需求要多考虑一些<br>
+              <p>部分机型（三星）的上传后,图片是默认旋转了90°<br>
           
       
     </div>
@@ -667,7 +515,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/code/">code</a>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
 
@@ -734,7 +582,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/music/">music</a>
+    <a class="article-category-link" href="/categories/Life/">Life</a>
     </div>
 
 
