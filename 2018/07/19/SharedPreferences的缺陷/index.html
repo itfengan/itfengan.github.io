@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/index.html">
 <meta property="og:site_name" content="风中追风">
 <meta property="og:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
-<meta property="og:updated_time" content="2018-07-19T07:51:50.470Z">
+<meta property="og:updated_time" content="2018-07-19T08:03:03.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SharedPreferences的缺陷">
 <meta name="twitter:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
@@ -358,8 +358,9 @@
 <li>不要存放大的key和value！会引起界面卡、频繁GC、占用内存等等</li>
 <li>毫不相关的配置项就不要丢在一起了！文件越大读取越慢，防止全部放进defalut的sp！</li>
 <li>读取频繁的key和不易变动的key尽量不要放在一起，影响速度。（如果整个文件很小，那么忽略吧，为了这点性能添加维护成本得不偿失）</li>
-<li>不要乱edit和apply，尽量批量修改一次提交！</li>
+<li>不要乱edit和apply，每次edit会创建新的EditorImpl对象，尽量批量修改一次提交！</li>
 <li>尽量不要存放JSON和HTML，这种场景请直接使用json（文件存取）！</li>
+<li>Commit发生在UI线程中，apply发生在工作线程中，对于数据的提交最好是批量操作统一提交。虽然apply发生在工作线程（不会因为IO阻塞UI线程）但是如果添加任务较多也有可能带来其他严重后果（参照ActivityThread源码中handleStopActivity方法实现）。</li>
 <li>跨进程通信不可靠</li>
 </ol>
 
@@ -373,7 +374,7 @@
         <p><span>本文标题:</span><a href="/2018/07/19/SharedPreferences的缺陷/">SharedPreferences的缺陷</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2018-07-19, 13:44:44</p>
-        <p><span>最后更新:</span>2018-07-19, 15:51:50</p>
+        <p><span>最后更新:</span>2018-07-19, 16:03:03</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/19/SharedPreferences的缺陷/" title="SharedPreferences的缺陷">http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
