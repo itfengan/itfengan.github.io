@@ -14,19 +14,32 @@
 <meta name="author" content="冯安" />
 
 
-    
-    
 
+<meta name="description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
 
-<meta name="description" content="懈怠意味着淘汰">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风中追风">
-<meta property="og:url" content="http://www.fengan.info/index.html">
+今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
+123456789101112131415161718192021222324252627282930313233">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjava2.0-知识碎片一">
+<meta property="og:url" content="http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="懈怠意味着淘汰">
+<meta property="og:description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
+
+今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
+123456789101112131415161718192021222324252627282930313233">
+<meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/Observable.gif">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-7133ff9a13dd9a59.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-2526f7824c53a47e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/580">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-bdb581480fc9379b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/595">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-b731e6294f342d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/595">
+<meta property="og:updated_time" content="2018-07-23T07:43:39.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风中追风">
-<meta name="twitter:description" content="懈怠意味着淘汰">
+<meta name="twitter:title" content="Rxjava2.0-知识碎片一">
+<meta name="twitter:description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
+
+今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
+123456789101112131415161718192021222324252627282930313233">
+<meta name="twitter:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/Observable.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +69,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>风中追风</title>
+<title>Rxjava2.0-知识碎片一 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +78,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: false,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -266,9 +279,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Rxjava2-0-知识碎片（一）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Rxjava2-0-知识碎片（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2018/07/23/Rxjava2-0-知识碎片（一）/" class="article-date">
@@ -286,12 +297,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/Rxjava2-0-知识碎片（一）/">Rxjava2.0-知识碎片一</a>
+    <h1 class="article-title" itemprop="name">
+      Rxjava2.0-知识碎片一
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Rxjava/">Rxjava</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjava/">Rxjava</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -358,650 +384,141 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Rxjava/">Rxjava</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjava/">Rxjava</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SharedPreferences的缺陷" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/19/SharedPreferences的缺陷/" class="article-date">
-      <time datetime="2018-07-19T05:44:44.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/SharedPreferences的缺陷/">SharedPreferences的缺陷</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/19/SharedPreferences的缺陷/#more">阅读全文 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/07/23/Rxjava2-0-知识碎片（一）/">Rxjava2.0-知识碎片一</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
+        <p><span>发布时间:</span>2018-07-23, 15:02:17</p>
+        <p><span>最后更新:</span>2018-07-23, 15:43:39</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/23/Rxjava2-0-知识碎片（一）/" title="Rxjava2.0-知识碎片一">http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-shadowsocks服务端部署" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/18/shadowsocks服务端部署/" class="article-date">
-      <time datetime="2018-07-18T05:05:35.000Z" itemprop="datePublished">2018-07-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>基于Ubuntu 16.04的Shadowsocks服务端安装</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Dev/">Dev</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/18/shadowsocks服务端部署/#more">阅读全文 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-mysql关联阿里云dms" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/14/mysql关联阿里云dms/" class="article-date">
-      <time datetime="2018-06-14T04:09:47.000Z" itemprop="datePublished">2018-06-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>将远程服务器中的mysql绑定到阿里云DMS中</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Dev/">Dev</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/06/14/mysql关联阿里云dms/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-浅析Dalvik和ART的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/05/浅析Dalvik和ART的区别/" class="article-date">
-      <time datetime="2018-03-05T07:00:14.000Z" itemprop="datePublished">2018-03-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Dalvik是Google公司自己设计用于Android平台的虚拟机，Dalvik经过优化，更加适合Android平台（具体优点见下面和JVM比较）。</p>
-<p>2014年6月谷歌I/O大会上，Android L(5.0)改动幅度比较大，删除了Dalvik，而是用ART代替。</p>
-<p>之前对本块的知识理解比较零散，再此本文总结下Dalvik和ART的原理，和二者的区别，以及Jvm和Dalvik的区别，以及Android的Apk编译打包的流程</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/03/05/浅析Dalvik和ART的区别/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ThreadLocal的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/02/ThreadLocal的理解/" class="article-date">
-      <time datetime="2018-03-02T06:02:18.000Z" itemprop="datePublished">2018-03-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/07/19/SharedPreferences的缺陷/">
+                    SharedPreferences的缺陷
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>ThreadLocal相关整理</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/03/02/ThreadLocal的理解/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-谈谈启动流程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/29/谈谈启动流程/" class="article-date">
-      <time datetime="2017-12-29T03:13:57.000Z" itemprop="datePublished">2017-12-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ReactNative start" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/25/ReactNative start/" class="article-date">
-      <time datetime="2017-12-25T07:52:32.000Z" itemprop="datePublished">2017-12-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/25/ReactNative start/">ReactNative学习一</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>ReactNative 学习一</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/12/25/ReactNative start/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-谈谈加密算法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/20/谈谈加密算法/" class="article-date">
-      <time datetime="2017-12-20T05:48:31.000Z" itemprop="datePublished">2017-12-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>在应用开发的过程中，客户端和移动端要频繁的进行数据传输，涉及到重要隐私信息的时候，就需要进行数据加密，，即使传输的过程中被截取，也不会信息泄漏。对于加密算法，不少开发者也早有耳闻，例如：Base64，MD5，RSA，AES，DES加密等等，今天就总结一下加密算法</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/12/20/谈谈加密算法/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android签名" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/02/Android签名/" class="article-date">
-      <time datetime="2017-07-02T09:40:06.000Z" itemprop="datePublished">2017-07-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/02/Android签名/">Android签名</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>签名文件生成与配置</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/07/02/Android签名/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
+
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，Observable-create-ObservableOnSubscribe-的使用"><span class="toc-number">1.</span> <span class="toc-text">1，Observable.create(ObservableOnSubscribe)的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，发送规则"><span class="toc-number">2.</span> <span class="toc-text">2，发送规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，onSubscribe-Disposable-d-的参数Disposable"><span class="toc-number">3.</span> <span class="toc-text">3，onSubscribe(Disposable d)的参数Disposable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，subscribe-的多个重载的方法"><span class="toc-number">4.</span> <span class="toc-text">4，subscribe()的多个重载的方法</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Rxjava2.0-知识碎片一　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/';
+            this.page.identifier = '2018/07/23/Rxjava2-0-知识碎片（一）/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//null.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/07/19/SharedPreferences的缺陷/" title="下一篇: SharedPreferences的缺陷">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/Rxjava2-0-知识碎片（一）/">Rxjava2.0-知识碎片一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/SharedPreferences的缺陷/">SharedPreferences的缺陷</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/shadowsocks服务端部署/">shadowsocks服务端部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/14/mysql关联阿里云dms/">mysql关联阿里云dms</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/浅析Dalvik和ART的区别/">浅析Dalvik和ART的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/ThreadLocal的理解/">ThreadLocal的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/谈谈启动流程/">谈谈启动流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/ReactNative start/">ReactNative学习一</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/谈谈加密算法/">谈谈加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/Android签名/">Android签名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/transient关键字的作用/">transient关键字的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Sources-for-‘Android-API-xx-Platform’-not-found/">AS中看不到源码问题解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Webview使用总结/">Webview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/浅析volatile关键字/">浅析volatile关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/线程安全的CopyOnWriteArrayList/">线程安全的CopyOnWriteArrayList</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/retrofit和动态代理/">retrofit和动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/事件分发小结/">事件分发小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/谈谈线程池/">谈谈线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/AsyncTask缺陷总结/">AsyncTask的弊端</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/设计模式之观察者模式/">设计模式之观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/设计模式之策略模式/">设计模式之策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之建造者模式/">设计模式之建造者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/设计模式之单例模式/">设计模式之单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/11/随滑动改变的的动态矩形背景/">随滑动改变的的动态矩形背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/Gson封装/">Gson封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/view被软键盘挡住和点击外部软键盘消失/">view被软键盘挡住和点击外部软键盘消失</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/21/保存图片到本地/">保存图片到本地</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Android7-0之应用间共享文件/">Android7.0之应用间共享文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/app启动流程简析/">app启动流程简析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/webview中点击网页图片跳转查看图片/">webview中点击网页图片跳转查看图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/产生65535的原因和解决办法/">产生65535的原因和解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/回顾集合体系/">回顾集合体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/22/HandlerThread/">HandlerThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/edittext输入限制/">edittext输入限制</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/图片上传-角度不正确/">图片上传,角度不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/祝你今天心情愉快/">祝你今天心情愉快</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
