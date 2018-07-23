@@ -15,30 +15,21 @@
 
 
 
-<meta name="description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
-
-今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
-123456789101112131415161718192021222324252627282930313233">
+<meta name="description" content="Observable.create(ObservableOnSubscribe)和subscribe()基本使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rxjava2.0-知识碎片一">
 <meta property="og:url" content="http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
-
-今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
-123456789101112131415161718192021222324252627282930313233">
+<meta property="og:description" content="Observable.create(ObservableOnSubscribe)和subscribe()基本使用">
 <meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/Observable.gif">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-7133ff9a13dd9a59.png?imageMogr2/auto-orient/">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-2526f7824c53a47e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/580">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-bdb581480fc9379b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/595">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-b731e6294f342d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/595">
-<meta property="og:updated_time" content="2018-07-23T07:43:39.895Z">
+<meta property="og:updated_time" content="2018-07-23T07:45:42.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rxjava2.0-知识碎片一">
-<meta name="twitter:description" content="1，Observable.create(ObservableOnSubscribe)的使用获得一个Observable有很多种方式，通过我们下面的动图可以看到
-
-今天的碎片化整理，就只整理最普通的一种方式Observable.create(ObservableOnSubscribe)
-123456789101112131415161718192021222324252627282930313233">
+<meta name="twitter:description" content="Observable.create(ObservableOnSubscribe)和subscribe()基本使用">
 <meta name="twitter:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/Observable.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -323,7 +314,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="1，Observable-create-ObservableOnSubscribe-的使用"><a href="#1，Observable-create-ObservableOnSubscribe-的使用" class="headerlink" title="1，Observable.create(ObservableOnSubscribe)的使用"></a>1，Observable.create(ObservableOnSubscribe)的使用</h3><p>获得一个Observable有很多种方式，通过我们下面的动图可以看到</p>
+        <p>Observable.create(ObservableOnSubscribe)和subscribe()基本使用</p>
+<a id="more"></a>
+<h3 id="1，Observable-create-ObservableOnSubscribe-的使用"><a href="#1，Observable-create-ObservableOnSubscribe-的使用" class="headerlink" title="1，Observable.create(ObservableOnSubscribe)的使用"></a>1，Observable.create(ObservableOnSubscribe)的使用</h3><p>获得一个Observable有很多种方式，通过我们下面的动图可以看到</p>
 <p><img src="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/Observable.gif" alt="获取Observable的方式"></p>
 <p>今天的碎片化整理，就只整理最普通的一种方式<code>Observable.create(ObservableOnSubscribe)</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * ObservableEmitter:Emitter是发射器的意思，</div><div class="line"> * 它可以发出三种类型的事件，</div><div class="line"> * 通过调用emitter的onNext(T value)、onComplete()和onError(Throwable error)就可以分别发出next事件、complete事件和error事件。</div><div class="line"> * 发射满足规则：</div><div class="line"> * 1，Observable可以发送无限个onNext, Observer也可以接收无限个onNext</div><div class="line"> * 2，发送了一个onComplete后, Observable的onComplete或者onError之后的事件将会继续发送, 而Observer收到onComplete/onError事件之后将不再继续接收事件.</div><div class="line"> * 3，Observable可以发送无限个onNext可以不发送onComplete或onError.</div><div class="line"> * 4，Observable不可以发送多个onComplete和多个onError（onComplete和onError加一起只能发射一次）</div><div class="line"> * 5，Observable发射多个onComplete不报错（只收到第一个onComplete就不再接受了）。发射多个onError会报错</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rxjava</span><span class="params">()</span> </span>&#123;</div><div class="line">    Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">            emitter.onNext(<span class="string">"hello"</span>);</div><div class="line">            emitter.onNext(<span class="string">"rxjava"</span>);</div><div class="line">            emitter.onComplete();</div><div class="line">            emitter.onNext(<span class="string">"无法接受"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;).subscribe(<span class="keyword">new</span> Observer&lt;String&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Disposable d)</span> </span>&#123;</div><div class="line">            System.out.println(<span class="string">"onSubscribe"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">            System.out.println(<span class="string">"onNext:value="</span> + s);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</div><div class="line">            System.out.println(<span class="string">"onError:error"</span> + e.getMessage());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(<span class="string">"onComplete"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -391,7 +384,7 @@
         <p><span>本文标题:</span><a href="/2018/07/23/Rxjava2-0-知识碎片（一）/">Rxjava2.0-知识碎片一</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2018-07-23, 15:02:17</p>
-        <p><span>最后更新:</span>2018-07-23, 15:43:39</p>
+        <p><span>最后更新:</span>2018-07-23, 15:45:42</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/23/Rxjava2-0-知识碎片（一）/" title="Rxjava2.0-知识碎片一">http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/23/Rxjava2-0-知识碎片（一）/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
