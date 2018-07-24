@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效">
+<meta name="description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之原型模式">
-<meta property="og:url" content="http://www.fengan.info/2016/12/19/设计模式之原型模式/index.html">
+<meta property="og:title" content="3.X的gradle依赖implementation">
+<meta property="og:url" content="http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg">
-<meta property="og:updated_time" content="2018-07-19T01:54:19.327Z">
+<meta property="og:description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361">
+<meta property="og:updated_time" content="2018-07-24T08:16:48.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之原型模式">
-<meta name="twitter:description" content="原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg">
+<meta name="twitter:title" content="3.X的gradle依赖implementation">
+<meta name="twitter:description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>设计模式之原型模式 | 风中追风</title>
+<title>3.X的gradle依赖implementation | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -266,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-设计模式之原型模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-3-x的gradle依赖implementation" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/19/设计模式之原型模式/" class="article-date">
-      <time datetime="2016-12-19T07:38:23.000Z" itemprop="datePublished">2016-12-19</time>
+      <a href="/2018/01/24/3-x的gradle依赖implementation/" class="article-date">
+      <time datetime="2018-01-24T07:47:00.000Z" itemprop="datePublished">2018-01-24</time>
 </a>
 
 
@@ -285,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式之原型模式
+      3.X的gradle依赖implementation
     </h1>
   
 
@@ -310,37 +310,52 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>原型设计模式的是一种创建型的设计模式，如果创建过程笔记复杂耗时的话，可以考虑使用原型设计模式；通过克隆已有的对象来获取一个新的对象，你可以直接使用它，也可以修改克隆对象的部分属性再使用，使得我们的程序更加高效<br><a id="more"></a></p>
-<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><ul>
-<li>如果一个类的初始化需要很多资源，这个资源包括数据或者硬件资源等，通过原型拷贝已有的对象来避免这些消耗</li>
-<li>通过new产生的一个对象需要非常繁琐的数据准备或者权限，这时可以使用原型模式。</li>
-<li>一个对象需要提供给其他对象访问，而且各个调用者可能<strong>都</strong>需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用，即保护性拷贝。</li>
+        <p>依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了</p>
+<a id="more"></a>
+<h3 id="implementation和Compile的区别"><a href="#implementation和Compile的区别" class="headerlink" title="implementation和Compile的区别"></a>implementation和Compile的区别</h3><p>先看下图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361" alt="依赖区别"></p>
+<p>假设：</p>
+<p><strong>LibraryA—–—–implementation———LibraryC</strong></p>
+<p>App Module 无法使用LibraryC</p>
+<p><strong>LibraryB—–—–compile———LibraryD</strong></p>
+<p>App Module 可以使用LibraryD</p>
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>可以加快编译速度</li>
+<li>隐藏对外不必要的接口</li>
 </ul>
-<h5 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h5><p>首先我们得实现Cloneable接口，复写clone方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.it.fengan.designpattern.pattern;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by fengan on 2017/12/22.</div><div class="line"> * email:fengan1102@gmail.com</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> String des;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> money;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDes</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> des;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDes</span><span class="params">(String des)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.des = des;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getMoney</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> money;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.money = money;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Worker&#123;"</span> +</div><div class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", des='"</span> + des + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", money="</span> + money +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Worker <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">        Worker worker = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            worker = (Worker) <span class="keyword">super</span>.clone();</div><div class="line">            worker.money = <span class="keyword">this</span>.money;</div><div class="line">            worker.name = <span class="keyword">this</span>.name;</div><div class="line">            worker.des = <span class="keyword">this</span>.des;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> worker;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意</strong></p>
+<p>为什么能够加快编译速度呢</p>
+<p>这对于大型项目含有多个<code>Moudle</code>模块的， 以上图为例，比如我们改动 <code>LibraryC</code> 接口的相关代码，这时候编译只需要单独编译<code>LibraryA</code>模块就行， 如果使用的是<code>api</code>或者旧时代的<code>compile</code>，由于<code>App Moudle</code> 也可以访问到 <code>LibraryC</code>,所以 <code>App Moudle</code>部分也需要重新编译。</p>
+<h3 id="其他几种方式"><a href="#其他几种方式" class="headerlink" title="其他几种方式"></a>其他几种方式</h3><p><strong>首先是2.x版本的依赖方式：</strong></p>
 <ol>
-<li>clone这个方法不是Cloneable接口中的（Cloneable是一个空接口）</li>
-<li>clone是Object中的方法</li>
-<li>Cloneable是一个标识接口，它表明这个类的对象是可以拷贝的</li>
-<li>如果没有实现Cloneable接口却调用了clone()函数将抛出异常。</li>
+<li>Compile</li>
+<li>Provided</li>
+<li>APK</li>
+<li>Test compile</li>
+<li>Debug compile</li>
+<li>Release compile</li>
 </ol>
-<h5 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h5><p><strong>浅拷贝</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> User <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">       User user = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span>&#123;</div><div class="line">           user = (User)<span class="keyword">super</span>.clone();</div><div class="line">       &#125; <span class="keyword">catch</span> (CloneNotSupportedException e)&#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> user;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>那么在实现clone方法的时候，需要注意个问题，像上面那样，直接调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user = (User)<span class="keyword">super</span>.clone();</div></pre></td></tr></table></figure>
-<p>这样只是简单的拷贝了对象，实际上并不是将原始文档的所有字段都重新构造了一份，而是副本文档的字段引用原始文档的字段。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmplwxu1opj30h60alaan.jpg" alt="浅拷贝"></p>
-<p><strong>深拷贝</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> WordDocument <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            WordDocument doc = (WordDocument) <span class="keyword">super</span>.clone();</div><div class="line">            doc.mText = <span class="keyword">this</span>.mText;</div><div class="line">            doc.mImages = (ArrayList&lt;String&gt;) <span class="keyword">this</span>.mImages.clone();</div><div class="line">            <span class="keyword">return</span> doc;</div><div class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h5 id="Android中的应用"><a href="#Android中的应用" class="headerlink" title="Android中的应用"></a>Android中的应用</h5><p>Intenet源码</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">*</div><div class="line"> * &lt;p&gt;These are the possible flags that can be used in the Intent via</div><div class="line"> * &#123;@link #setFlags&#125; and &#123;@link #addFlags&#125;.  See &#123;@link #setFlags&#125; for a list</div><div class="line"> * of all possible flags.</div><div class="line"> */</div><div class="line">public class Intent implements Parcelable, Cloneable &#123;</div><div class="line">    </div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public Object clone() &#123;</div><div class="line">        return new Intent(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Intent(Intent o) &#123;</div><div class="line">        this.mAction = o.mAction;</div><div class="line">        this.mData = o.mData;</div><div class="line">        this.mType = o.mType;</div><div class="line">        this.mPackage = o.mPackage;</div><div class="line">        this.mComponent = o.mComponent;</div><div class="line">        this.mFlags = o.mFlags;</div><div class="line">        this.mContentUserHint = o.mContentUserHint;</div><div class="line">        if (o.mCategories != null) &#123;</div><div class="line">            this.mCategories = new ArraySet&lt;String&gt;(o.mCategories);</div><div class="line">        &#125;</div><div class="line">        if (o.mExtras != null) &#123;</div><div class="line">            this.mExtras = new Bundle(o.mExtras);</div><div class="line">        &#125;</div><div class="line">        if (o.mSourceBounds != null) &#123;</div><div class="line">            this.mSourceBounds = new Rect(o.mSourceBounds);</div><div class="line">        &#125;</div><div class="line">        if (o.mSelector != null) &#123;</div><div class="line">            this.mSelector = new Intent(o.mSelector);</div><div class="line">        &#125;</div><div class="line">        if (o.mClipData != null) &#123;</div><div class="line">            this.mClipData = new ClipData(o.mClipData);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以见到，我们的Intent是深度拷贝，而且是直接new一个的深度拷贝。可见其设计初衷不是因为其不是为了解决构建复杂对象的资源消耗问题。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
-<li>原型模式本质上就是对象拷贝，与 C++ 中的拷贝构造函数有些类似，它们之间容易出现的问题也都是深拷贝、浅拷贝。使用原型模式可以<strong>解决构建复杂对象的资源消耗问题</strong>，能够在某些场景下<strong>提升创建对象的效率</strong>。还有一个重要的途径就是保护性拷贝，也就是某个对象对外可能是只读的，为了防止外部对这个只读对象修改，通常可以通过返回一个对象拷贝的形式实现只读的限制。</li>
-<li>优点：原型模式是在内存中二进制流的拷贝，要比直接 new 一个对象性能好很多，特别是要在一个循环体内产生大量的对象时，原型模式可以更好滴体现其优点。</li>
-<li>缺点：这既是它的优点也是缺点，直接在内存中拷贝，构造函数是不会执行的，在实际开发中应该注意这个潜在问题</li>
-</ul>
+<p><strong>再来看看3.0的</strong></p>
+<ol>
+<li>Implementation</li>
+<li>API</li>
+<li>Compile only</li>
+<li>Runtime only</li>
+<li>Unit Test implementation</li>
+<li>Test implementation</li>
+<li>Debug implementation</li>
+<li>Release implementation</li>
+</ol>
+<p><strong>2.x版本依赖的可以看看下面的说明，括号里对应的是3.0版本的依赖方式。</strong></p>
+<h4 id="compile（api）"><a href="#compile（api）" class="headerlink" title="compile（api）"></a>compile（api）</h4><p>这种是我们最常用的方式，使用该方式依赖的库将会<strong>参与编译和打包</strong>。<br>当我们依赖一些第三方的库时，可能会遇到com.android.support冲突的问题，就是因为开发者使用的compile依赖的com.android.support包，而他所依赖的包与我们本地所依赖的com.android.support包版本不一样，所以就会报All com.android.support libraries must use the exact same version specification (mixing versions can lead to runtime crashes这个错误。</p>
+<p><a href="https://blog.csdn.net/yuzhiqiang_1993/article/details/78214812" target="_blank" rel="external">support包冲突</a></p>
+<h4 id="provided（compileOnly）"><a href="#provided（compileOnly）" class="headerlink" title="provided（compileOnly）"></a>provided（compileOnly）</h4><p><strong>只在编译时有效，不会参与打包</strong><br>可以在自己的moudle中使用该方式依赖一些比如com.android.support，gson这些使用者常用的库，避免冲突。</p>
+<h4 id="apk（runtimeOnly）"><a href="#apk（runtimeOnly）" class="headerlink" title="apk（runtimeOnly）"></a>apk（runtimeOnly）</h4><p>只在生成apk的时候参与打包，编译时不会参与，很少用。</p>
+<h4 id="testCompile（testImplementation）"><a href="#testCompile（testImplementation）" class="headerlink" title="testCompile（testImplementation）"></a>testCompile（testImplementation）</h4><p>testCompile 只在单元测试代码的编译以及最终打包测试apk时有效。</p>
+<h4 id="debugCompile（debugImplementation）"><a href="#debugCompile（debugImplementation）" class="headerlink" title="debugCompile（debugImplementation）"></a>debugCompile（debugImplementation）</h4><p>debugCompile 只在debug模式的编译和最终的debug apk打包时有效</p>
+<h4 id="releaseCompile（releaseImplementation）"><a href="#releaseCompile（releaseImplementation）" class="headerlink" title="releaseCompile（releaseImplementation）"></a>releaseCompile（releaseImplementation）</h4><p>Release compile 仅仅针对Release 模式的编译和最终的Release apk打包。</p>
+<p><strong>参考：</strong></p>
+<p><a href="https://blog.csdn.net/yuzhiqiang_1993/article/details/78366985?locationNum=6&amp;fps=1" target="_blank" rel="external">Android Studio3.x新的依赖方式（implementation、api、compileOnly）</a></p>
+<p>### </p>
 
       
     </div>
@@ -349,13 +364,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/19/设计模式之原型模式/">设计模式之原型模式</a></p>
+        <p><span>本文标题:</span><a href="/2018/01/24/3-x的gradle依赖implementation/">3.X的gradle依赖implementation</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2016-12-19, 15:38:23</p>
-        <p><span>最后更新:</span>2018-07-19, 09:54:19</p>
+        <p><span>发布时间:</span>2018-01-24, 15:47:00</p>
+        <p><span>最后更新:</span>2018-07-24, 16:16:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/19/设计模式之原型模式/" title="设计模式之原型模式">http://www.fengan.info/2016/12/19/设计模式之原型模式/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2016/12/19/设计模式之原型模式/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/01/24/3-x的gradle依赖implementation/" title="3.X的gradle依赖implementation">http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -368,15 +383,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/20/AsyncTask缺陷总结/">
-                    AsyncTask的弊端
+                <a href="/2018/03/02/ThreadLocal的理解/">
+                    ThreadLocal的理解
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/19/设计模式之观察者模式/">
-                    设计模式之观察者模式
+                <a href="/2017/12/29/谈谈启动流程/">
+                    谈谈启动流程
                 </a>
             </div>
         
@@ -388,7 +403,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用场景"><span class="toc-number">1.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何实现"><span class="toc-number">2.</span> <span class="toc-text">如何实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">3.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Android中的应用"><span class="toc-number">4.</span> <span class="toc-text">Android中的应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#implementation和Compile的区别"><span class="toc-number">1.</span> <span class="toc-text">implementation和Compile的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#好处"><span class="toc-number">2.</span> <span class="toc-text">好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他几种方式"><span class="toc-number">3.</span> <span class="toc-text">其他几种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#compile（api）"><span class="toc-number">3.1.</span> <span class="toc-text">compile（api）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#provided（compileOnly）"><span class="toc-number">3.2.</span> <span class="toc-text">provided（compileOnly）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apk（runtimeOnly）"><span class="toc-number">3.3.</span> <span class="toc-text">apk（runtimeOnly）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#testCompile（testImplementation）"><span class="toc-number">3.4.</span> <span class="toc-text">testCompile（testImplementation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debugCompile（debugImplementation）"><span class="toc-number">3.5.</span> <span class="toc-text">debugCompile（debugImplementation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#releaseCompile（releaseImplementation）"><span class="toc-number">3.6.</span> <span class="toc-text">releaseCompile（releaseImplementation）</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -424,7 +439,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"设计模式之原型模式　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"3.X的gradle依赖implementation　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -443,8 +458,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2016/12/19/设计模式之原型模式/';
-            this.page.identifier = '2016/12/19/设计模式之原型模式/';
+            this.page.url = 'http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/';
+            this.page.identifier = '2018/01/24/3-x的gradle依赖implementation/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -466,7 +481,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/AsyncTask缺陷总结/" title="上一篇: AsyncTask的弊端">
+            <a href="/2018/03/02/ThreadLocal的理解/" title="上一篇: ThreadLocal的理解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -474,7 +489,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/19/设计模式之观察者模式/" title="下一篇: 设计模式之观察者模式">
+            <a href="/2017/12/29/谈谈启动流程/" title="下一篇: 谈谈启动流程">
                 <i class="fa fa-angle-right"></i>
             </a>
         

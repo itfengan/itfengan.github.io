@@ -89,6 +89,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[3.X的gradle依赖implementation]]></title>
+    <url>%2F2018%2F01%2F24%2F3-x%E7%9A%84gradle%E4%BE%9D%E8%B5%96implementation%2F</url>
+    <content type="text"><![CDATA[依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了 implementation和Compile的区别先看下图 假设： LibraryA—–—–implementation———LibraryC App Module 无法使用LibraryC LibraryB—–—–compile———LibraryD App Module 可以使用LibraryD 好处 可以加快编译速度 隐藏对外不必要的接口 为什么能够加快编译速度呢 这对于大型项目含有多个Moudle模块的， 以上图为例，比如我们改动 LibraryC 接口的相关代码，这时候编译只需要单独编译LibraryA模块就行， 如果使用的是api或者旧时代的compile，由于App Moudle 也可以访问到 LibraryC,所以 App Moudle部分也需要重新编译。 其他几种方式首先是2.x版本的依赖方式： Compile Provided APK Test compile Debug compile Release compile 再来看看3.0的 Implementation API Compile only Runtime only Unit Test implementation Test implementation Debug implementation Release implementation 2.x版本依赖的可以看看下面的说明，括号里对应的是3.0版本的依赖方式。 compile（api）这种是我们最常用的方式，使用该方式依赖的库将会参与编译和打包。当我们依赖一些第三方的库时，可能会遇到com.android.support冲突的问题，就是因为开发者使用的compile依赖的com.android.support包，而他所依赖的包与我们本地所依赖的com.android.support包版本不一样，所以就会报All com.android.support libraries must use the exact same version specification (mixing versions can lead to runtime crashes这个错误。 support包冲突 provided（compileOnly）只在编译时有效，不会参与打包可以在自己的moudle中使用该方式依赖一些比如com.android.support，gson这些使用者常用的库，避免冲突。 apk（runtimeOnly）只在生成apk的时候参与打包，编译时不会参与，很少用。 testCompile（testImplementation）testCompile 只在单元测试代码的编译以及最终打包测试apk时有效。 debugCompile（debugImplementation）debugCompile 只在debug模式的编译和最终的debug apk打包时有效 releaseCompile（releaseImplementation）Release compile 仅仅针对Release 模式的编译和最终的Release apk打包。 参考： Android Studio3.x新的依赖方式（implementation、api、compileOnly） ###]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[谈谈启动流程]]></title>
     <url>%2F2017%2F12%2F29%2F%E8%B0%88%E8%B0%88%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"></content>
