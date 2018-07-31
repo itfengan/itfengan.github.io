@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/alignSelf.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flex.jpg">
 <meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/position.png">
-<meta property="og:updated_time" content="2018-07-31T08:26:57.589Z">
+<meta property="og:updated_time" content="2018-07-31T08:37:16.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative碎片整理之样式">
 <meta name="twitter:description" content="本文整理React Native中的布局方式，FlexBox弹性布局的使用">
@@ -385,7 +385,7 @@
 <h3 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h3><p>以下属性是React Native所支持的除Flex以外的其它布局属性。</p>
 <h4 id="视图边框"><a href="#视图边框" class="headerlink" title="视图边框"></a>视图边框</h4><h4 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h4><h4 id="内部边距"><a href="#内部边距" class="headerlink" title="内部边距"></a>内部边距</h4><h4 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h4><h4 id="边缘"><a href="#边缘" class="headerlink" title="边缘"></a>边缘</h4><h4 id="定位-position"><a href="#定位-position" class="headerlink" title="定位(position)"></a>定位(position)</h4><p>position enum(‘absolute’, ‘relative’)属性设置元素的定位方式，为将要定位的元素定义定位规则。</p>
 <ul>
-<li>absolute：生成绝对定位的元素，元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。(相对于父布局的位置)</li>
+<li>absolute：生成绝对定位的元素，元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。(相对于父布局的位置)（注意：忽略父组件的padding，默认直接在父组件的左上角，除非设置当前组件的left，top，right，bottom,或者margin之类的）</li>
 <li>relative：生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。（相对于自身本应该在的位置）</li>
 </ul>
 <p><strong>例子1:</strong></p>
@@ -403,7 +403,7 @@
         <p><span>本文标题:</span><a href="/2018/07/31/ReactNative碎片整理之样式/">ReactNative碎片整理之样式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2018-07-31, 15:38:55</p>
-        <p><span>最后更新:</span>2018-07-31, 16:26:57</p>
+        <p><span>最后更新:</span>2018-07-31, 16:37:16</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/31/ReactNative碎片整理之样式/" title="ReactNative碎片整理之样式">http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
