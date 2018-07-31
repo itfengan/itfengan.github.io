@@ -15,16 +15,25 @@
 
 
 
-<meta name="description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
+<meta name="description" content="本文整理React Native中的布局方式，FlexBox弹性布局的使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SharedPreferences的缺陷">
-<meta property="og:url" content="http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/index.html">
+<meta property="og:title" content="ReactNative碎片整理之样式">
+<meta property="og:url" content="http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
-<meta property="og:updated_time" content="2018-07-19T08:05:04.036Z">
+<meta property="og:description" content="本文整理React Native中的布局方式，FlexBox弹性布局的使用">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/12998/flexbox.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flexDirection.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flexWrap.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/justifyContent.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/alignItems.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/alignSelf.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flex.jpg">
+<meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/position.png">
+<meta property="og:updated_time" content="2018-07-31T08:26:57.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SharedPreferences的缺陷">
-<meta name="twitter:description" content="SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项">
+<meta name="twitter:title" content="ReactNative碎片整理之样式">
+<meta name="twitter:description" content="本文整理React Native中的布局方式，FlexBox弹性布局的使用">
+<meta name="twitter:image" content="https://mdn.mozillademos.org/files/12998/flexbox.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SharedPreferences的缺陷 | 风中追风</title>
+<title>ReactNative碎片整理之样式 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +281,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-SharedPreferences的缺陷" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ReactNative碎片整理之样式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/19/SharedPreferences的缺陷/" class="article-date">
-      <time datetime="2018-07-19T05:44:44.000Z" itemprop="datePublished">2018-07-19</time>
+      <a href="/2018/07/31/ReactNative碎片整理之样式/" class="article-date">
+      <time datetime="2018-07-31T07:38:55.000Z" itemprop="datePublished">2018-07-31</time>
 </a>
 
 
@@ -291,7 +300,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SharedPreferences的缺陷
+      ReactNative碎片整理之样式
     </h1>
   
 
@@ -300,13 +309,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
+    <a class="article-category-link" href="/categories/RN/">RN</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -316,61 +325,73 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>SharedPreferences在Android使用非常普遍，本文记录一下它的不足之处和使用注意事项</p>
+        <p>本文整理React Native中的布局方式，FlexBox弹性布局的使用</p>
 <a id="more"></a>
-<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p><code>SharedPreferences</code>是Android SDK提供的工具，可以存储应用的一些配置信息，这些信息会以键值对的形式保存在<code>/sdcard/data/data/packageName/shared_prefs/</code>路径下的一个<code>xml</code>文件中。它提供了多种数据类型的存储，包括：<code>int</code>、<code>long</code>、<code>boolean</code>、<code>float</code>、<code>String</code>以及<code>Set&lt;String&gt;</code>。</p>
-<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
-<li><code>context.getSharedPreference(name, mode);</code></li>
-<li><code>PreferenceManager.getDefaultSharedPreferences(context);</code></li>
+<h3 id="宽高"><a href="#宽高" class="headerlink" title="宽高"></a>宽高</h3><p>RN中，尺寸是没有单位的，它已经代表了设备独立像素</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;</span> &#123;<span class="attr">width:100</span>,<span class="attr">height:100</span>,<span class="attr">margin:40</span>,<span class="attr">backgroundColor:</span>'<span class="attr">gray</span>'&#125;&#125;&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;</span> &#123;<span class="attr">fontSize:16</span>,<span class="attr">margin:20</span>&#125;&#125;&gt;</span>尺寸<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行在Android上时，View的长和宽被解释成：100dp 100dp单位是dp，字体被解释成16sp 单位是sp，运行在iOS上时尺寸单位被解释称了pt，这些单位确保了布局在任何不同dpi的手机屏幕上显示不会发生改变；</p>
+<h3 id="RN和Web-css上的FlexBox的区别"><a href="#RN和Web-css上的FlexBox的区别" class="headerlink" title="RN和Web css上的FlexBox的区别"></a>RN和Web css上的FlexBox的区别</h3><ul>
+<li>flexDirection: React Native中默认为<code>flexDirection:&#39;column&#39;</code>，在Web CSS中默认为<code>flex-direction:&#39;row&#39;</code></li>
+<li>alignItems: React Native中默认为<code>alignItems:&#39;stretch&#39;</code>，在Web CSS中默认<code>align-items:&#39;flex-start&#39;</code></li>
+<li>flex: 相比Web CSS的flex接受多参数，如:<code>flex: 2 2 10%;</code>，但在 React Native中flex只接受一个参数</li>
+<li>不支持属性：align-content，flex-basis，order，flex-basis，flex-flow，flex-grow，flex-shrink</li>
 </ul>
-<p>这两种方式其实具体实现是一样的，只不过一个是开发者自己定义名字，另一个是使用包名+”_preference”作为存储文件名。</p>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>若我们大量使用<code>PreferenceManager.getDefaultSharedPreferences(context);</code>，将各种配置项全部存储到一个sp中，就可能会导致一个问题：<strong>该文件过大，读取配置项过慢</strong></p>
-<p>所以推荐，根据情况，将不同的配置文件保存在不同的sp中，而不是全部使用默认的sp，导致同一个sp文件过大</p>
-<ol>
-<li>第一次从sp中获取值的时候，有可能阻塞主线程，使界面卡顿、掉帧。</li>
-<li>解析sp的时候会产生大量的临时对象，导致频繁GC，引起界面卡顿。</li>
-<li>这些key和value会永远存在于内存之中，占用大量内存。</li>
-</ol>
-<h4 id="其他注意"><a href="#其他注意" class="headerlink" title="其他注意"></a>其他注意</h4><ul>
-<li>被加载进来的这些大对象，会永远存在于内存之中，不会被释放。</li>
+<p>以上是React Native中的FlexBox 和Web CSSS上FlexBox的不同之处，记住这几点，你可以像在Web CSSS上使用FlexBox一样，在React Native中使用FlexBox。</p>
+<h3 id="Layout-Props"><a href="#Layout-Props" class="headerlink" title="Layout Props"></a>Layout Props</h3><h4 id="父视图属性（容器属性）："><a href="#父视图属性（容器属性）：" class="headerlink" title="父视图属性（容器属性）："></a>父视图属性（容器属性）：</h4><ul>
+<li>flexDirection enum(‘<strong>row</strong>’, ‘<strong>column</strong>’,’<strong>row-reverse</strong>’,’<strong>column-reverse</strong>’)</li>
+<li>flexWrap enum(‘<strong>wrap</strong>’, ‘<strong>nowrap</strong>’)</li>
+<li>justifyContent enum(‘<strong>flex-start</strong>’, ‘<strong>flex-end</strong>’, ‘<strong>center</strong>’, ‘<strong>space-between</strong>’, ‘<strong>space-around</strong>’)</li>
+<li>alignItems enum(‘<strong>flex-start</strong>’, ‘<strong>flex-end’</strong>, ‘<strong>center</strong>’, ‘<strong>stretch</strong>’)</li>
 </ul>
-<p>ContextImpl这个类，在getSharedPreference的时候会把所有的sp放到一个静态变量里面缓存起来：</p>
-<p><strong>static</strong>的sSharedPrefsCache，它保存了你所有使用的sp</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GuardedBy</span>(<span class="string">"ContextImpl.class"</span>)</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> ArrayMap&lt;String, ArrayMap&lt;File, SharedPreferencesImpl&gt;&gt;sSharedPrefsCache;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> ArrayMap&lt;File, SharedPreferencesImpl&gt; <span class="title">getSharedPreferencesCacheLocked</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (sSharedPrefsCache == <span class="keyword">null</span>) &#123;</div><div class="line">        sSharedPrefsCache = <span class="keyword">new</span> ArrayMap&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> String packageName = getPackageName();</div><div class="line">    ArrayMap&lt;File, SharedPreferencesImpl&gt; packagePrefs = sSharedPrefsCache.get(packageName);</div><div class="line">    <span class="keyword">if</span> (packagePrefs == <span class="keyword">null</span>) &#123;</div><div class="line">        packagePrefs = <span class="keyword">new</span> ArrayMap&lt;&gt;();</div><div class="line">        sSharedPrefsCache.put(packageName, packagePrefs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> packagePrefs;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>学习父容器属性之前，先学习下基本概念</p>
+<p><img src="https://mdn.mozillademos.org/files/12998/flexbox.png" width="400"></p>
+<p>和Web的Css不同的是，RN的Flexbox默认的主轴是 竖直的（column）</p>
+<h5 id="flexDirection"><a href="#flexDirection" class="headerlink" title="flexDirection"></a>flexDirection</h5><p><code>flexDirection enum(&#39;row&#39;, &#39;column&#39;,&#39;row-reverse&#39;,&#39;column-reverse&#39;)</code><br><code>flexDirection</code>属性定义了父视图中的子元素沿横轴或侧轴方片的排列方式。</p>
 <ul>
-<li>存储JSON等特殊符号很多的value</li>
+<li>row: 从左向右依次排列</li>
+<li>row-reverse: 从右向左依次排列</li>
+<li>column(default): 默认的排列方式，从上向下排列</li>
+<li>column-reverse: 从下向上排列</li>
 </ul>
-<p>在sp里面存json或者HTML；这么做不是不可以，但是，如果这个json相对较大，那么也会引起sp读取速度的急剧下降。</p>
-<p>JSON或者HTML格式存放在sp里面的时候，需要转义，这样会带来很多 &amp; 这种特殊符号，sp在解析碰到这个特殊符号的时候会进行特殊的处理，引发额外的字符串拼接以及函数调用开销。而JSON本来就是可以用来做配置文件的，你干嘛又把它放在sp里面呢？</p>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flexDirection.jpg" width="400"></p>
+<h5 id="flexWrap"><a href="#flexWrap" class="headerlink" title="flexWrap"></a>flexWrap</h5><p><code>flexWrap enum(&#39;wrap&#39;, &#39;nowrap&#39;)</code><br><code>flexWrap</code>属性定义了子元素在父视图内是否允许多行排列，默认为nowrap。</p>
 <ul>
-<li>多次edit多次apply</li>
+<li>nowrap flex的元素只排列在一行上，可能导致溢出。</li>
+<li>wrap flex的元素在一行排列不下时，就进行多行排列。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sp = getSharedPreferences(<span class="string">"test"</span>, MODE_PRIVATE);</div><div class="line">sp.edit().putString(<span class="string">"test1"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test2"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test3"</span>, <span class="string">"sss"</span>).apply();</div><div class="line">sp.edit().putString(<span class="string">"test4"</span>, <span class="string">"sss"</span>).apply();</div></pre></td></tr></table></figure>
-<p>每次edit都会创建一个Editor对象，额外占用内存；当然多创建几个对象也影响不了多少；但是，多次apply也会卡界面你造吗？</p>
-<p>有童鞋会说，apply不是在别的线程些磁盘的吗，怎么可能卡界面？我带你仔细看一下源码。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> MemoryCommitResult mcr = commitToMemory();</div><div class="line">    <span class="keyword">final</span> Runnable awaitCommit = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    mcr.writtenToDiskLatch.await();</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException ignored) &#123;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    QueuedWork.add(awaitCommit);</div><div class="line"></div><div class="line">    Runnable postWriteRunnable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                awaitCommit.run();</div><div class="line">                QueuedWork.remove(awaitCommit);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    SharedPreferencesImpl.<span class="keyword">this</span>.enqueueDiskWrite(mcr, postWriteRunnable);</div><div class="line">    notifyListeners(mcr);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意两点，第一，把一个带有await的runnable添加进了QueueWork类的一个队列；第二，把这个写入任务通过enqueueDiskWrite丢给了一个<strong>只有单个线程</strong>的线程池执行。</p>
-<p>到这里一切都OK，在子线程里面写入不会卡UI。但是，你去ActivityThread类的handleStopActivity里看一看：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleStopActivity</span><span class="params">(IBinder token, <span class="keyword">boolean</span> show, <span class="keyword">int</span> configChanges, <span class="keyword">int</span> seq)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 省略无关。。</span></div><div class="line">    <span class="comment">// Make sure any pending writes are now committed.（确保所有延迟写入完成）</span></div><div class="line">    <span class="keyword">if</span> (!r.isPreHoneycomb()) &#123;</div><div class="line">        QueuedWork.waitToFinish();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 省略无关。。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果在Activity Stop的时候，已经写入完毕了，那么万事大吉，不会有任何等待，这个函数会立马返回。但是，如果你使用了太多次的apply，那么意味着写入队列会有很多写入任务，而那里就只有一个线程在写。当App规模很大的时候，这种情况简直就太常见了</p>
-<p>虽然apply是在子线程执行的，但是请不要无节制地apply；commit我就不多说了吧？直接在当前线程写入，如果你在主线程干这个</p>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flexWrap.jpg" width="400"></p>
+<h5 id="justifyContent"><a href="#justifyContent" class="headerlink" title="justifyContent"></a>justifyContent</h5><p><code>justifyContent enum(&#39;flex-start&#39;, &#39;flex-end&#39;, &#39;center&#39;, &#39;space-between&#39;, &#39;space-around&#39;)</code><br><code>justifyContent</code>属性定义了浏览器如何分配顺着父容器主轴的弹性（flex）元素之间及其周围的空间，默认为flex-start。</p>
 <ul>
-<li>SP多进程不可靠</li>
+<li>flex-start(default) 从行首开始排列。每行第一个弹性元素与行首对齐，同时所有后续的弹性元素与前一个对齐。</li>
+<li>flex-end 从行尾开始排列。每行最后一个弹性元素与行尾对齐，其他元素将与后一个对齐。</li>
+<li>center 伸缩元素向每行中点排列。每行第一个元素到行首的距离将与每行最后一个元素到行尾的距离相同。</li>
+<li>space-between 在每行上均匀分配弹性元素。相邻元素间距离相同。每行第一个元素与行首对齐，每行最后一个元素与行尾对齐。</li>
+<li>space-around 在每行上均匀分配弹性元素。相邻元素间距离相同。每行第一个元素到行首的距离和每行最后一个元素到行尾的距离将会是相邻元素之间距离的一半。</li>
 </ul>
-<p>sp有一个貌似可以提供「跨进程」功能的FLAG——MODE_MULTI_PROCESS</p>
-<p>文档也说了，这玩意在某些Android版本上不可靠，并且未来也不会提供任何支持，要是用跨进程数据传输需要使用类似ContentProvider的东西。而且，SharedPreference的文档也特别说明：</p>
-<p><code>Note: This class does not support use across multiple processes.</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> SharedPreferences <span class="title">getSharedPreferences</span><span class="params">(File file, <span class="keyword">int</span> mode)</span> </span>&#123;</div><div class="line">    checkMode(mode);</div><div class="line">    SharedPreferencesImpl sp;</div><div class="line">    <span class="keyword">synchronized</span> (ContextImpl.class) &#123;</div><div class="line">        <span class="keyword">final</span> ArrayMap&lt;File, SharedPreferencesImpl&gt; cache = getSharedPreferencesCacheLocked();</div><div class="line">        sp = cache.get(file);</div><div class="line">        <span class="keyword">if</span> (sp == <span class="keyword">null</span>) &#123;</div><div class="line">            sp = <span class="keyword">new</span> SharedPreferencesImpl(file, mode);</div><div class="line">            cache.put(file, sp);</div><div class="line">            <span class="keyword">return</span> sp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ((mode &amp; Context.MODE_MULTI_PROCESS) != <span class="number">0</span> ||</div><div class="line">        getApplicationInfo().targetSdkVersion &lt; android.os.Build.VERSION_CODES.HONEYCOMB) &#123;</div><div class="line">        <span class="comment">// If somebody else (some other process) changed the prefs</span></div><div class="line">        <span class="comment">// file behind our back, we reload it.  This has been the</span></div><div class="line">        <span class="comment">// historical (if undocumented) behavior.</span></div><div class="line">        sp.startReloadIfChangedUnexpectedly();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个flag保证了啥？保证了<strong>在API 11以前</strong>的系统上，如果sp已经被读取进内存，再次获取这个sp的时候，如果有这个flag，会重新读一遍文件，仅此而已</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>不要存放大的key和value！会引起界面卡、频繁GC、占用内存等等</li>
-<li>毫不相关的配置项就不要丢在一起了！文件越大读取越慢，防止全部放进defalut的sp！</li>
-<li>读取频繁的key和不易变动的key尽量不要放在一起，影响速度。（如果整个文件很小，那么忽略吧，为了这点性能添加维护成本得不偿失）</li>
-<li>不要乱edit和apply，每次edit会创建新的EditorImpl对象，尽量批量修改一次提交！</li>
-<li>尽量不要存放JSON和HTML，这种场景请直接使用json（文件存取）！</li>
-<li>Commit发生在UI线程中，apply发生在工作线程中，对于数据的提交最好是批量操作统一提交。虽然apply发生在工作线程（不会因为IO阻塞UI线程）但是如果添加任务较多也有可能带来其他严重后果（参照ActivityThread源码中handleStopActivity方法实现）。</li>
-<li>跨进程通信不可靠</li>
-</ol>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/justifyContent.jpg" width="400"></p>
+<h5 id="alignItems"><a href="#alignItems" class="headerlink" title="alignItems"></a>alignItems</h5><p><code>alignItems enum(&#39;flex-start&#39;, &#39;flex-end&#39;, &#39;center&#39;, &#39;stretch&#39;)</code><br><code>alignItems</code>属性以与justify-content相同的方式在侧轴方向上将当前行上的弹性元素对齐，默认为stretch</p>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/alignItems.jpg" width="400"></p>
+<h4 id="子视图属性（规范自己的）"><a href="#子视图属性（规范自己的）" class="headerlink" title="子视图属性（规范自己的）"></a>子视图属性（规范自己的）</h4><h5 id="alignSelf"><a href="#alignSelf" class="headerlink" title="alignSelf"></a>alignSelf</h5><p><code>alignSelf enum(&#39;auto&#39;, &#39;flex-start&#39;, &#39;flex-end&#39;, &#39;center&#39;, &#39;stretch&#39;)</code><br><code>alignSelf</code>属性以属性定义了flex容器内被选中项目的对齐方式。注意：alignSelf 属性可重写灵活容器的 alignItems 属性。</p>
+<ul>
+<li><strong>auto(default) 元素继承了它的父容器的 align-items 属性。如果没有父容器则为 “stretch”。</strong></li>
+<li>stretch    元素被拉伸以适应容器。</li>
+<li>center    元素位于容器的中心。</li>
+<li>flex-start    元素位于容器的开头。</li>
+<li>flex-end    元素位于容器的结尾。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/alignSelf.jpg" width="400"></p>
+<h5 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h5><p><code>flex number</code><br><code>flex</code> 属性定义了一个可伸缩元素的能力，默认为0。</p>
+<p><img src="https://raw.githubusercontent.com/crazycodeboy/RNStudyNotes/develop/React%20Native%E5%B8%83%E5%B1%80/React%20Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/images/flex.jpg" width="400"></p>
+<h3 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h3><p>以下属性是React Native所支持的除Flex以外的其它布局属性。</p>
+<h4 id="视图边框"><a href="#视图边框" class="headerlink" title="视图边框"></a>视图边框</h4><h4 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h4><h4 id="内部边距"><a href="#内部边距" class="headerlink" title="内部边距"></a>内部边距</h4><h4 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h4><h4 id="边缘"><a href="#边缘" class="headerlink" title="边缘"></a>边缘</h4><h4 id="定位-position"><a href="#定位-position" class="headerlink" title="定位(position)"></a>定位(position)</h4><p>position enum(‘absolute’, ‘relative’)属性设置元素的定位方式，为将要定位的元素定义定位规则。</p>
+<ul>
+<li>absolute：生成绝对定位的元素，元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。(相对于父布局的位置)</li>
+<li>relative：生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。（相对于自身本应该在的位置）</li>
+</ul>
+<p><strong>例子1:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span></span></span></div><div class="line">                <span class="attr">flex:</span> <span class="attr">1</span>,</div><div class="line">                <span class="attr">justifyContent:</span> '<span class="attr">center</span>',</div><div class="line">            &#125;&#125;&gt;</div><div class="line">                <span class="tag">&lt;<span class="name">TouchableOpacity</span> <span class="attr">onPress</span>=<span class="string">&#123;this.loadData&#125;</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">Image</span> <span class="attr">style</span>=<span class="string">&#123;styles.header&#125;/</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">Text</span></span></div><div class="line">                            <span class="attr">style</span>=<span class="string">&#123;styles.name&#125;</span>&gt;absolute<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">TouchableOpacity</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">        );</div><div class="line">    &#125;    </div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        flexDirection: 'row',</div><div class="line">        paddingLeft: 15,</div><div class="line">        paddingRight: 15,</div><div class="line">        paddingTop: 10,</div><div class="line">        paddingBottom: 10,</div><div class="line">        backgroundColor: '#999999'</div><div class="line">    &#125;,</div><div class="line">    header: &#123;</div><div class="line">        width: 100,</div><div class="line">        height: 100,</div><div class="line">        backgroundColor: '#00a056'</div><div class="line">    &#125;,</div><div class="line">    name: &#123;</div><div class="line">        position: 'relative',</div><div class="line">        // left: 15,</div><div class="line">        alignSelf: 'flex-start',</div><div class="line">        fontSize: 13,</div><div class="line">        backgroundColor: '#ffff00',</div><div class="line">        color: '#999999'</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/position.png" width="400"></p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="http://www.devio.org/2016/08/01/Reac-Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/" target="_blank" rel="external">React Native布局详细指南</a></p>
 
       
     </div>
@@ -379,13 +400,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/19/SharedPreferences的缺陷/">SharedPreferences的缺陷</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/31/ReactNative碎片整理之样式/">ReactNative碎片整理之样式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2018-07-19, 13:44:44</p>
-        <p><span>最后更新:</span>2018-07-19, 16:05:04</p>
+        <p><span>发布时间:</span>2018-07-31, 15:38:55</p>
+        <p><span>最后更新:</span>2018-07-31, 16:26:57</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/19/SharedPreferences的缺陷/" title="SharedPreferences的缺陷">http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/31/ReactNative碎片整理之样式/" title="ReactNative碎片整理之样式">http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -397,16 +418,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/23/Rxjava2-0-知识碎片（一）/">
-                    Rxjava2.0-知识碎片(一)
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/18/shadowsocks服务端部署/">
-                    shadowsocks服务端部署
+                <a href="/2018/07/30/ReactNative碎片整理之网络请求/">
+                    ReactNative碎片整理之网络请求
                 </a>
             </div>
         
@@ -418,7 +433,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方式"><span class="toc-number">2.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他注意"><span class="toc-number">4.</span> <span class="toc-text">其他注意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#宽高"><span class="toc-number">1.</span> <span class="toc-text">宽高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RN和Web-css上的FlexBox的区别"><span class="toc-number">2.</span> <span class="toc-text">RN和Web css上的FlexBox的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Layout-Props"><span class="toc-number">3.</span> <span class="toc-text">Layout Props</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父视图属性（容器属性）："><span class="toc-number">3.1.</span> <span class="toc-text">父视图属性（容器属性）：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#flexDirection"><span class="toc-number">3.1.1.</span> <span class="toc-text">flexDirection</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flexWrap"><span class="toc-number">3.1.2.</span> <span class="toc-text">flexWrap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#justifyContent"><span class="toc-number">3.1.3.</span> <span class="toc-text">justifyContent</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#alignItems"><span class="toc-number">3.1.4.</span> <span class="toc-text">alignItems</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子视图属性（规范自己的）"><span class="toc-number">3.2.</span> <span class="toc-text">子视图属性（规范自己的）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#alignSelf"><span class="toc-number">3.2.1.</span> <span class="toc-text">alignSelf</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flex"><span class="toc-number">3.2.2.</span> <span class="toc-text">flex</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他属性"><span class="toc-number">4.</span> <span class="toc-text">其他属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图边框"><span class="toc-number">4.1.</span> <span class="toc-text">视图边框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#尺寸"><span class="toc-number">4.2.</span> <span class="toc-text">尺寸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内部边距"><span class="toc-number">4.3.</span> <span class="toc-text">内部边距</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外边距"><span class="toc-number">4.4.</span> <span class="toc-text">外边距</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#边缘"><span class="toc-number">4.5.</span> <span class="toc-text">边缘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定位-position"><span class="toc-number">4.6.</span> <span class="toc-text">定位(position)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考："><span class="toc-number">5.</span> <span class="toc-text">参考：</span></a></li></ol>
         
     </div>
     <style>
@@ -454,7 +469,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SharedPreferences的缺陷　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"ReactNative碎片整理之样式　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -473,8 +488,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2018/07/19/SharedPreferences的缺陷/';
-            this.page.identifier = '2018/07/19/SharedPreferences的缺陷/';
+            this.page.url = 'http://www.fengan.info/2018/07/31/ReactNative碎片整理之样式/';
+            this.page.identifier = '2018/07/31/ReactNative碎片整理之样式/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -496,15 +511,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/23/Rxjava2-0-知识碎片（一）/" title="上一篇: Rxjava2.0-知识碎片(一)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/18/shadowsocks服务端部署/" title="下一篇: shadowsocks服务端部署">
+            <a href="/2018/07/30/ReactNative碎片整理之网络请求/" title="下一篇: ReactNative碎片整理之网络请求">
                 <i class="fa fa-angle-right"></i>
             </a>
         
