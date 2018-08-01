@@ -931,7 +931,7 @@ a {
   content: '\f09a';
 }
 #header .header-nav .social .GitHub {
-  background: #00a056;
+  background: #4f4f4f;
 }
 #header .header-nav .social .GitHub::before {
   content: '\f09b';
