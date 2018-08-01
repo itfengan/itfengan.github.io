@@ -924,6 +924,12 @@ a {
 #header .header-nav .social .LinkedIn::before {
   content: '\f0e1';
 }
+#header .header-nav .social .Github {
+  background: #00a056;
+}
+#header .header-nav .social .Github::before {
+  content: '\f09b';
+}
 #header .header-nav .social .Email {
   background: #6fc0e4;
 }
@@ -935,12 +941,6 @@ a {
 }
 #header .header-nav .social .Facebook::before {
   content: '\f09a';
-}
-#header .header-nav .social .Github {
-  background: #005a87;
-}
-#header .header-nav .social .Github::before {
-  content: '\f0e1';
 }
 #header .header-nav .social .QQ {
   background: #1cbcef;
