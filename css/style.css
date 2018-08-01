@@ -917,10 +917,10 @@ a {
 .LinkedIn::before {
   content: '\f0e1';
 }
-.Github {
+.GitHub {
   background: #00a056;
 }
-.Github::before {
+.GitHub::before {
   content: '\f09b';
 }
 .Email {
