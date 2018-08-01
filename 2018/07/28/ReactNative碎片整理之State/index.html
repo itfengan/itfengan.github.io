@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="风中追风">
 <meta property="og:description" content="我们使用两种数据来控制一个组件：props和state。props是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。 对于需要改变的数据，我们需要使用state。">
 <meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/state.gif">
-<meta property="og:updated_time" content="2018-07-28T10:51:04.885Z">
+<meta property="og:updated_time" content="2018-08-01T09:08:07.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative碎片整理之State">
 <meta name="twitter:description" content="我们使用两种数据来控制一个组件：props和state。props是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。 对于需要改变的数据，我们需要使用state。">
@@ -210,6 +210,8 @@
                     
                       <a class="main-nav-link switch-friends-link" href="http://www.devio.org/">贾鹏辉</a>
                     
+                      <a class="main-nav-link switch-friends-link" href="https://blog.csdn.net/ddwhan0123">王亟亟</a>
+                    
                     </div>
                 </section>
                 
@@ -364,6 +366,7 @@
 <li>这种数据传递的方式通常被称为 “自顶向下（top-down）”或者“单向（unidirectional）”数据流。</li>
 <li>任何state都是由一个特定的组件所拥有的，任何state数据修改默认只会影响当前组件，</li>
 <li>可以通过回调传值（后面会整理）</li>
+<li><strong>React Native建议由顶层的父组件定义state值，并将state值作为子组件的props属性值传递给子组件，这样可以保持单一的数据传递。</strong></li>
 </ul>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.jianshu.com/p/583473c37db9" target="_blank" rel="external">[【1】React Native] React 中的状态（State）</a></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=455304006&auto=1&height=32"></iframe>
@@ -379,7 +382,7 @@
         <p><span>本文标题:</span><a href="/2018/07/28/ReactNative碎片整理之State/">ReactNative碎片整理之State</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2018-07-28, 17:51:46</p>
-        <p><span>最后更新:</span>2018-07-28, 18:51:04</p>
+        <p><span>最后更新:</span>2018-08-01, 17:08:07</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/28/ReactNative碎片整理之State/" title="ReactNative碎片整理之State">http://www.fengan.info/2018/07/28/ReactNative碎片整理之State/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/28/ReactNative碎片整理之State/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
