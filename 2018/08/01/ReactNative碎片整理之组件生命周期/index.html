@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
+<meta name="description" content="生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.X的gradle依赖implementation">
-<meta property="og:url" content="http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/index.html">
+<meta property="og:title" content="ReactNative碎片整理之组件生命周期">
+<meta property="og:url" content="http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361">
-<meta property="og:updated_time" content="2018-07-24T08:16:48.712Z">
+<meta property="og:description" content="生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)">
+<meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/ReactNativeLifeCycle.png">
+<meta property="og:updated_time" content="2018-08-01T11:48:39.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3.X的gradle依赖implementation">
-<meta name="twitter:description" content="依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361">
+<meta name="twitter:title" content="ReactNative碎片整理之组件生命周期">
+<meta name="twitter:description" content="生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)">
+<meta name="twitter:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/ReactNativeLifeCycle.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>3.X的gradle依赖implementation | 风中追风</title>
+<title>ReactNative碎片整理之组件生命周期 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +276,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-3-x的gradle依赖implementation" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ReactNative碎片整理之组件生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/01/24/3-x的gradle依赖implementation/" class="article-date">
-      <time datetime="2018-01-24T07:47:00.000Z" itemprop="datePublished">2018-01-24</time>
+      <a href="/2018/08/01/ReactNative碎片整理之组件生命周期/" class="article-date">
+      <time datetime="2018-08-01T09:27:52.000Z" itemprop="datePublished">2018-08-01</time>
 </a>
 
 
@@ -295,7 +295,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      3.X的gradle依赖implementation
+      ReactNative碎片整理之组件生命周期
     </h1>
   
 
@@ -304,13 +304,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
+    <a class="article-category-link" href="/categories/RN/">RN</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -320,52 +320,96 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>依赖方式有很多，我们这里只弄清楚implementation和Compile的区别，就好了</p>
+        <p>生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)</p>
 <a id="more"></a>
-<h3 id="implementation和Compile的区别"><a href="#implementation和Compile的区别" class="headerlink" title="implementation和Compile的区别"></a>implementation和Compile的区别</h3><p>先看下图</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2139461-fdab3438f31ddfe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/361" alt="依赖区别"></p>
-<p>假设：</p>
-<p><strong>LibraryA—–—–implementation———LibraryC</strong></p>
-<p>App Module 无法使用LibraryC</p>
-<p><strong>LibraryB—–—–compile———LibraryD</strong></p>
-<p>App Module 可以使用LibraryD</p>
-<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
-<li>可以加快编译速度</li>
-<li>隐藏对外不必要的接口</li>
+<h1 id="一个栗子"><a href="#一个栗子" class="headerlink" title="一个栗子"></a>一个栗子</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    View,</div><div class="line">    Text,</div><div class="line">    StyleSheet,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span>&lt;<span class="title">Props</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 构造函数，初始化需要的state</div><div class="line">     * @param props</div><div class="line">     */</div><div class="line">    <span class="keyword">constructor</span>(props) &#123;</div><div class="line">        <span class="keyword">super</span>(props);</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'constructor'</span>)</div><div class="line"></div><div class="line">        <span class="comment">// 初始状态</span></div><div class="line">        <span class="keyword">this</span>.state = &#123;</div><div class="line">            <span class="attr">result</span>: <span class="string">'点击前'</span>,</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：控件渲染前触发</div><div class="line">     * 次数：一次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    componentWillMount() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentWillMount'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：控件渲染后触发</div><div class="line">     * 次数：一次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    componentDidMount() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：组件接收到新的props时被调用</div><div class="line">     * 次数：多次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    componentWillReceiveProps() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentWillReceiveProps'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：当组件接收到新的props和state时被调用</div><div class="line">     * 次数：多次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    shouldComponentUpdate() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'shouldComponentUpdate'</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：组件重新渲染完成后会调用此方法</div><div class="line">     * 次数：多次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    componentDidUpdate() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：控件渲染后触发</div><div class="line">     * 次数：1次</div><div class="line">     * 推荐：</div><div class="line">     */</div><div class="line">    componentDidMount() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 描述：组件卸载和销毁之前被调用</div><div class="line">     * 次数：一次</div><div class="line">     * 推荐：用于清理一些无用的内容，比如：定时器清除</div><div class="line">     */</div><div class="line">    componentWillUnmount() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentWillUnmount'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    componentWillUpdate() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'componentWillUpdate'</span>)</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'render'</span>)</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.content&#125;</span>&gt;</span></span></div><div class="line">                <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.text&#125;</span> <span class="attr">onPress</span>=<span class="string">&#123;</span></span></div><div class="line">                    () =&gt; &#123;</div><div class="line">                        this.setState(&#123;</div><div class="line">                            result: '点击后'</div><div class="line">                        &#125;)</div><div class="line">                    &#125;</div><div class="line">                &#125;&gt;</div><div class="line">                    &#123;this.state.result&#125;</div><div class="line">                <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">    <span class="attr">content</span>: &#123;</div><div class="line">        <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">justifyContent</span>: <span class="string">'center'</span>,</div><div class="line">        <span class="attr">alignItems</span>: <span class="string">'center'</span>,</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">text</span>: &#123;</div><div class="line">        <span class="attr">padding</span>: <span class="number">50</span>,</div><div class="line">        <span class="attr">fontSize</span>: <span class="number">20</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'#ffffff'</span>,</div><div class="line">        <span class="attr">backgroundColor</span>: <span class="string">'#00a056'</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><strong>console</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constructor</span></div><div class="line">App.js:39 componentWillMount</div><div class="line">App.js:103 render</div><div class="line">App.js:86 componentDidMount</div><div class="line">App.js:108 onPress call</div><div class="line">App.js:66 shouldComponentUpdate</div><div class="line">App.js:100 componentWillUpdate</div><div class="line">App.js:103 render</div><div class="line">App.js:76 componentDidUpdate</div></pre></td></tr></table></figure>
+<h1 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h1><p>通过上面的栗子，有灵性的小哥哥已经基本猜到大致的生命周期了</p>
+<p>下面再看看这张我偷来的帅图</p>
+<p><img src="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/ReactNativeLifeCycle.png" width="400"></p>
+<p>再结合这张酷表</p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th>调用次数</th>
+<th>能否使用 setSate()</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getDefaultProps（es6:static defaultProps）</td>
+<td>1(全局调用一次)</td>
+<td>否</td>
+<td>初始化默认属性</td>
+</tr>
+<tr>
+<td>getInitialState(es6:constructor(props))</td>
+<td>1</td>
+<td>否</td>
+<td>构造函数，初始化需要的state</td>
+</tr>
+<tr>
+<td>componentWillMount</td>
+<td>1</td>
+<td>是</td>
+<td>控件渲染前触发</td>
+</tr>
+<tr>
+<td>render</td>
+<td>&gt;=1</td>
+<td>否</td>
+<td>渲染控件的方法</td>
+</tr>
+<tr>
+<td>componentDidMount</td>
+<td>1</td>
+<td>是</td>
+<td>控件渲染后触发</td>
+</tr>
+<tr>
+<td>componentWillReceiveProps</td>
+<td>&gt;=0</td>
+<td>是</td>
+<td>组件接收到新的props时被调用</td>
+</tr>
+<tr>
+<td>shouldComponentUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+<td>当组件接收到新的props和state时被调用</td>
+</tr>
+<tr>
+<td>componentWillUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+<td>props或者state改变，并且此前的shouldComponentUpdate方法返回为 true会调用该方法</td>
+</tr>
+<tr>
+<td>componentDidUpdate</td>
+<td>&gt;=0</td>
+<td>否</td>
+<td>组件重新渲染完成后会调用此方法</td>
+</tr>
+</tbody>
+</table>
+<h1 id="推荐的操作"><a href="#推荐的操作" class="headerlink" title="推荐的操作"></a>推荐的操作</h1><ul>
+<li>constructor()方法里初始化state </li>
+<li>static defaultProps指定默认属性</li>
+<li>componentDidMount()：该方法在render()方法后自动调用，网络请求一般放在这个方法中</li>
+<li>shouldComponentUpdate()：该方法返回一个boolean值，用来决定是否需要重新渲染组件，默认返回true，你可以自己重写此方法，通过条件判断来决定你是否需要更新组件</li>
+<li>componentWillUnmount()：在组件被移除前调用，在该方法中，释放一些不需要的资源，比如停止定时器</li>
+<li><strong>不要在 constructor 或者 render 里 setState()</strong></li>
+<li>constructor 已含 this.state={} </li>
+<li>render 里 setState 会造成setState -&gt; render -&gt; setState -&gt; render </li>
+<li>能做的setState，只要是render前，就放在componentWillMount，render后，就放在 componentDidMount。這两个 function 是 react lifecycle 中，最常使用的两个</li>
+<li>更多以后再添加总结</li>
 </ul>
-<p>为什么能够加快编译速度呢</p>
-<p>这对于大型项目含有多个<code>Moudle</code>模块的， 以上图为例，比如我们改动 <code>LibraryC</code> 接口的相关代码，这时候编译只需要单独编译<code>LibraryA</code>模块就行， 如果使用的是<code>api</code>或者旧时代的<code>compile</code>，由于<code>App Moudle</code> 也可以访问到 <code>LibraryC</code>,所以 <code>App Moudle</code>部分也需要重新编译。</p>
-<h3 id="其他几种方式"><a href="#其他几种方式" class="headerlink" title="其他几种方式"></a>其他几种方式</h3><p><strong>首先是2.x版本的依赖方式：</strong></p>
-<ol>
-<li>Compile</li>
-<li>Provided</li>
-<li>APK</li>
-<li>Test compile</li>
-<li>Debug compile</li>
-<li>Release compile</li>
-</ol>
-<p><strong>再来看看3.0的</strong></p>
-<ol>
-<li>Implementation</li>
-<li>API</li>
-<li>Compile only</li>
-<li>Runtime only</li>
-<li>Unit Test implementation</li>
-<li>Test implementation</li>
-<li>Debug implementation</li>
-<li>Release implementation</li>
-</ol>
-<p><strong>2.x版本依赖的可以看看下面的说明，括号里对应的是3.0版本的依赖方式。</strong></p>
-<h4 id="compile（api）"><a href="#compile（api）" class="headerlink" title="compile（api）"></a>compile（api）</h4><p>这种是我们最常用的方式，使用该方式依赖的库将会<strong>参与编译和打包</strong>。<br>当我们依赖一些第三方的库时，可能会遇到com.android.support冲突的问题，就是因为开发者使用的compile依赖的com.android.support包，而他所依赖的包与我们本地所依赖的com.android.support包版本不一样，所以就会报All com.android.support libraries must use the exact same version specification (mixing versions can lead to runtime crashes这个错误。</p>
-<p><a href="https://blog.csdn.net/yuzhiqiang_1993/article/details/78214812" target="_blank" rel="external">support包冲突</a></p>
-<h4 id="provided（compileOnly）"><a href="#provided（compileOnly）" class="headerlink" title="provided（compileOnly）"></a>provided（compileOnly）</h4><p><strong>只在编译时有效，不会参与打包</strong><br>可以在自己的moudle中使用该方式依赖一些比如com.android.support，gson这些使用者常用的库，避免冲突。</p>
-<h4 id="apk（runtimeOnly）"><a href="#apk（runtimeOnly）" class="headerlink" title="apk（runtimeOnly）"></a>apk（runtimeOnly）</h4><p>只在生成apk的时候参与打包，编译时不会参与，很少用。</p>
-<h4 id="testCompile（testImplementation）"><a href="#testCompile（testImplementation）" class="headerlink" title="testCompile（testImplementation）"></a>testCompile（testImplementation）</h4><p>testCompile 只在单元测试代码的编译以及最终打包测试apk时有效。</p>
-<h4 id="debugCompile（debugImplementation）"><a href="#debugCompile（debugImplementation）" class="headerlink" title="debugCompile（debugImplementation）"></a>debugCompile（debugImplementation）</h4><p>debugCompile 只在debug模式的编译和最终的debug apk打包时有效</p>
-<h4 id="releaseCompile（releaseImplementation）"><a href="#releaseCompile（releaseImplementation）" class="headerlink" title="releaseCompile（releaseImplementation）"></a>releaseCompile（releaseImplementation）</h4><p>Release compile 仅仅针对Release 模式的编译和最终的Release apk打包。</p>
-<p><strong>参考：</strong></p>
-<p><a href="https://blog.csdn.net/yuzhiqiang_1993/article/details/78366985?locationNum=6&amp;fps=1" target="_blank" rel="external">Android Studio3.x新的依赖方式（implementation、api、compileOnly）</a></p>
-<p>### </p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/ddwhan0123/article/details/78490884" target="_blank" rel="external">React-Native生命周期的触发场景和一些小建议</a></p>
+<p><a href="https://blog.csdn.net/sinat_30949835/article/details/79833721" target="_blank" rel="external">React Native 中组件的生命周期</a></p>
+<p><a href="http://www.devio.org/2016/08/10/React-Native%E4%B9%8BReact%E9%80%9F%E5%AD%A6%E6%95%99%E7%A8%8B-(%E4%B8%AD" target="_blank" rel="external">React Native之React速学教程(中)</a>/)</p>
 
       
     </div>
@@ -374,13 +418,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/01/24/3-x的gradle依赖implementation/">3.X的gradle依赖implementation</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/01/ReactNative碎片整理之组件生命周期/">ReactNative碎片整理之组件生命周期</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2018-01-24, 15:47:00</p>
-        <p><span>最后更新:</span>2018-07-24, 16:16:48</p>
+        <p><span>发布时间:</span>2018-08-01, 17:27:52</p>
+        <p><span>最后更新:</span>2018-08-01, 19:48:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/01/24/3-x的gradle依赖implementation/" title="3.X的gradle依赖implementation">http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/01/ReactNative碎片整理之组件生命周期/" title="ReactNative碎片整理之组件生命周期">http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -392,16 +436,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/02/ThreadLocal的理解/">
-                    ThreadLocal的理解
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/12/29/谈谈启动流程/">
-                    谈谈启动流程
+                <a href="/2018/08/01/ReactNative碎片整理之ref/">
+                    ReactNative碎片整理之ref
                 </a>
             </div>
         
@@ -413,7 +451,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#implementation和Compile的区别"><span class="toc-number">1.</span> <span class="toc-text">implementation和Compile的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#好处"><span class="toc-number">2.</span> <span class="toc-text">好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他几种方式"><span class="toc-number">3.</span> <span class="toc-text">其他几种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#compile（api）"><span class="toc-number">3.1.</span> <span class="toc-text">compile（api）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#provided（compileOnly）"><span class="toc-number">3.2.</span> <span class="toc-text">provided（compileOnly）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apk（runtimeOnly）"><span class="toc-number">3.3.</span> <span class="toc-text">apk（runtimeOnly）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#testCompile（testImplementation）"><span class="toc-number">3.4.</span> <span class="toc-text">testCompile（testImplementation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#debugCompile（debugImplementation）"><span class="toc-number">3.5.</span> <span class="toc-text">debugCompile（debugImplementation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#releaseCompile（releaseImplementation）"><span class="toc-number">3.6.</span> <span class="toc-text">releaseCompile（releaseImplementation）</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一个栗子"><span class="toc-number">1.</span> <span class="toc-text">一个栗子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件的生命周期"><span class="toc-number">2.</span> <span class="toc-text">组件的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐的操作"><span class="toc-number">3.</span> <span class="toc-text">推荐的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
@@ -449,7 +487,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"3.X的gradle依赖implementation　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"ReactNative碎片整理之组件生命周期　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -468,8 +506,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://www.fengan.info/2018/01/24/3-x的gradle依赖implementation/';
-            this.page.identifier = '2018/01/24/3-x的gradle依赖implementation/';
+            this.page.url = 'http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/';
+            this.page.identifier = '2018/08/01/ReactNative碎片整理之组件生命周期/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -491,15 +529,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/02/ThreadLocal的理解/" title="上一篇: ThreadLocal的理解">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/12/29/谈谈启动流程/" title="下一篇: 谈谈启动流程">
+            <a href="/2018/08/01/ReactNative碎片整理之ref/" title="下一篇: ReactNative碎片整理之ref">
                 <i class="fa fa-angle-right"></i>
             </a>
         
