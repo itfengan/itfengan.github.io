@@ -1,5 +1,24 @@
 /******/
+import './photoswipe.css';
+import './default-skin/default-skin.css';
+require([ 
+        './photoswipe.js', 
+        './photoswipe-ui-default.js' 
+    ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+
+    //      var gallery = new PhotoSwipe( someElement, PhotoSwipeUI_Default ...
+    //      gallery.init() 
+    //      ...
+
+});
+
 (function(modules) { // webpackBootstrap
+
+
+
+
+
+
   /******/ // The module cache
   /******/
   var installedModules = {};
