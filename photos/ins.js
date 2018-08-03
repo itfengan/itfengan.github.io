@@ -533,15 +533,18 @@
 
 
 
-
-require([ 
+      require([ 
         './photoswipe.js', 
-        './photoswipe-ui-default.js' 
-    ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+        './photoswipe-ui-default.js' ]);
 
-    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+
+      gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
-         var $tempVideo;
+
+       
+
+        var $tempVideo;
         var stopVideoHandle = function stopVideoHandle() {
           if ($tempVideo) {
             $tempVideo.remove();
@@ -576,14 +579,6 @@ require([
       for (var i = 0, l = galleryElements.length; i < l; i++) {
         galleryElements[i].setAttribute('data-pswp-uid', i + 1);
         galleryElements[i].onclick = onThumbnailsClick;
-
-});
-      // gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-        // gallery.init();
-
-       
-
-       
       }
 
       // Parse URL and open gallery if it contains #&pid=3&gid=1
