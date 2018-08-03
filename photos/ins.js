@@ -1,18 +1,5 @@
 
 
-import PhotoSwipe from 'photoswipe'
-
-require([ 
-        './photoswipe.js', 
-        './photoswipe-ui-default.js' 
-    ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
-
-    //      var gallery = new PhotoSwipe( someElement, PhotoSwipeUI_Default ...
-    //      gallery.init() 
-    //      ...
-
-});
-
 (function(modules) { // 
   /******/ // The module cache
   /******/
@@ -543,8 +530,23 @@ require([
         }
 
         // Pass data to PhotoSwipe and initialize it
-        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+
+
+
+require([ 
+        './photoswipe.js', 
+        './photoswipe-ui-default.js' 
+    ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+
+    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
+
+});
+      // gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        // gallery.init();
+
+       
 
         var $tempVideo;
         var stopVideoHandle = function stopVideoHandle() {
