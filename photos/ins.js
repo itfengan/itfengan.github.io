@@ -1,4 +1,6 @@
 
+
+import {PhotoSwipe} from 'react-photoswipe';
 (function(modules) { // 
   /******/ // The module cache
   /******/
