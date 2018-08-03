@@ -116,8 +116,11 @@
         var data = res.list[j].arr;
         var liTmpl = "";
         for (var i = 0, len = data.link.length; i < len; i++) {
-          var minSrc = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/min_photos/' + data.link[i] + '.min.jpg';
-          var src = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/photos/' + data.link[i];
+
+          // var minSrc = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/min_photos/' + data.link[i] + '.min.jpg';
+          var minSrc = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/mine/alipay.jpeg';
+          var src = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/mine/alipay.jpeg';
+          //var src = 'https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/photos/' + data.link[i];
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '.jpg';
