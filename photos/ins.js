@@ -1,3 +1,5 @@
+import photoSwipe from 'photoswipe'
+
 /******/
 (function(modules) { // webpackBootstrap
   /******/ // The module cache
