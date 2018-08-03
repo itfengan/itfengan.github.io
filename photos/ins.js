@@ -1,12 +1,3 @@
-import 'photoswipe/dist/photoswipe.css';
-import 'photoswipe/dist/default-skin/default-skin.css';
-import photoSwipe from 'photoswipe'
- require([ 
-         'path/to/photoswipe.js', 
-         'path/to/photoswipe-ui-default.js' 
-     ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
- });
-
 /******/
 (function(modules) { // webpackBootstrap
   /******/ // The module cache
