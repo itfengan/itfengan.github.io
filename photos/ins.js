@@ -531,18 +531,13 @@
 
         // Pass data to PhotoSwipe and initialize it
 
-
-
-      require([ 
+        require([ 
         './photoswipe.js', 
-        './photoswipe-ui-default.js' ]);
-
-
-
-      gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        './photoswipe-ui-default.js'], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+ 
+        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
 
-       
 
         var $tempVideo;
         var stopVideoHandle = function stopVideoHandle() {
@@ -572,6 +567,9 @@
         gallery.listen('initialZoomIn', changeHandle);
         gallery.listen('afterChange', changeHandle);
         gallery.listen('initialZoomOut', stopVideoHandle);
+ 
+        });
+
       };
 
       // loop through all gallery elements and bind events
