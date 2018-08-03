@@ -110,7 +110,7 @@
 	opacity: 0;
 }
 .photos-btn-wrap {
-	border-bottom: 1px solid #08c;
+	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 20px;
 }
 .photos-btn {
@@ -122,7 +122,7 @@
 .photos-btn.active {
 	color: #08c;
 	border: 1px solid #e5e5e5;
-	border-bottom: 5px solid #fff;
+	border-bottom: 5px solid #08c;
 }
 
 @media screen and (max-width:600px) {
