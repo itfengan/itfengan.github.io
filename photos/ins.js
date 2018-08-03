@@ -531,9 +531,7 @@
 
         // Pass data to PhotoSwipe and initialize it
 
-        require([ 
-        './photoswipe.js', 
-        './photoswipe-ui-default.js'], function() {
+
  
         gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
@@ -568,7 +566,6 @@
         gallery.listen('afterChange', changeHandle);
         gallery.listen('initialZoomOut', stopVideoHandle);
  
-        });
 
       };
 
