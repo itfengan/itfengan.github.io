@@ -1,4 +1,7 @@
 /******/
+
+(function(modules) { // webpackBootstr
+
 import './photoswipe.css';
 import './default-skin/default-skin.css';
 require([ 
@@ -11,10 +14,6 @@ require([
     //      ...
 
 });
-
-(function(modules) { // webpackBootstrap
-
-
 
 
 
