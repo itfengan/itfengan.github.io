@@ -1,6 +1,18 @@
 
 
-import {PhotoSwipe} from 'react-photoswipe';
+import PhotoSwipe from 'photoswipe'
+
+require([ 
+        './photoswipe.js', 
+        './photoswipe-ui-default.js' 
+    ], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+
+    //      var gallery = new PhotoSwipe( someElement, PhotoSwipeUI_Default ...
+    //      gallery.init() 
+    //      ...
+
+});
+
 (function(modules) { // 
   /******/ // The module cache
   /******/
