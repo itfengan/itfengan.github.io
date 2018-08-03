@@ -533,7 +533,7 @@
 
         require([ 
         './photoswipe.js', 
-        './photoswipe-ui-default.js'], function( PhotoSwipe, PhotoSwipeUI_Default ) {
+        './photoswipe-ui-default.js'], function() {
  
         gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
