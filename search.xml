@@ -4,6 +4,12 @@
     <title><![CDATA[常用命令行]]></title>
     <url>%2F2018%2F08%2F06%2F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%2F</url>
     <content type="text"><![CDATA[收纳常用linux命令，持续更新 进程相关查看端口占用lsof -i:8081 123456 ~/Desktop/RNApp01 master ● lsof -i:8081COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAMEnode 36790 fengan 20u IPv6 0x110e0f1528376079 0t0 TCP *:sunproxyadmin (LISTEN)node 36790 fengan 28u IPv6 0x110e0f15210a6279 0t0 TCP localhost:sunproxyadmin-&gt;localhost:59217 (ESTABLISHED)RNApp01 37313 fengan 10u IPv6 0x110e0f15210a9639 0t0 TCP localhost:59217-&gt;localhost:sunproxyadmin (ESTABLISHED)RNApp01 37313 fengan 12u IPv6 0x110e0f15210a9639 0t0 TCP localhost:59217-&gt;localhost:sunproxyadmin (ESTABLISHED) 该端口被id围8081的进程所占用，这个时候直接在命令行输入 杀死指定pid进程kill 37313]]></content>
+      <categories>
+        <category>Dev</category>
+      </categories>
+      <tags>
+        <tag>Dev</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[ReactNative-warn/error处理记录]]></title>
