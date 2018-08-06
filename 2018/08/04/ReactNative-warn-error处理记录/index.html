@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="EditText智能限制小数点前后分别保留几位">
-<meta name="keywords" content="Android">
+<meta name="description" content="本文记录RN开发过程中的error和warn记录，持续更新">
+<meta name="keywords" content="RN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="edittext输入限制">
-<meta property="og:url" content="http://www.fengan.info/2015/12/13/edittext输入限制/index.html">
+<meta property="og:title" content="ReactNative-warn&#x2F;error处理记录">
+<meta property="og:url" content="http://www.fengan.info/2018/08/04/ReactNative-warn-error处理记录/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="EditText智能限制小数点前后分别保留几位">
+<meta property="og:description" content="本文记录RN开发过程中的error和warn记录，持续更新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T02:08:58.979Z">
+<meta property="og:updated_time" content="2018-08-04T09:12:00.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="edittext输入限制">
-<meta name="twitter:description" content="EditText智能限制小数点前后分别保留几位">
+<meta name="twitter:title" content="ReactNative-warn&#x2F;error处理记录">
+<meta name="twitter:description" content="本文记录RN开发过程中的error和warn记录，持续更新">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>edittext输入限制 | 风中追风</title>
+<title>ReactNative-warn/error处理记录 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +281,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-edittext输入限制" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ReactNative-warn-error处理记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/13/edittext输入限制/" class="article-date">
-      <time datetime="2015-12-13T09:42:12.000Z" itemprop="datePublished">2015-12-13</time>
+      <a href="/2018/08/04/ReactNative-warn-error处理记录/" class="article-date">
+      <time datetime="2018-08-04T08:40:10.000Z" itemprop="datePublished">2018-08-04</time>
 </a>
 
 
@@ -300,7 +300,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      edittext输入限制
+      ReactNative-warn/error处理记录
     </h1>
   
 
@@ -309,13 +309,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
+    <a class="article-category-link" href="/categories/RN/">RN</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,19 +325,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>EditText智能限制小数点前后分别保留几位</p>
+        <p>本文记录RN开发过程中的error和warn记录，持续更新</p>
 <a id="more"></a>
-<p>需求</p>
-<ul>
-<li>可以分别限制小数点前面几位，和小数点后几位</li>
-<li>首位输入0时，第二位只能输入小数点</li>
-<li>首位输入小数点，默认显示0.</li>
-<li>嘻嘻!</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> frontPoint    小数点前几位数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> behindPoint   小数点后几位数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> editTexts</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setEditTextLimit</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> frontPoint, <span class="keyword">final</span> <span class="keyword">int</span> behindPoint, <span class="keyword">final</span> EditText... editTexts)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (editTexts != <span class="keyword">null</span> &amp;&amp; editTexts.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">final</span> EditText editText : editTexts) &#123;</span><br><span class="line">            editText.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before,</span></span></span><br><span class="line"><span class="function"><span class="params">                                          <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (s.length() == frontPoint + <span class="number">1</span> &amp;&amp; !s.toString().contains(<span class="string">"."</span>)) &#123;</span><br><span class="line">                        editText.setText(s.toString().substring(<span class="number">0</span>, frontPoint));</span><br><span class="line">                        editText.setSelection(frontPoint);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (editText.getText().toString().indexOf(<span class="string">"."</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (editText.getText().toString().indexOf(<span class="string">"."</span>, editText.getText().toString().indexOf(<span class="string">"."</span>) + <span class="number">1</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                            editText.setText(editText.getText().toString().substring(<span class="number">0</span>, editText.getText().toString().length() - <span class="number">1</span>));</span><br><span class="line">                            editText.setSelection(editText.getText().toString().length());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (s.toString().contains(<span class="string">"."</span>)) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (s.length() - <span class="number">1</span> - s.toString().indexOf(<span class="string">"."</span>) &gt; behindPoint) &#123;</span><br><span class="line">                            s = s.toString().subSequence(<span class="number">0</span>,</span><br><span class="line">                                    s.toString().indexOf(<span class="string">"."</span>) + behindPoint+<span class="number">1</span>);</span><br><span class="line">                            editText.setText(s);</span><br><span class="line">                            editText.setSelection(s.length());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//直接输入一个点,显示0.</span></span><br><span class="line">                    <span class="keyword">if</span> (s.toString().trim().substring(<span class="number">0</span>).equals(<span class="string">"."</span>)) &#123;</span><br><span class="line">                        s = <span class="string">"0"</span> + s;</span><br><span class="line">                        editText.setText(s);</span><br><span class="line">                        editText.setSelection(<span class="number">2</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//当输入一个0,后面只能输入小数点</span></span><br><span class="line">                    <span class="keyword">if</span> (s.toString().startsWith(<span class="string">"0"</span>)</span><br><span class="line">                            &amp;&amp; s.toString().trim().length() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (!s.toString().substring(<span class="number">1</span>, <span class="number">2</span>).equals(<span class="string">"."</span>)) &#123;</span><br><span class="line">                            editText.setText(s.subSequence(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">                            editText.setSelection(<span class="number">1</span>);</span><br><span class="line">                            <span class="keyword">return</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count,</span></span></span><br><span class="line"><span class="function"><span class="params">                                              <span class="keyword">int</span> after)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>xml别忘了</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:inputType="numberDecimal"</span><br></pre></td></tr></table></figure>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=417859220&auto=1&height=66"></iframe>
+<p>先安利一个大兄弟的总结，可以帮到不少忙</p>
+<p><a href="https://www.jianshu.com/p/98c8f2a970eb" target="_blank" rel="noopener">React Native开发错误警告处理总结（已解决 ！持续更新）</a></p>
+<p><a href="https://www.jianshu.com/p/644e3b8ba64c" target="_blank" rel="noopener">React Native踩坑合集</a></p>
+<h2 id="VirtualizedList-missing-keys-for-items-make-sure-to-specify-a-key-property-on-each-item-or-provide-a-custom-keyExtractor"><a href="#VirtualizedList-missing-keys-for-items-make-sure-to-specify-a-key-property-on-each-item-or-provide-a-custom-keyExtractor" class="headerlink" title="VirtualizedList: missing keys for items, make sure to specify a key property on each item or provide a custom keyExtractor."></a>VirtualizedList: missing keys for items, make sure to specify a key property on each item or provide a custom keyExtractor.</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我定义了一个列表</span></span><br><span class="line">initData() &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">this</span>.arr.push(&#123;<span class="attr">pos</span>: i, <span class="attr">name</span>: <span class="string">"hello"</span>+i&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'render'</span>)</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View style=&#123;styles.content&#125;&gt;</span><br><span class="line">                &lt;FlatList</span><br><span class="line">                    data=&#123;<span class="keyword">this</span>.arr&#125;</span><br><span class="line">                    renderItem=&#123;(&#123;item&#125;) =&gt; <span class="xml"><span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;[styles.itemFont,</span> <span class="attr">styles.item</span>]&#125;</span></span></span><br><span class="line"><span class="xml">                                                  onPress=&#123;this.click&#125;&gt;&#123;item.pos&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span>&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/我需要改成</span></span><br><span class="line"><span class="regexp"> for (let i = 0; i &lt; 3; i++) &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/修改为key</span></span><br><span class="line"><span class="regexp">            this.arr.push(&#123;key: i, name: "hello"+i&#125;)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/然后出现</span></span><br><span class="line"><span class="regexp">Warning: Failed child context type: Invalid child context virtualizedCell.cellKey of type number supplied to CellRenderer, expected string.</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/我修改为</span></span><br><span class="line"><span class="regexp"> this.arr.push(&#123;key: i.toString(), name: "hello"+i&#125;)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ok了</span></span><br><span class="line"><span class="regexp">需要数组中的一个字段是名是'key',并且还是string类型</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -345,13 +339,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2015/12/13/edittext输入限制/">edittext输入限制</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/04/ReactNative-warn-error处理记录/">ReactNative-warn/error处理记录</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2015-12-13, 17:42:12</p>
-        <p><span>最后更新:</span>2018-07-19, 10:08:58</p>
+        <p><span>发布时间:</span>2018-08-04, 16:40:10</p>
+        <p><span>最后更新:</span>2018-08-04, 17:12:00</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2015/12/13/edittext输入限制/" title="edittext输入限制">http://www.fengan.info/2015/12/13/edittext输入限制/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2015/12/13/edittext输入限制/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/04/ReactNative-warn-error处理记录/" title="ReactNative-warn/error处理记录">http://www.fengan.info/2018/08/04/ReactNative-warn-error处理记录/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/08/04/ReactNative-warn-error处理记录/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -363,16 +357,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2015/12/22/HandlerThread/">
-                    HandlerThread
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2015/08/08/图片上传-角度不正确/">
-                    图片上传,角度不正确
+                <a href="/2018/08/04/ReactNative碎片之查漏补缺/">
+                    ReactNative碎片之Js查漏
                 </a>
             </div>
         
@@ -384,7 +372,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VirtualizedList-missing-keys-for-items-make-sure-to-specify-a-key-property-on-each-item-or-provide-a-custom-keyExtractor"><span class="toc-number">1.</span> <span class="toc-text">VirtualizedList: missing keys for items, make sure to specify a key property on each item or provide a custom keyExtractor.</span></a></li></ol>
         
     </div>
     <style>
@@ -420,7 +408,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"edittext输入限制　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"ReactNative-warn/error处理记录　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -459,15 +447,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2015/12/22/HandlerThread/" title="上一篇: HandlerThread">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/08/08/图片上传-角度不正确/" title="下一篇: 图片上传,角度不正确">
+            <a href="/2018/08/04/ReactNative碎片之查漏补缺/" title="下一篇: ReactNative碎片之Js查漏">
                 <i class="fa fa-angle-right"></i>
             </a>
         
