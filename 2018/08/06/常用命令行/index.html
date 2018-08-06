@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="推荐使用@IntDef和@StringDef来代替枚举类。">
-<meta name="keywords" content="Android">
+<meta name="description" content="收纳常用linux命令，持续更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="推荐使用枚举注解">
-<meta property="og:url" content="http://www.fengan.info/2018/07/19/推荐使用枚举注解/index.html">
+<meta property="og:title" content="常用命令行">
+<meta property="og:url" content="http://www.fengan.info/2018/08/06/常用命令行/index.html">
 <meta property="og:site_name" content="风中追风">
-<meta property="og:description" content="推荐使用@IntDef和@StringDef来代替枚举类。">
+<meta property="og:description" content="收纳常用linux命令，持续更新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-03T04:55:22.749Z">
+<meta property="og:updated_time" content="2018-08-06T10:01:39.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="推荐使用枚举注解">
-<meta name="twitter:description" content="推荐使用@IntDef和@StringDef来代替枚举类。">
+<meta name="twitter:title" content="常用命令行">
+<meta name="twitter:description" content="收纳常用linux命令，持续更新">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>推荐使用枚举注解 | 风中追风</title>
+<title>常用命令行 | 风中追风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +280,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-推荐使用枚举注解" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-常用命令行" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/19/推荐使用枚举注解/" class="article-date">
-      <time datetime="2018-07-19T05:15:14.000Z" itemprop="datePublished">2018-07-19</time>
+      <a href="/2018/08/06/常用命令行/" class="article-date">
+      <time datetime="2018-08-06T09:43:44.000Z" itemprop="datePublished">2018-08-06</time>
 </a>
 
 
@@ -300,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      推荐使用枚举注解
+      常用命令行
     </h1>
   
 
@@ -308,16 +307,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -325,37 +316,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>推荐使用@IntDef和@StringDef来代替枚举类。</p>
+        <p>收纳常用linux命令，持续更新</p>
 <a id="more"></a>
-<h3 id="Enum概述"><a href="#Enum概述" class="headerlink" title="Enum概述"></a>Enum概述</h3><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>每个枚举类都是一个对象，在使用它的时候会增加额外的内存消耗，所以枚举比Integer和String会占用更多内存</li>
-<li>较多的使用Enum会增加DEX文件的大小，会造成运行时更多的开销</li>
-<li>当然，也会增加apk包的大小</li>
-</ul>
-<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>如果我们需要定义一些固定的几种类型，比如说星期1到星期7，比如说定义几种状态等等</p>
-<h5 id="方案一使用枚举时"><a href="#方案一使用枚举时" class="headerlink" title="方案一使用枚举时"></a>方案一使用枚举时</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> Sex &#123;</span><br><span class="line">  MAN, WOMEN</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="方案二使用常量"><a href="#方案二使用常量" class="headerlink" title="方案二使用常量"></a>方案二使用常量</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> MAN = <span class="number">101</span>, WOMEN = <span class="number">102</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(<span class="keyword">int</span> sex)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="两种形式比较"><a href="#两种形式比较" class="headerlink" title="两种形式比较"></a>两种形式比较</h5><p>这两种情况使用都比较常见，枚举的缺点刚才也列举了，就是占用内存较大，那么方案二使用普通的常量呢，这种形式的缺点主要是比较零散，再一个就是方法参数不好约束；所以我们推荐使用第三种形式。</p>
-<h4 id="IntDef和-StringDef"><a href="#IntDef和-StringDef" class="headerlink" title="@IntDef和@StringDef"></a>@IntDef和@StringDef</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">compile</span> ‘<span class="selector-tag">com</span><span class="selector-class">.android</span><span class="selector-class">.support</span><span class="selector-pseudo">:support-annotations</span><span class="selector-pseudo">:24.2.0</span>’</span><br></pre></td></tr></table></figure>
-<p>使用例子：</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IntDef</span>(&#123;STATE_NORMAL, STATE_LOADING, STATE_EMPTY, STATE_ERROR&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> LoadState &#123;</span><br><span class="line">    <span class="keyword">int</span> STATE_NORMAL = <span class="number">101</span>;<span class="comment">//正常数据</span></span><br><span class="line">    <span class="keyword">int</span> STATE_LOADING = <span class="number">102</span>;<span class="comment">//局部加载圈</span></span><br><span class="line">    <span class="keyword">int</span> STATE_EMPTY = <span class="number">103</span>;<span class="comment">//数据为空</span></span><br><span class="line">    <span class="keyword">int</span> STATE_ERROR = <span class="number">104</span>;<span class="comment">//加载失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> showNetRefreshState(<span class="meta">@LoadState</span> <span class="keyword">int</span> state) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">        <span class="keyword">case</span> LoadState.<span class="string">STATE_NORMAL:</span></span><br><span class="line">            mVaryViewHelper.showDataView();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> LoadState.<span class="string">STATE_LOADING:</span></span><br><span class="line">            mVaryViewHelper.showLoadingView();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> LoadState.<span class="string">STATE_EMPTY:</span></span><br><span class="line">            mVaryViewHelper.showEmptyView();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> LoadState.<span class="string">STATE_ERROR:</span></span><br><span class="line">            mVaryViewHelper.showErrorView();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这样可以将某一类状态归纳一起</li>
-<li>限制方法传参</li>
-<li>使用常量的形式，内存要远小于使用Enum</li>
-</ul>
-<h4 id="补充内容"><a href="#补充内容" class="headerlink" title="补充内容"></a>补充内容</h4><p><strong>注解的生命周期</strong></p>
-<p>@Retention(RetentionPolicy.SOURCE)</p>
-<ul>
-<li><strong>RetentionPolicy.SOURCE</strong> 源码注解，编译成.class文件后注解就不存在，用来提示开发者</li>
-</ul>
-<ul>
-<li><strong>RetentionPolicy.CLASS CLASS</strong>汇编注解，编译成.class文件后注解也还存在，用于自动生成代码</li>
-</ul>
-<ul>
-<li><strong>RetentionPolicy.RUNTIME</strong> 运行时动态注解，生命周期一直程序运行时都存在，常用于自动注入</li>
-</ul>
+<h1 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h1><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><p><strong>lsof -i:</strong>8081** </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> ~/Desktop/RNApp01   master ●  lsof -i:8081</span><br><span class="line">COMMAND   PID  <span class="built_in"> USER </span>  FD  <span class="built_in"> TYPE </span>            DEVICE SIZE/OFF NODE NAME</span><br><span class="line">node    36790 fengan   20u <span class="built_in"> IPv6 </span>0x110e0f1528376079      0t0  TCP *:sunproxyadmin (LISTEN)</span><br><span class="line">node    36790 fengan   28u <span class="built_in"> IPv6 </span>0x110e0f15210a6279      0t0  TCP localhost:sunproxyadmin-&gt;localhost:59217 (ESTABLISHED)</span><br><span class="line">RNApp01 37313 fengan   10u <span class="built_in"> IPv6 </span>0x110e0f15210a9639      0t0  TCP localhost:59217-&gt;localhost:sunproxyadmin (ESTABLISHED)</span><br><span class="line">RNApp01 37313 fengan   12u <span class="built_in"> IPv6 </span>0x110e0f15210a9639      0t0  TCP localhost:59217-&gt;localhost:sunproxyadmin (ESTABLISHED)</span><br></pre></td></tr></table></figure>
+<p>该端口被id围8081的进程所占用，这个时候直接在命令行输入</p>
+<h2 id="杀死指定pid进程"><a href="#杀死指定pid进程" class="headerlink" title="杀死指定pid进程"></a>杀死指定pid进程</h2><p><strong>kill </strong>37313</p>
 
       
     </div>
@@ -364,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/19/推荐使用枚举注解/">推荐使用枚举注解</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/06/常用命令行/">常用命令行</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
-        <p><span>发布时间:</span>2018-07-19, 13:15:14</p>
-        <p><span>最后更新:</span>2018-08-03, 12:55:22</p>
+        <p><span>发布时间:</span>2018-08-06, 17:43:44</p>
+        <p><span>最后更新:</span>2018-08-06, 18:01:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/19/推荐使用枚举注解/" title="推荐使用枚举注解">http://www.fengan.info/2018/07/19/推荐使用枚举注解/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/07/19/推荐使用枚举注解/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/06/常用命令行/" title="常用命令行">http://www.fengan.info/2018/08/06/常用命令行/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/08/06/常用命令行/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -382,16 +348,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/19/SharedPreferences的缺陷/">
-                    SharedPreferences的缺陷
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/18/shadowsocks服务端部署/">
-                    shadowsocks服务端部署
+                <a href="/2018/08/04/ReactNative-warn-error处理记录/">
+                    ReactNative-warn/error处理记录
                 </a>
             </div>
         
@@ -403,7 +363,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Enum概述"><span class="toc-number">1.</span> <span class="toc-text">Enum概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-number">1.1.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场景"><span class="toc-number">1.2.</span> <span class="toc-text">使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方案一使用枚举时"><span class="toc-number">1.2.1.</span> <span class="toc-text">方案一使用枚举时</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方案二使用常量"><span class="toc-number">1.2.2.</span> <span class="toc-text">方案二使用常量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#两种形式比较"><span class="toc-number">1.2.3.</span> <span class="toc-text">两种形式比较</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IntDef和-StringDef"><span class="toc-number">1.3.</span> <span class="toc-text">@IntDef和@StringDef</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补充内容"><span class="toc-number">1.4.</span> <span class="toc-text">补充内容</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#进程相关"><span class="toc-number">1.</span> <span class="toc-text">进程相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口占用"><span class="toc-number">1.1.</span> <span class="toc-text">查看端口占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#杀死指定pid进程"><span class="toc-number">1.2.</span> <span class="toc-text">杀死指定pid进程</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -439,7 +399,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"推荐使用枚举注解　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"常用命令行　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -478,15 +438,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/19/SharedPreferences的缺陷/" title="上一篇: SharedPreferences的缺陷">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/18/shadowsocks服务端部署/" title="下一篇: shadowsocks服务端部署">
+            <a href="/2018/08/04/ReactNative-warn-error处理记录/" title="下一篇: ReactNative-warn/error处理记录">
                 <i class="fa fa-angle-right"></i>
             </a>
         
