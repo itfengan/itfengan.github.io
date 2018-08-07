@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅析Dalvik和ART的区别">
 <meta property="og:url" content="http://www.fengan.info/2018/03/05/浅析Dalvik和ART的区别/index.html">
-<meta property="og:site_name" content="风中追风">
+<meta property="og:site_name" content="晚风">
 <meta property="og:description" content="Dalvik是Google公司自己设计用于Android平台的虚拟机，Dalvik经过优化，更加适合Android平台（具体优点见下面和JVM比较）。 2014年6月谷歌I/O大会上，Android L(5.0)改动幅度比较大，删除了Dalvik，而是用ART代替。 之前对本块的知识理解比较零散，再此本文总结下Dalvik和ART的原理，和二者的区别，以及Jvm和Dalvik的区别，以及Andro">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fp1zktmabmj30hm0r6780.jpg">
@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="风中追风" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="晚风" type="application/atom+xml">
 
 
 
@@ -61,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>浅析Dalvik和ART的区别 | 风中追风</title>
+<title>浅析Dalvik和ART的区别 | 晚风</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -521,7 +521,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"浅析Dalvik和ART的区别　| 风中追风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"浅析Dalvik和ART的区别　| 晚风　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -665,23 +665,6 @@
         }
     
 </script>
-
-    <script>
-        var originTitle = document.title;
-        var titleTime;
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-                clearTimeout(titleTime);
-            }
-            else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-                titleTime = setTimeout(function() {
-                    document.title = originTitle;
-                }, 2000);
-            }
-        })
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
