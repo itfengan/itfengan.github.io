@@ -24,7 +24,7 @@
 <meta property="og:description" content="生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://fenganblogimgs.oss-cn-beijing.aliyuncs.com/blog/ReactNativeLifeCycle.png">
-<meta property="og:updated_time" content="2018-08-02T02:13:56.772Z">
+<meta property="og:updated_time" content="2018-08-11T08:59:36.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative碎片整理之组件生命周期">
 <meta name="twitter:description" content="生命周期是一定要知道的，这样才知道整个组件的工作流程，知道哪些操作适合在哪个回调中进行……(o^^o)">
@@ -426,6 +426,8 @@
 <li>能做的setState，只要是render前，就放在componentWillMount，render后，就放在 componentDidMount。這两个 function 是 react lifecycle 中，最常使用的两个</li>
 <li>更多以后再添加总结</li>
 </ul>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h2 id="关于componentWillReceiveProps"><a href="#关于componentWillReceiveProps" class="headerlink" title="关于componentWillReceiveProps"></a>关于componentWillReceiveProps</h2><p><strong>componentWillReceiveProps</strong>：是在组件的props的更新的时，调用，那么有人就会有疑惑，组件的props不是不能改变的吗，只有state是可以改变的。注意，props确实不能修改的，指的是不能被自己修改，props是父组件传入进来的，在父组件首次render的时候，该方法不会被调用，那么由于父组件的State改变，render重新调用，传入子组件的props跟上次不同，那么这个方法就会被调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件，有一个CommonButton的子组件，传入的props text的父组件的this.state.username</span></span><br><span class="line"><span class="comment">//首次render，CommonButton的</span></span><br><span class="line">&lt;View style=&#123;&#123;<span class="attr">marginTop</span>: <span class="number">15</span>&#125;&#125;&gt;</span><br><span class="line">                    &lt;CommonButton &#123;...this.button&#125; text=&#123;<span class="keyword">this</span>.state.username&#125; onPressFunc=&#123;<span class="keyword">this</span>._onLogin&#125;/&gt;</span><br><span class="line">                &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/以下是子组件-CommonButton</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/componentWillReceiveProps方法，在父组件，多次render会调用，我们一半先判断一下，和上次的是否相同，</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/如果不相同，就设置子组件的state，让其更新</span></span><br><span class="line"><span class="regexp">    componentWillReceiveProps(nextProps) &#123;</span></span><br><span class="line"><span class="regexp">        if(nextProps.text!==this.props.text)&#123;</span></span><br><span class="line"><span class="regexp">            this.setState(&#123;</span></span><br><span class="line"><span class="regexp">                text: nextProps.text</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/ddwhan0123/article/details/78490884" target="_blank" rel="noopener">React-Native生命周期的触发场景和一些小建议</a></p>
 <p><a href="https://blog.csdn.net/sinat_30949835/article/details/79833721" target="_blank" rel="noopener">React Native 中组件的生命周期</a></p>
 <p><a href="http://www.devio.org/2016/08/10/React-Native%E4%B9%8BReact%E9%80%9F%E5%AD%A6%E6%95%99%E7%A8%8B-(%E4%B8%AD" target="_blank" rel="noopener">React Native之React速学教程(中)</a>/)</p>
@@ -440,7 +442,7 @@
         <p><span>本文标题:</span><a href="/2018/08/01/ReactNative碎片整理之组件生命周期/">ReactNative碎片整理之组件生命周期</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">冯安</a></p>
         <p><span>发布时间:</span>2018-08-01, 17:27:52</p>
-        <p><span>最后更新:</span>2018-08-02, 10:13:56</p>
+        <p><span>最后更新:</span>2018-08-11, 16:59:36</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/01/ReactNative碎片整理之组件生命周期/" title="ReactNative碎片整理之组件生命周期">http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.fengan.info/2018/08/01/ReactNative碎片整理之组件生命周期/　　作者: 冯安" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -476,7 +478,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一个栗子"><span class="toc-number">1.</span> <span class="toc-text">一个栗子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件的生命周期"><span class="toc-number">2.</span> <span class="toc-text">组件的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐的操作"><span class="toc-number">3.</span> <span class="toc-text">推荐的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一个栗子"><span class="toc-number">1.</span> <span class="toc-text">一个栗子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件的生命周期"><span class="toc-number">2.</span> <span class="toc-text">组件的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐的操作"><span class="toc-number">3.</span> <span class="toc-text">推荐的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充"><span class="toc-number">4.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于componentWillReceiveProps"><span class="toc-number">4.1.</span> <span class="toc-text">关于componentWillReceiveProps</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
