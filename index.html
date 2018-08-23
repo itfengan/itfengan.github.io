@@ -288,11 +288,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-常用命令行" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Rxjava优化实时搜索" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/06/常用命令行/" class="article-date">
-      <time datetime="2018-08-06T09:43:44.000Z" itemprop="datePublished">2018-08-06</time>
+      <a href="/2018/08/23/Rxjava优化实时搜索/" class="article-date">
+      <time datetime="2018-08-23T12:31:23.000Z" itemprop="datePublished">2018-08-23</time>
 </a>
 
 
@@ -307,7 +307,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/常用命令行/">常用命令行</a>
+      <a class="article-title" href="/2018/08/23/Rxjava优化实时搜索/">Rxjava优化实时搜索</a>
     </h1>
   
 
@@ -317,7 +317,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>收纳常用linux命令，持续更新</p>
+              <p>应用中实时搜索，一般我们会优化为当用户快速搜索的时候，我们不进行网络请求，当输入完毕后有个几百毫秒停顿后，才进行实时搜索，在使用Rxjava之前，我们大多数都是使用handle来postDelay，当在用户输入的时候，将任务cancle，但是，用过Rxjava才知道，是真的方便。</p>
           
       
     </div>
@@ -326,18 +326,223 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Dev/">Dev</a>
+    <a class="article-category-link" href="/categories/Rxjava/">Rxjava</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjava/">Rxjava</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a href="/2018/08/06/常用命令行/#more">阅读全文 >></a>
+          <a href="/2018/08/23/Rxjava优化实时搜索/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-记录一次保存oss上图片错误" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/22/记录一次保存oss上图片错误/" class="article-date">
+      <time datetime="2018-08-22T03:43:28.000Z" itemprop="datePublished">2018-08-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/22/记录一次保存oss上图片错误/">记录一次保存oss上图片错误</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>一次使用自己开发的app过程中，长按保存图片失败，之前是好的，报的错误是<code>CertPathValidatorException</code>很显然，是https的问题</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/08/22/记录一次保存oss上图片错误/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-FileProvider冲突问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/16/FileProvider冲突问题/" class="article-date">
+      <time datetime="2018-08-16T04:22:32.000Z" itemprop="datePublished">2018-08-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/16/FileProvider冲突问题/">FileProvider冲突问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>主工程或者lib库用到FileProvide冲突问题</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/08/16/FileProvider冲突问题/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Error-Compilation-failed-see-the-compiler-error-output-for-details" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/15/Error-Compilation-failed-see-the-compiler-error-output-for-details/" class="article-date">
+      <time datetime="2018-08-15T08:24:47.000Z" itemprop="datePublished">2018-08-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/Error-Compilation-failed-see-the-compiler-error-output-for-details/">Error:Compilation failed; see the compiler error output for details.</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><code>Error:Compilation failed; see the compiler error output for details</code></p>
+<p>如何查看错误信息？</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/08/15/Error-Compilation-failed-see-the-compiler-error-output-for-details/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -753,210 +958,6 @@
       
         <p class="article-more-link">
           <a href="/2018/08/01/ReactNative碎片整理之ref/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ReactNative碎片整理之样式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/31/ReactNative碎片整理之样式/" class="article-date">
-      <time datetime="2018-07-31T07:38:55.000Z" itemprop="datePublished">2018-07-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/ReactNative碎片整理之样式/">ReactNative碎片整理之样式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>本文整理React Native中的布局方式，FlexBox弹性布局的使用</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/RN/">RN</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/31/ReactNative碎片整理之样式/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ReactNative碎片整理之网络请求" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/30/ReactNative碎片整理之网络请求/" class="article-date">
-      <time datetime="2018-07-30T10:49:21.000Z" itemprop="datePublished">2018-07-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/ReactNative碎片整理之网络请求/">ReactNative碎片整理之网络请求</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>React Native 中虽然也内置了XMLHttpRequest 网络请求Api（也就是ajax），但XMLHttpRequest 是一个设计粗糙的API，不符合职责分离的原则，配置和调用方式比较混乱，而且基于事件的异步模型不如现代的Promise友好。所以，React Native官方推荐使用Fetch Api</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/RN/">RN</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/30/ReactNative碎片整理之网络请求/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ReactNative碎片整理之State" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/28/ReactNative碎片整理之State/" class="article-date">
-      <time datetime="2018-07-28T09:51:46.000Z" itemprop="datePublished">2018-07-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/28/ReactNative碎片整理之State/">ReactNative碎片整理之State</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>我们使用两种数据来控制一个组件：props和state。props是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。 对于需要改变的数据，我们需要使用state。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/RN/">RN</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RN/">RN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/28/ReactNative碎片整理之State/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
